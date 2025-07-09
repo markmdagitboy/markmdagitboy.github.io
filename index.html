@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcos Alvarez - IT Professional</title>
     
-    <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     
-    <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous">
@@ -333,6 +331,8 @@
             text-align: center;
         }
 
+        /* The following .download-btn styles are no longer needed but kept for context if you wish to re-add the button later. */
+        /*
         .download-btn {
             position: fixed;
             bottom: 2rem;
@@ -356,6 +356,7 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-large);
         }
+        */
 
         @media (max-width: 768px) {
             .container {
@@ -379,12 +380,15 @@
                 grid-template-columns: 1fr;
             }
 
+            /* The following .download-btn styles are no longer needed but kept for context if you wish to re-add the button later. */
+            /*
             .download-btn {
                 bottom: 1rem;
                 right: 1rem;
                 padding: 0.75rem 1rem;
                 font-size: 0.9rem;
             }
+            */
         }
 
         .progress-bar {
@@ -548,11 +552,6 @@
         </div>
     </div>
 
-    <button class="download-btn" onclick="window.print()">
-        <i class="fas fa-download"></i>
-        Download PDF
-    </button>
-
     <script>
         // Security: Sanitize any potential XSS inputs
         function sanitizeInput(str) {
@@ -656,7 +655,7 @@
             document.querySelectorAll('*').forEach(element => {
                 if (element.hasAttribute('onload') || 
                     element.hasAttribute('onerror') || 
-                    element.hasAttribute('onclick') && !element.classList.contains('download-btn')) {
+                    (element.hasAttribute('onclick') && !element.classList.contains('download-btn'))) {
                     element.removeAttribute('onload');
                     element.removeAttribute('onerror');
                     if (!element.classList.contains('download-btn')) {
@@ -678,4 +677,18 @@
                 if (!devtools.open) {
                     devtools.open = true;
                     try {
-                        if (console && typeof console.clear === 'function')
+                        if (console && typeof console.clear === 'function') {
+                            // You can add console.clear() here if you explicitly want to clear the console
+                            // when dev tools are opened, but it's generally not recommended for user experience.
+                        }
+                    } catch (e) {
+                        // Handle errors if console is not available or clear is not a function
+                    }
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
