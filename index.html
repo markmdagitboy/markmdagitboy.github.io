@@ -3,186 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Alvarez - IT Professional</title>
-    
+    <title>Marcos Alvarez - Senior IT Support Professional</title>
+    <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
+    <meta name="keywords" content="IT Support, Technical Support, CompTIA, Amazon, Computer Science, Troubleshooting">
+    <meta name="author" content="Marcos Alvarez">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:;">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{--primary:#667eea;--secondary:#764ba2;--accent:#f093fb;--text-dark:#2d3748;--text-light:#4a5568;--text-muted:#718096;--bg-light:#f7fafc;--bg-white:#fff;--shadow:0 10px 25px rgba(0,0,0,0.1);--radius:12px}
-        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);background:linear-gradient(135deg,var(--bg-light),#e2e8f0);min-height:100vh}
-        .container{max-width:1000px;margin:0 auto;padding:2rem}
-        .card{background:var(--bg-white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative}
-        .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent))}
-        .header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:3rem 2rem;text-align:center}
-        .name{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem}
-        .title{font-size:1.2rem;opacity:0.9;margin-bottom:1rem}
-        .contact{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
-        .contact-item{display:flex;align-items:center;gap:0.5rem}
-        .contact-item a{color:inherit;text-decoration:none;transition:opacity 0.3s}
-        .contact-item a:hover{opacity:0.8}
-        .content{padding:2rem}
-        .section{margin-bottom:2rem}
-        .section-title{font-size:1.4rem;font-weight:600;margin-bottom:1rem;position:relative;padding-bottom:0.5rem}
-        .section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px}
-        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-        .skill-category{background:var(--bg-light);padding:1.5rem;border-radius:var(--radius);border-left:4px solid var(--primary);transition:transform 0.3s}
-        .skill-category:hover{transform:translateY(-2px)}
-        .skill-category h3{margin-bottom:1rem;font-size:1.1rem}
-        .skill-list{list-style:none}
-        .skill-list li{margin-bottom:0.5rem;padding-left:1.5rem;position:relative;color:var(--text-light)}
-        .skill-list li::before{content:'→';position:absolute;left:0;color:var(--primary)}
-        .entry{background:var(--bg-white);border:1px solid #e2e8f0;border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;position:relative;transition:all 0.3s}
-        .entry::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--primary),var(--secondary))}
-        .entry:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-        .entry-title{font-size:1.1rem;font-weight:600;margin-bottom:0.5rem}
-        .entry-meta{color:var(--text-muted);font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}
-        .entry-meta i{color:var(--primary)}
-        .tech-stack{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
-        .tech-tag{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem}
-        .progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:1000;transition:width 0.3s}
-        .footer{text-align:center;padding:1rem;border-top:1px solid #e2e8f0;margin-top:2rem;color:var(--text-muted);font-size:0.9rem}
-        @media(max-width:768px){.container{padding:1rem}.header{padding:2rem 1rem}.name{font-size:2rem}.contact{flex-direction:column;gap:1rem}.skills-grid{grid-template-columns:1fr}}
+        *{margin:0;padding:0;box-sizing:border-box}:root{--primary:#667eea;--secondary:#764ba2;--accent:#f093fb;--text-dark:#2d3748;--text-light:#4a5568;--text-muted:#718096;--bg-light:#f7fafc;--bg-white:#fff;--shadow:0 10px 25px rgba(0,0,0,0.1);--shadow-hover:0 15px 35px rgba(0,0,0,0.15);--radius:12px;--transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;line-height:1.6;color:var(--text-dark);background:linear-gradient(135deg,var(--bg-light),#e2e8f0);min-height:100vh}.skip-link{position:absolute;top:-40px;left:6px;background:var(--primary);color:white;padding:8px;text-decoration:none;border-radius:4px;z-index:1000}.skip-link:focus{top:6px}.container{max-width:1000px;margin:0 auto;padding:2rem}.card{background:var(--bg-white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;position:relative;transition:var(--transition)}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent))}.header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:3rem 2rem;text-align:center}.name{font-size:2.5rem;font-weight:700;margin-bottom:0.5rem;letter-spacing:-0.025em}.title{font-size:1.2rem;opacity:0.9;margin-bottom:1rem;font-weight:300}.contact{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}.contact-item{display:flex;align-items:center;gap:0.5rem;font-size:0.95rem}.contact-item a{color:inherit;text-decoration:none;transition:var(--transition);border-radius:4px;padding:0.25rem 0.5rem;margin:-0.25rem -0.5rem}.contact-item a:hover,.contact-item a:focus{opacity:0.8;background:rgba(255,255,255,0.1);outline:2px solid rgba(255,255,255,0.3)}.content{padding:2rem}.section{margin-bottom:2.5rem}.section:last-child{margin-bottom:0}.section-title{font-size:1.4rem;font-weight:600;margin-bottom:1rem;position:relative;padding-bottom:0.5rem;color:var(--text-dark)}.section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px}.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-bottom:1.5rem}.skill-category{background:var(--bg-light);padding:1.5rem;border-radius:var(--radius);border-left:4px solid var(--primary);transition:var(--transition)}.skill-category:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.skill-category h3{margin-bottom:1rem;font-size:1.1rem;color:var(--text-dark);display:flex;align-items:center;gap:0.5rem}.skill-category h3 i{color:var(--primary)}.skill-list{list-style:none}.skill-list li{margin-bottom:0.5rem;padding-left:1.5rem;position:relative;color:var(--text-light)}.skill-list li::before{content:'→';position:absolute;left:0;color:var(--primary);font-weight:bold}.tech-stack{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}.tech-tag{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:0.25rem 0.75rem;border-radius:20px;font-size:0.8rem;font-weight:500;transition:var(--transition)}.tech-tag:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(102,126,234,0.3)}.entry{background:var(--bg-white);border:1px solid #e2e8f0;border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem;position:relative;transition:var(--transition)}.entry::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--primary),var(--secondary));border-radius:0 2px 2px 0}.entry:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}.entry:focus-within{outline:2px solid var(--primary);outline-offset:2px}.entry-title{font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;color:var(--text-dark)}.entry-meta{color:var(--text-muted);font-size:0.9rem;display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}.entry-meta i{color:var(--primary);width:16px;text-align:center}.entry-description{color:var(--text-light);line-height:1.6}.progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:1000;transition:width 0.3s ease}.footer{text-align:center;padding:1.5rem;border-top:1px solid #e2e8f0;margin-top:2rem;color:var(--text-muted);font-size:0.9rem}.footer i{color:var(--primary);margin-right:0.5rem}@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}}@media print{.progress-bar{display:none}.card{box-shadow:none;border:1px solid #000}.header{background:none!important;color:#000!important}.tech-tag{background:none!important;color:#000!important;border:1px solid #000}}@media(max-width:768px){.container{padding:1rem}.header{padding:2rem 1rem}.name{font-size:2rem}.contact{flex-direction:column;gap:1rem}.skills-grid{grid-template-columns:1fr}.content{padding:1.5rem}}@media(max-width:480px){.name{font-size:1.75rem}.title{font-size:1rem}.section-title{font-size:1.2rem}}
     </style>
 </head>
 <body>
-    <div class="progress-bar"></div>
-    
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="progress-bar" role="progressbar" aria-label="Reading progress"></div>
     <div class="container">
-        <div class="card">
-            <div class="header">
+        <main class="card" id="main-content">
+            <header class="header">
                 <h1 class="name">Marcos Alvarez</h1>
                 <p class="title">Senior IT Support Professional</p>
-                <div class="contact">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Beaumont, CA</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-                    </div>
-                </div>
-            </div>
-
+                <address class="contact">
+                    <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>Beaumont, CA</span></div>
+                    <div class="contact-item"><i class="fab fa-linkedin" aria-hidden="true"></i><a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LinkedIn Profile</a></div>
+                </address>
+            </header>
             <div class="content">
-                <div class="section">
+                <section class="section">
                     <h2 class="section-title">Core Competencies</h2>
                     <div class="skills-grid">
-                        <div class="skill-category">
-                            <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
+                        <article class="skill-category">
+                            <h3><i class="fas fa-user-friends" aria-hidden="true"></i> Soft Skills</h3>
                             <ul class="skill-list">
                                 <li>Expert technical communication across various formats</li>
                                 <li>Exceptional dedication with consistent track record</li>
                             </ul>
-                        </div>
-                        <div class="skill-category">
-                            <h3><i class="fas fa-cogs"></i> Technical Expertise</h3>
+                        </article>
+                        <article class="skill-category">
+                            <h3><i class="fas fa-cogs" aria-hidden="true"></i> Technical Expertise</h3>
                             <ul class="skill-list">
                                 <li>7+ years IT customer service and troubleshooting</li>
                                 <li>CompTIA trained: A+, Network+, Project+, Security+</li>
                             </ul>
-                        </div>
+                        </article>
                     </div>
-                    <div class="tech-stack">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">MySQL</span>
-                        <span class="tech-tag">C++</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Assembly x86</span>
+                    <div class="tech-stack" role="list" aria-label="Technical skills">
+                        <span class="tech-tag" role="listitem">HTML5</span>
+                        <span class="tech-tag" role="listitem">CSS3</span>
+                        <span class="tech-tag" role="listitem">JavaScript</span>
+                        <span class="tech-tag" role="listitem">Java</span>
+                        <span class="tech-tag" role="listitem">SQL</span>
+                        <span class="tech-tag" role="listitem">MySQL</span>
+                        <span class="tech-tag" role="listitem">C++</span>
+                        <span class="tech-tag" role="listitem">C#</span>
+                        <span class="tech-tag" role="listitem">Python</span>
+                        <span class="tech-tag" role="listitem">Assembly x86</span>
                     </div>
-                </div>
-
-                <div class="section">
+                </section>
+                <section class="section">
                     <h2 class="section-title">Professional Experience</h2>
-                    
-                    <div class="entry">
+                    <article class="entry">
                         <h3 class="entry-title">IT Support Associate II</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-building"></i>Amazon Fulfillment Center PSP1, Beaumont, CA
-                            <i class="fas fa-calendar"></i>2020 - Present
-                        </p>
-                        <p>Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
-                    </div>
-
-                    <div class="entry">
+                        <div class="entry-meta">
+                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center PSP1, Beaumont, CA</span>
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2020 - Present</span>
+                        </div>
+                        <p class="entry-description">Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
+                    </article>
+                    <article class="entry">
                         <h3 class="entry-title">IT Support Technician</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-building"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA
-                            <i class="fas fa-calendar"></i>2019 - 2020
-                        </p>
-                        <p>Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
-                    </div>
-
-                    <div class="entry">
+                        <div class="entry-meta">
+                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2019 - 2020</span>
+                        </div>
+                        <p class="entry-description">Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
+                    </article>
+                    <article class="entry">
                         <h3 class="entry-title">Fulfillment Associate</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-building"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA
-                            <i class="fas fa-calendar"></i>2015 - 2019
-                        </p>
-                        <p>Managed efficient processing of customer orders. Maintained strict safety and quality standards while ensuring timely delivery.</p>
-                    </div>
-                </div>
-
-                <div class="section">
+                        <div class="entry-meta">
+                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
+                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2015 - 2019</span>
+                        </div>
+                        <p class="entry-description">Managed efficient processing of customer orders. Maintained strict safety and quality standards while ensuring timely delivery.</p>
+                    </article>
+                </section>
+                <section class="section">
                     <h2 class="section-title">Education & Certifications</h2>
-                    
-                    <div class="entry">
+                    <article class="entry">
                         <h3 class="entry-title">Bachelor of Science - Computer Science</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-graduation-cap"></i>California State University San Bernardino
-                            <i class="fas fa-clock"></i>In Progress
-                        </p>
-                    </div>
-
-                    <div class="entry">
+                        <div class="entry-meta">
+                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i>California State University San Bernardino</span>
+                            <span><i class="fas fa-clock" aria-hidden="true"></i>In Progress</span>
+                        </div>
+                    </article>
+                    <article class="entry">
                         <h3 class="entry-title">Associate of Science for Transfer - Computer Systems & Technology</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-graduation-cap"></i>Mt San Jacinto College
-                            <i class="fas fa-check-circle"></i>Completed
-                        </p>
-                    </div>
-
-                    <div class="entry">
+                        <div class="entry-meta">
+                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i>Mt San Jacinto College</span>
+                            <span><i class="fas fa-check-circle" aria-hidden="true"></i>Completed</span>
+                        </div>
+                    </article>
+                    <article class="entry">
                         <h3 class="entry-title">Associate of Science - Computer & Information Systems</h3>
-                        <p class="entry-meta">
-                            <i class="fas fa-graduation-cap"></i>Mt San Jacinto College
-                            <i class="fas fa-check-circle"></i>Completed
-                        </p>
-                    </div>
-                </div>
-
-                <div class="footer">
-                    <i class="fas fa-code" style="color:var(--primary);margin-right:0.5rem"></i>
-                    Website designed and developed with Claude AI
-                </div>
+                        <div class="entry-meta">
+                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i>Mt San Jacinto College</span>
+                            <span><i class="fas fa-check-circle" aria-hidden="true"></i>Completed</span>
+                        </div>
+                    </article>
+                </section>
             </div>
-        </div>
+            <footer class="footer">
+                <p><i class="fas fa-code" aria-hidden="true"></i>Website designed and developed with Claude AI</p>
+            </footer>
+        </main>
     </div>
-
     <script>
-        // Progress bar
-        window.addEventListener('scroll', () => {
-            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            document.querySelector('.progress-bar').style.width = Math.min(100, Math.max(0, scrolled)) + '%';
-        });
-
-        // Hover effects
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.entry').forEach(entry => {
-                entry.addEventListener('mouseenter', () => entry.style.transform = 'translateY(-4px) scale(1.02)');
-                entry.addEventListener('mouseleave', () => entry.style.transform = 'translateY(0) scale(1)');
-            });
-        });
+        function updateProgressBar(){const scrolled=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;const progressBar=document.querySelector('.progress-bar');if(progressBar){const progress=Math.min(100,Math.max(0,scrolled));progressBar.style.width=progress+'%';progressBar.setAttribute('aria-valuenow',Math.round(progress))}}let scrollTimeout;window.addEventListener('scroll',function(){if(scrollTimeout){window.cancelAnimationFrame(scrollTimeout)}scrollTimeout=window.requestAnimationFrame(updateProgressBar)},{passive:true});document.addEventListener('DOMContentLoaded',function(){const entries=document.querySelectorAll('.entry');entries.forEach(entry=>{entry.addEventListener('mouseenter',function(){this.style.transform='translateY(-4px) scale(1.02)'});entry.addEventListener('mouseleave',function(){this.style.transform='translateY(0) scale(1)'})});const techTags=document.querySelectorAll('.tech-tag');techTags.forEach(tag=>{tag.addEventListener('mouseenter',function(){this.style.transform='translateY(-1px)'});tag.addEventListener('mouseleave',function(){this.style.transform='translateY(0)'})})});document.addEventListener('keydown',function(e){if(e.key==='Tab'){document.body.classList.add('keyboard-navigation')}});document.addEventListener('mousedown',function(){document.body.classList.remove('keyboard-navigation')});
     </script>
 </body>
 </html>
