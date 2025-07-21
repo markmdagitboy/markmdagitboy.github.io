@@ -21,6 +21,27 @@ window.addEventListener('scroll', function() {
 
 // Enhanced hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', function() {
+    // Profile image interaction
+    const profileImage = document.querySelector('.profile-image');
+    if (profileImage) {
+        // Handle image load error gracefully
+        profileImage.addEventListener('error', function() {
+            this.style.display = 'none';
+            console.warn('Profile image not found. Please add your headshot to images/profile/headshot.png');
+        });
+        
+        // Add subtle animation on load
+        profileImage.addEventListener('load', function() {
+            this.style.opacity = '0';
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transition = 'all 0.5s ease';
+                this.style.opacity = '1';
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+    }
+    
     // Entry cards hover effects
     const entries = document.querySelectorAll('.entry');
     entries.forEach(entry => {
