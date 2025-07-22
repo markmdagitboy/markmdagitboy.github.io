@@ -25,7 +25,6 @@ Ideas:
 -
 | Solution | Description | Progress |
 |------------------|-------------|----------|
-| Food Buddy App | Similar to Gas buddy, but for groceries | Pending |
 | VSTi/Kontakt Library Search Engine | Find latest plugins/Kontatk-libraries from mulitple companies | Pending | 
 | Video Game Search Engine | Find latest games I want to play from multiple companies | Pending | 
 | Pending              | Pending | Pending |
