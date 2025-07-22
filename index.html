@@ -5,148 +5,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcos Alvarez</title>
     <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
-    <meta name="keywords" content="IT Support, Technical Support, CompTIA, Amazon, Computer Science, Troubleshooting">
-    <meta name="author" content="Marcos Alvarez">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
-    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text: #1f2937;
+            --light: #6b7280;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --border: #e5e7eb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .card { background: var(--card); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background: linear-gradient(135deg, var(--primary), #1e40af); color: white; padding: 2rem; text-align: center; }
+        .profile { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .profile img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.2); }
+        .name { font-size: 2.5rem; font-weight: 300; margin-bottom: 0.5rem; }
+        .contact { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .contact a { color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.3s; }
+        .contact a:hover { color: white; text-decoration: underline; }
+        .nav { display: flex; background: var(--bg); border-bottom: 1px solid var(--border); }
+        .nav button { flex: 1; padding: 1rem; background: none; border: none; cursor: pointer; transition: all 0.3s; color: var(--light); border-bottom: 2px solid transparent; }
+        .nav button:hover { background: rgba(59,130,246,0.05); color: var(--primary); }
+        .nav button.active { color: var(--primary); border-bottom-color: var(--primary); background: white; }
+        .section { padding: 2rem; min-height: 400px; }
+        .section-title { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .skill { background: var(--bg); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); }
+        .skill h3 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .skill ul { list-style: none; }
+        .skill li::before { content: "▸"; color: var(--primary); margin-right: 0.5rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background: var(--primary); color: white; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; transition: all 0.3s; }
+        .tag:hover { background: #1e40af; transform: translateY(-1px); }
+        .entry { background: var(--bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; transition: all 0.3s; }
+        .entry:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .entry h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .entry-meta { display: flex; gap: 1.5rem; color: var(--light); font-size: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .footer { background: var(--bg); padding: 1.5rem; text-align: center; color: var(--light); border-top: 1px solid var(--border); }
+        .loading { display: flex; justify-content: center; align-items: center; padding: 2rem; }
+        .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .profile { flex-direction: column; }
+            .profile img { width: 100px; height: 100px; }
+            .name { font-size: 2rem; }
+            .skills { grid-template-columns: 1fr; }
+            .entry-meta { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    <div class="progress-bar" role="progressbar" aria-label="Reading progress"></div>
     <div class="container">
-        <main class="card" id="main-content">
+        <main class="card">
             <header class="header">
-                <div class="profile-section">
-                    <img src="images/profile/headshot.png" alt="Marcos Alvarez professional headshot" class="profile-image" loading="lazy">
-                    <div class="profile-info">
-                        <h1 class="name">Marcos Alvarez</h1>
-                    </div>
+                <div class="profile">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%23e5e7eb'/%3E%3Ccircle cx='60' cy='50' r='20' fill='%236b7280'/%3E%3Cpath d='M30 100 Q60 80 90 100' fill='%236b7280'/%3E%3C/svg%3E" alt="Marcos Alvarez">
+                    <h1 class="name">Marcos Alvarez</h1>
                 </div>
-                <address class="contact">
-                    <div class="contact-item"><i class="fab fa-linkedin" aria-hidden="true"></i><a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile (opens in new tab)">LinkedIn Profile</a></div>
-                    <div class="contact-item"><i class="fab fa-github" aria-hidden="true"></i><a href="https://github.com/markmdagitboy" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile (opens in new tab)">GitHub Profile</a></div>
-                </address>
+                <div class="contact">
+                    <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/markmdagitboy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
             </header>
-            <div class="content">
+
+            <nav class="nav">
+                <button class="active" hx-get="/skills" hx-target="#content"><i class="fas fa-cogs"></i> Skills</button>
+                <button hx-get="/experience" hx-target="#content"><i class="fas fa-briefcase"></i> Experience</button>
+                <button hx-get="/education" hx-target="#content"><i class="fas fa-graduation-cap"></i> Education</button>
+                <button hx-get="/roadmap" hx-target="#content"><i class="fas fa-road"></i> Roadmap</button>
+            </nav>
+
+            <div id="content">
                 <section class="section">
-                    <h2 class="section-title">Core Competencies</h2>
-                    <div class="skills-grid">
-                        <article class="skill-category">
-                            <h3><i class="fas fa-user-friends" aria-hidden="true"></i> Soft Skills</h3>
-                            <ul class="skill-list">
+                    <h2 class="section-title"><i class="fas fa-cogs"></i> Core Competencies</h2>
+                    <div class="skills">
+                        <div class="skill">
+                            <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
+                            <ul>
                                 <li>Expert technical communication across various formats</li>
                                 <li>Exceptional dedication with consistent track record</li>
                             </ul>
-                        </article>
-                        <article class="skill-category">
-                            <h3><i class="fas fa-cogs" aria-hidden="true"></i> Technical Expertise</h3>
-                            <ul class="skill-list">
+                        </div>
+                        <div class="skill">
+                            <h3><i class="fas fa-cogs"></i> Technical Expertise</h3>
+                            <ul>
                                 <li>7+ years IT customer service and troubleshooting</li>
                                 <li>CompTIA trained: A+, Network+, Project+, Security+</li>
                             </ul>
-                        </article>
+                        </div>
                     </div>
-                    <div class="tech-stack" role="list" aria-label="Technical skills">
-                        <span class="tech-tag" role="listitem">HTML5</span>
-                        <span class="tech-tag" role="listitem">CSS3</span>
-                        <span class="tech-tag" role="listitem">JavaScript</span>
-                        <span class="tech-tag" role="listitem">Java</span>
-                        <span class="tech-tag" role="listitem">SQL</span>
-                        <span class="tech-tag" role="listitem">MySQL</span>
-                        <span class="tech-tag" role="listitem">C++</span>
-                        <span class="tech-tag" role="listitem">C#</span>
-                        <span class="tech-tag" role="listitem">Python</span>
-                        <span class="tech-tag" role="listitem">Assembly x86</span>
+                    <div class="tags">
+                        <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JavaScript</span>
+                        <span class="tag">Java</span> <span class="tag">SQL</span> <span class="tag">MySQL</span>
+                        <span class="tag">C++</span> <span class="tag">C#</span> <span class="tag">Python</span>
+                        <span class="tag">Assembly x86</span> <span class="tag">HTMX</span>
                     </div>
-                </section>
-                <section class="section">
-                    <h2 class="section-title">Professional Experience</h2>
-                    <article class="entry">
-                        <h3 class="entry-title">IT Support Associate II</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center PSP1, Beaumont, CA</span>
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2020 - Present</span>
-                        </div>
-                        <p class="entry-description">Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
-                    </article>
-                    <article class="entry">
-                        <h3 class="entry-title">IT Support Technician</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2019 - 2020</span>
-                        </div>
-                        <p class="entry-description">Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
-                    </article>
-                    <article class="entry">
-                        <h3 class="entry-title">Fulfillment Associate</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-building" aria-hidden="true"></i>Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
-                            <span><i class="fas fa-calendar" aria-hidden="true"></i>2015 - 2019</span>
-                        </div>
-                        <p class="entry-description">Managed efficient processing of customer orders. Maintained strict safety and quality standards while ensuring timely delivery.</p>
-                    </article>
-                </section>
-                <section class="section">
-                    <h2 class="section-title">Education</h2>
-                    <article class="entry">
-                        <h3 class="entry-title">Bachelor of Science - Computer Science</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i> California State University San Bernardino</span>
-                            <span><i class="fas fa-clock" aria-hidden="true"></i> In Progress</span>
-                        </div>
-                    </article>
-                    <article class="entry">
-                        <h3 class="entry-title">Associate of Science for Transfer - Computer Systems & Technology</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i> Mt. San Jacinto College</span>
-                            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Completed</span>
-                        </div>
-                    </article>
-                    <article class="entry">
-                        <h3 class="entry-title">Associate of Science - Computer & Information Systems</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-graduation-cap" aria-hidden="true"></i> Mt. San Jacinto College</span>
-                            <span><i class="fas fa-check-circle" aria-hidden="true"></i> Completed</span>
-                        </div>
-                    </article>
-                </section>
-                <section class="section"></section>
-                    <h2 class="section-title">Roadmap</h2>
-                    <article class="entry">
-                        <h3 class="entry-title">1. Move PDF resume to a web page.</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-bars-progress" aria-hidden="true"></i> Completed</span>
-                        </div>
-                        <h3 class="entry-title">2. Add related resume information to my web page.</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-bars-progress" aria-hidden="true"></i> Work in Progress</span>
-                        </div>
-                        <h3 class="entry-title">3. Build a useful solution that I will actually use often.</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-bars-progress" aria-hidden="true"></i> Pending</span>
-                        </div>
-                        <h3 class="entry-title">4. Gather feedback from people and revise that first project.</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-bars-progress" aria-hidden="true"></i> Pending</span>
-                        </div>
-                        <h3 class="entry-title">5. Build a second solution that I and others will use often.</h3>
-                        <div class="entry-meta">
-                            <span><i class="fas fa-bars-progress" aria-hidden="true"></i> Pending</span>
-                        </div>
-                    </article>
                 </section>
             </div>
+
             <footer class="footer">
-                <p><i class="fas fa-code" aria-hidden="true"></i>Website designed and developed with Claude AI</p>
+                <p><i class="fas fa-code"></i> Built with Claude AI & HTMX</p>
             </footer>
         </main>
     </div>
-    <script src="js/script.js"></script>
+
+    <script>
+        // Simple tab management
+        document.addEventListener('click', e => {
+            if (e.target.closest('.nav button')) {
+                document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+                e.target.closest('button').classList.add('active');
+            }
+        });
+
+        // Mock HTMX responses (since we can't make real requests in this demo)
+        document.body.addEventListener('htmx:beforeRequest', e => {
+            e.preventDefault();
+            const target = document.querySelector(e.detail.target);
+            target.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            setTimeout(() => {
+                const path = e.detail.requestConfig.path;
+                let content = '';
+                
+                if (path === '/experience') {
+                    content = `<section class="section">
+                        <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                        <div class="entry">
+                            <h3>IT Support Associate II</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-building"></i> Amazon PSP1, Beaumont, CA</span>
+                                <span><i class="fas fa-calendar"></i> 2020 - Present</span>
+                            </div>
+                            <p>Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure.</p>
+                        </div>
+                        <div class="entry">
+                            <h3>IT Support Technician</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-building"></i> Amazon ONT6, Moreno Valley, CA</span>
+                                <span><i class="fas fa-calendar"></i> 2019 - 2020</span>
+                            </div>
+                            <p>Diagnosed and resolved complex IT issues while performing routine maintenance.</p>
+                        </div>
+                        <div class="entry">
+                            <h3>Fulfillment Associate</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-building"></i> Amazon ONT6, Moreno Valley, CA</span>
+                                <span><i class="fas fa-calendar"></i> 2015 - 2019</span>
+                            </div>
+                            <p>Managed efficient processing of customer orders with strict quality standards.</p>
+                        </div>
+                    </section>`;
+                } else if (path === '/education') {
+                    content = `<section class="section">
+                        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                        <div class="entry">
+                            <h3>Bachelor of Science - Computer Science</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-graduation-cap"></i> Cal State San Bernardino</span>
+                                <span><i class="fas fa-clock"></i> In Progress</span>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <h3>AS Transfer - Computer Systems & Technology</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-graduation-cap"></i> Mt. San Jacinto College</span>
+                                <span><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <h3>AS - Computer & Information Systems</h3>
+                            <div class="entry-meta">
+                                <span><i class="fas fa-graduation-cap"></i> Mt. San Jacinto College</span>
+                                <span><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                    </section>`;
+                } else if (path === '/roadmap') {
+                    content = `<section class="section">
+                        <h2 class="section-title"><i class="fas fa-road"></i> Roadmap</h2>
+                        <div class="entry">
+                            <h3>1. Move PDF resume to web page</h3>
+                            <div class="entry-meta"><span style="color: #10b981;"><i class="fas fa-check-circle"></i> Completed</span></div>
+                        </div>
+                        <div class="entry">
+                            <h3>2. Add related resume information</h3>
+                            <div class="entry-meta"><span style="color: #f59e0b;"><i class="fas fa-bars-progress"></i> In Progress</span></div>
+                        </div>
+                        <div class="entry">
+                            <h3>3. Build useful solution for regular use</h3>
+                            <div class="entry-meta"><span style="color: #6b7280;"><i class="fas fa-clock"></i> Pending</span></div>
+                        </div>
+                        <div class="entry">
+                            <h3>4. Gather feedback and revise</h3>
+                            <div class="entry-meta"><span style="color: #6b7280;"><i class="fas fa-clock"></i> Pending</span></div>
+                        </div>
+                        <div class="entry">
+                            <h3>5. Build second solution for wider use</h3>
+                            <div class="entry-meta"><span style="color: #6b7280;"><i class="fas fa-clock"></i> Pending</span></div>
+                        </div>
+                    </section>`;
+                } else {
+                    content = target.innerHTML.replace('<div class="loading"><div class="spinner"></div></div>', '');
+                }
+                
+                target.innerHTML = content;
+            }, 500);
+        });
+    </script>
 </body>
 </html>
