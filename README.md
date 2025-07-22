@@ -25,7 +25,5 @@ Ideas:
 -
 | Solution | Description | Progress |
 |------------------|-------------|----------|
-| VSTi/Kontakt Library Search Engine | Find latest plugins/Kontatk-libraries from mulitple companies | Pending | 
-| Video Game Search Engine | Find latest games I want to play from multiple companies | Pending | 
 | Pending              | Pending | Pending |
 
