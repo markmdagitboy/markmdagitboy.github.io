@@ -3,220 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Journal & Notes</title>
+    <title>Journal</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        .header p { opacity: 0.9; }
-
-        .main-content { padding: 30px; }
-
-        .form-section, .entry-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .form-section:hover, .entry-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        textarea { min-height: 120px; resize: vertical; }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 5px;
-        }
-
-        .btn:hover { transform: translateY(-2px); }
+        body { font-family: system-ui; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; padding: 1rem; }
+        .app { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.95); border-radius: 1rem; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 2rem; text-align: center; }
+        .content { padding: 2rem; }
+        .form { background: #f8f9fa; border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 2rem; }
+        .field { margin-bottom: 1rem; }
+        .field label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333; }
+        input, textarea, select { width: 100%; padding: 0.75rem; border: 2px solid #e9ecef; border-radius: 0.5rem; font-family: inherit; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #667eea; }
+        textarea { min-height: 100px; resize: vertical; }
+        .btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 2rem; cursor: pointer; font-weight: 600; margin-right: 0.5rem; }
+        .btn:hover { transform: translateY(-1px); }
         .btn-secondary { background: #6c757d; }
+        .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; }
         .btn-edit { background: #28a745; }
         .btn-delete { background: #dc3545; }
-        .btn-small { padding: 6px 15px; font-size: 14px; }
-
-        .controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .search-input { flex: 1; min-width: 200px; }
-
-        .entry-card {
-            background: white;
-            border-left: 5px solid #667eea;
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .entry-title {
-            font-size: 1.4em;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .entry-meta {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .entry-type {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            white-space: nowrap;
-        }
-
-        .entry-content {
-            color: #555;
-            margin-bottom: 15px;
-            word-wrap: break-word;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 50px 20px;
-            color: #666;
-        }
-
-        .hidden { display: none; }
-
-        @media (max-width: 768px) {
-            .container { margin: 10px; }
-            .header { padding: 20px; }
-            .header h1 { font-size: 2em; }
-            .main-content { padding: 20px; }
-            .controls { flex-direction: column; }
-            .entry-header { flex-direction: column; gap: 10px; }
-        }
+        .controls { display: grid; grid-template-columns: 1fr auto; gap: 1rem; margin-bottom: 1.5rem; }
+        .entry { background: white; border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid #667eea; }
+        .entry-header { display: flex; justify-content: space-between; margin-bottom: 0.75rem; gap: 1rem; }
+        .entry-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .entry-meta { color: #666; font-size: 0.8rem; }
+        .entry-type { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; }
+        .entry-content { margin-bottom: 1rem; line-height: 1.5; }
+        .empty { text-align: center; padding: 3rem; color: #666; }
+        .hidden { display: none !important; }
+        .error { color: #dc3545; font-size: 0.8rem; }
+        @media (max-width: 640px) { .app { margin: 0.5rem; } .controls { grid-template-columns: 1fr; } .entry-header { flex-direction: column; } }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="app">
         <header class="header">
-            <h1>✍️ My Journal & Notes</h1>
-            <p>Capture your thoughts, ideas, and daily reflections</p>
+            <h1>📝 Journal</h1>
+            <p>Your thoughts, secured</p>
         </header>
-
-        <main class="main-content">
-            <section class="form-section">
-                <h2 style="margin-bottom: 20px; color: #333;">📝 New Entry</h2>
-                <form id="entryForm">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" maxlength="100" required>
+        <main class="content">
+            <section class="form">
+                <h2>New Entry</h2>
+                <div id="msg"></div>
+                <form id="form">
+                    <div class="field">
+                        <label>Title</label>
+                        <input id="title" maxlength="100" required>
+                        <div class="error" id="titleErr"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="type">Type</label>
+                    <div class="field">
+                        <label>Type</label>
                         <select id="type" required>
-                            <option value="journal">📔 Journal Entry</option>
-                            <option value="note">📝 Quick Note</option>
+                            <option value="">Select...</option>
+                            <option value="journal">📔 Journal</option>
+                            <option value="note">📝 Note</option>
                             <option value="idea">💡 Idea</option>
-                            <option value="reflection">🤔 Reflection</option>
-                            <option value="goal">🎯 Goal</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="content">Content</label>
-                        <textarea id="content" maxlength="5000" required></textarea>
+                    <div class="field">
+                        <label>Content</label>
+                        <textarea id="content" maxlength="1000" required></textarea>
+                        <div class="error" id="contentErr"></div>
                     </div>
-                    <button type="submit" class="btn" id="submitBtn">Add Entry</button>
-                    <button type="button" class="btn btn-secondary hidden" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn" id="submit">Add</button>
+                    <button type="button" class="btn btn-secondary hidden" id="cancel">Cancel</button>
                 </form>
             </section>
-
             <section>
-                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">📚 Your Entries</h2>
-                
                 <div class="controls">
-                    <input type="text" id="search" class="search-input" placeholder="🔍 Search entries..." maxlength="50">
+                    <input type="search" id="search" placeholder="🔍 Search...">
                     <select id="filter">
-                        <option value="">All Types</option>
-                        <option value="journal">📔 Journal</option>
-                        <option value="note">📝 Notes</option>
-                        <option value="idea">💡 Ideas</option>
-                        <option value="reflection">🤔 Reflections</option>
-                        <option value="goal">🎯 Goals</option>
+                        <option value="">All</option>
+                        <option value="journal">Journal</option>
+                        <option value="note">Note</option>
+                        <option value="idea">Idea</option>
                     </select>
                 </div>
-
                 <div id="entries">
-                    <div class="empty-state">
-                        <h3>No entries yet</h3>
-                        <p>Start by adding your first journal entry or note above!</p>
-                    </div>
+                    <div class="empty"><h3>No entries</h3><p>Create your first entry!</p></div>
                 </div>
             </section>
         </main>
@@ -225,60 +89,81 @@
     <script>
         'use strict';
         
-        const JournalApp = {
-            entries: [],
-            editingId: null,
+        class Journal {
+            constructor() {
+                this.entries = [];
+                this.editing = null;
+                this.init();
+            }
             
             init() {
-                this.bindEvents();
-                this.render();
-            },
-            
-            bindEvents() {
-                const form = document.getElementById('entryForm');
+                const form = document.getElementById('form');
                 const search = document.getElementById('search');
                 const filter = document.getElementById('filter');
-                const cancel = document.getElementById('cancelBtn');
                 
-                form.addEventListener('submit', this.handleSubmit.bind(this));
-                search.addEventListener('input', this.handleSearch.bind(this));
-                filter.addEventListener('change', this.handleFilter.bind(this));
-                cancel.addEventListener('click', this.cancelEdit.bind(this));
-            },
+                form.onsubmit = e => this.save(e);
+                search.oninput = () => this.render();
+                filter.onchange = () => this.render();
+                document.getElementById('cancel').onclick = () => this.reset();
+                
+                this.render();
+            }
             
-            handleSubmit(e) {
+            validate() {
+                const title = document.getElementById('title').value.trim();
+                const content = document.getElementById('content').value.trim();
+                const type = document.getElementById('type').value;
+                
+                let valid = true;
+                
+                if (!title || title.length > 100) {
+                    document.getElementById('titleErr').textContent = 'Invalid title';
+                    valid = false;
+                } else {
+                    document.getElementById('titleErr').textContent = '';
+                }
+                
+                if (!content || content.length > 1000) {
+                    document.getElementById('contentErr').textContent = 'Invalid content';
+                    valid = false;
+                } else {
+                    document.getElementById('contentErr').textContent = '';
+                }
+                
+                return valid && type;
+            }
+            
+            sanitize(str) {
+                return str.replace(/[<>&"']/g, m => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#x27;'})[m]);
+            }
+            
+            save(e) {
                 e.preventDefault();
                 
-                const title = this.sanitize(document.getElementById('title').value.trim());
-                const type = document.getElementById('type').value;
-                const content = this.sanitize(document.getElementById('content').value.trim());
-                
-                if (!title || !content || title.length > 100 || content.length > 5000) return;
+                if (!this.validate()) return;
                 
                 const entry = {
-                    id: this.editingId || Date.now(),
-                    title,
-                    type,
-                    content,
-                    createdAt: this.editingId ? 
-                        this.entries.find(e => e.id === this.editingId).createdAt : 
-                        new Date().toISOString(),
-                    updatedAt: new Date().toISOString()
+                    id: this.editing || Date.now(),
+                    title: this.sanitize(document.getElementById('title').value.trim()),
+                    type: document.getElementById('type').value,
+                    content: this.sanitize(document.getElementById('content').value.trim()),
+                    created: this.editing ? this.entries.find(e => e.id === this.editing)?.created || new Date().toISOString() : new Date().toISOString(),
+                    updated: new Date().toISOString()
                 };
                 
-                if (this.editingId) {
-                    const index = this.entries.findIndex(e => e.id === this.editingId);
-                    this.entries[index] = entry;
-                    this.resetForm();
+                if (this.editing) {
+                    const i = this.entries.findIndex(e => e.id === this.editing);
+                    this.entries[i] = entry;
                 } else {
                     this.entries.unshift(entry);
                 }
                 
-                this.clearForm();
+                this.reset();
                 this.render();
-            },
+                this.msg('Saved!');
+            }
             
-            editEntry(id) {
+            edit(id) {
                 const entry = this.entries.find(e => e.id === id);
                 if (!entry) return;
                 
@@ -286,110 +171,75 @@
                 document.getElementById('type').value = entry.type;
                 document.getElementById('content').value = entry.content;
                 
-                this.editingId = id;
-                document.getElementById('submitBtn').textContent = 'Update Entry';
-                document.getElementById('cancelBtn').classList.remove('hidden');
-            },
+                this.editing = id;
+                document.getElementById('submit').textContent = 'Update';
+                document.getElementById('cancel').classList.remove('hidden');
+            }
             
-            deleteEntry(id) {
-                if (confirm('Delete this entry?')) {
+            delete(id) {
+                if (confirm('Delete entry?')) {
                     this.entries = this.entries.filter(e => e.id !== id);
                     this.render();
+                    this.msg('Deleted!');
                 }
-            },
+            }
             
-            cancelEdit() {
-                this.resetForm();
-                this.clearForm();
-            },
+            reset() {
+                this.editing = null;
+                document.getElementById('form').reset();
+                document.getElementById('submit').textContent = 'Add';
+                document.getElementById('cancel').classList.add('hidden');
+                document.getElementById('titleErr').textContent = '';
+                document.getElementById('contentErr').textContent = '';
+            }
             
-            resetForm() {
-                this.editingId = null;
-                document.getElementById('submitBtn').textContent = 'Add Entry';
-                document.getElementById('cancelBtn').classList.add('hidden');
-            },
-            
-            clearForm() {
-                document.getElementById('entryForm').reset();
-            },
-            
-            handleSearch() {
-                this.render();
-            },
-            
-            handleFilter() {
-                this.render();
-            },
+            msg(text) {
+                const div = document.getElementById('msg');
+                div.innerHTML = `<div style="background:#d4edda;color:#155724;padding:0.5rem;border-radius:0.5rem;margin-bottom:1rem;">${text}</div>`;
+                setTimeout(() => div.innerHTML = '', 2000);
+            }
             
             render() {
-                const searchTerm = document.getElementById('search').value.toLowerCase();
-                const filterType = document.getElementById('filter').value;
+                const search = document.getElementById('search').value.toLowerCase();
+                const filter = document.getElementById('filter').value;
                 
-                let filtered = this.entries.filter(entry => {
-                    const matchesSearch = !searchTerm || 
-                        entry.title.toLowerCase().includes(searchTerm) ||
-                        entry.content.toLowerCase().includes(searchTerm);
-                    const matchesType = !filterType || entry.type === filterType;
-                    return matchesSearch && matchesType;
+                let filtered = this.entries.filter(e => {
+                    const matchSearch = !search || e.title.toLowerCase().includes(search) || e.content.toLowerCase().includes(search);
+                    const matchFilter = !filter || e.type === filter;
+                    return matchSearch && matchFilter;
                 });
                 
                 const container = document.getElementById('entries');
                 
-                if (filtered.length === 0) {
-                    container.innerHTML = `
-                        <div class="empty-state">
-                            <h3>${this.entries.length === 0 ? 'No entries yet' : 'No matching entries'}</h3>
-                            <p>${this.entries.length === 0 ? 'Start by adding your first journal entry!' : 'Try different search terms.'}</p>
-                        </div>`;
+                if (!filtered.length) {
+                    container.innerHTML = '<div class="empty"><h3>No entries</h3><p>Try different search terms</p></div>';
                     return;
                 }
                 
-                container.innerHTML = filtered.map(entry => `
-                    <article class="entry-card">
+                container.innerHTML = filtered.map(e => `
+                    <div class="entry">
                         <div class="entry-header">
                             <div>
-                                <h3 class="entry-title">${entry.title}</h3>
-                                <div class="entry-meta">
-                                    ${new Date(entry.createdAt).toLocaleDateString('en-US', { 
-                                        weekday: 'short', 
-                                        month: 'short', 
-                                        day: 'numeric',
-                                        hour: '2-digit',
-                                        minute: '2-digit'
-                                    })}
-                                    ${entry.updatedAt !== entry.createdAt ? '(edited)' : ''}
-                                </div>
+                                <div class="entry-title">${e.title}</div>
+                                <div class="entry-meta">${new Date(e.created).toLocaleDateString()} ${e.updated !== e.created ? '(edited)' : ''}</div>
                             </div>
-                            <span class="entry-type">${this.getTypeIcon(entry.type)} ${this.capitalize(entry.type)}</span>
+                            <div class="entry-type">${this.icon(e.type)} ${e.type}</div>
                         </div>
-                        <div class="entry-content">${entry.content.replace(/\n/g, '<br>')}</div>
+                        <div class="entry-content">${e.content.replace(/\n/g, '<br>')}</div>
                         <div>
-                            <button class="btn btn-edit btn-small" onclick="app.editEntry(${entry.id})">Edit</button>
-                            <button class="btn btn-delete btn-small" onclick="app.deleteEntry(${entry.id})">Delete</button>
+                            <button class="btn btn-edit btn-small" onclick="app.edit(${e.id})">Edit</button>
+                            <button class="btn btn-delete btn-small" onclick="app.delete(${e.id})">Delete</button>
                         </div>
-                    </article>
+                    </div>
                 `).join('');
-            },
-            
-            getTypeIcon(type) {
-                const icons = { journal: '📔', note: '📝', idea: '💡', reflection: '🤔', goal: '🎯' };
-                return icons[type] || '📝';
-            },
-            
-            capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1);
-            },
-            
-            sanitize(str) {
-                return str.replace(/[<>\"'&]/g, match => {
-                    const escapes = { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' };
-                    return escapes[match];
-                });
             }
-        };
+            
+            icon(type) {
+                return {journal: '📔', note: '📝', idea: '💡'}[type] || '📝';
+            }
+        }
         
-        const app = JournalApp;
-        app.init();
+        const app = new Journal();
     </script>
 </body>
 </html>
