@@ -19,7 +19,7 @@ Roadmap:
 | 2.          | Add related resume information to my web page | Work in Progress |
 | 3.           | Learn how to make a relational database | Pending |
 | 4.           | Use the relational database to track something | Pending |
-| 5.           | Learn how to make use accounts and how to manage them | Pending |
+| 5.           | Learn how to make user accounts and how to manage them | Pending |
 
 Ideas:
 -
