@@ -17,9 +17,9 @@ Roadmap:
 |-------------|------------------|----------|
 | 1.           | Move PDF resume to a web page | Completed |
 | 2.          | Add related resume information to my web page | Work in Progress |
-| 3.           | Build a useful solution that I will actually use often | Pending |
-| 4.           | Ask for feedback from people and revise that first project | Pending |
-| 5.           | Build a second solution that I and others will use often | Pending |
+| 3.           | Learn how to make a relational database | Pending |
+| 4.           | Use the relational database to track something | Pending |
+| 5.           | Learn how to make use accounts and how to manage them | Pending |
 
 Ideas:
 -
