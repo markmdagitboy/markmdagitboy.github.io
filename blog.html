@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal & Notes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { opacity: 0.9; }
+
+        .main-content { padding: 30px; }
+
+        .form-section, .entry-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .form-section:hover, .entry-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea { min-height: 120px; resize: vertical; }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+        .btn-secondary { background: #6c757d; }
+        .btn-edit { background: #28a745; }
+        .btn-delete { background: #dc3545; }
+        .btn-small { padding: 6px 15px; font-size: 14px; }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .search-input { flex: 1; min-width: 200px; }
+
+        .entry-card {
+            background: white;
+            border-left: 5px solid #667eea;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .entry-title {
+            font-size: 1.4em;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .entry-meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .entry-type {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+
+        .entry-content {
+            color: #555;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #666;
+        }
+
+        .hidden { display: none; }
+
+        @media (max-width: 768px) {
+            .container { margin: 10px; }
+            .header { padding: 20px; }
+            .header h1 { font-size: 2em; }
+            .main-content { padding: 20px; }
+            .controls { flex-direction: column; }
+            .entry-header { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>✍️ My Journal & Notes</h1>
+            <p>Capture your thoughts, ideas, and daily reflections</p>
+        </header>
+
+        <main class="main-content">
+            <section class="form-section">
+                <h2 style="margin-bottom: 20px; color: #333;">📝 New Entry</h2>
+                <form id="entryForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="journal">📔 Journal Entry</option>
+                            <option value="note">📝 Quick Note</option>
+                            <option value="idea">💡 Idea</option>
+                            <option value="reflection">🤔 Reflection</option>
+                            <option value="goal">🎯 Goal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea id="content" maxlength="5000" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn">Add Entry</button>
+                    <button type="button" class="btn btn-secondary hidden" id="cancelBtn">Cancel</button>
+                </form>
+            </section>
+
+            <section>
+                <h2 style="text-align: center; margin-bottom: 20px; color: #333;">📚 Your Entries</h2>
+                
+                <div class="controls">
+                    <input type="text" id="search" class="search-input" placeholder="🔍 Search entries..." maxlength="50">
+                    <select id="filter">
+                        <option value="">All Types</option>
+                        <option value="journal">📔 Journal</option>
+                        <option value="note">📝 Notes</option>
+                        <option value="idea">💡 Ideas</option>
+                        <option value="reflection">🤔 Reflections</option>
+                        <option value="goal">🎯 Goals</option>
+                    </select>
+                </div>
+
+                <div id="entries">
+                    <div class="empty-state">
+                        <h3>No entries yet</h3>
+                        <p>Start by adding your first journal entry or note above!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        'use strict';
+        
+        const JournalApp = {
+            entries: [],
+            editingId: null,
+            
+            init() {
+                this.bindEvents();
+                this.render();
+            },
+            
+            bindEvents() {
+                const form = document.getElementById('entryForm');
+                const search = document.getElementById('search');
+                const filter = document.getElementById('filter');
+                const cancel = document.getElementById('cancelBtn');
+                
+                form.addEventListener('submit', this.handleSubmit.bind(this));
+                search.addEventListener('input', this.handleSearch.bind(this));
+                filter.addEventListener('change', this.handleFilter.bind(this));
+                cancel.addEventListener('click', this.cancelEdit.bind(this));
+            },
+            
+            handleSubmit(e) {
+                e.preventDefault();
+                
+                const title = this.sanitize(document.getElementById('title').value.trim());
+                const type = document.getElementById('type').value;
+                const content = this.sanitize(document.getElementById('content').value.trim());
+                
+                if (!title || !content || title.length > 100 || content.length > 5000) return;
+                
+                const entry = {
+                    id: this.editingId || Date.now(),
+                    title,
+                    type,
+                    content,
+                    createdAt: this.editingId ? 
+                        this.entries.find(e => e.id === this.editingId).createdAt : 
+                        new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                
+                if (this.editingId) {
+                    const index = this.entries.findIndex(e => e.id === this.editingId);
+                    this.entries[index] = entry;
+                    this.resetForm();
+                } else {
+                    this.entries.unshift(entry);
+                }
+                
+                this.clearForm();
+                this.render();
+            },
+            
+            editEntry(id) {
+                const entry = this.entries.find(e => e.id === id);
+                if (!entry) return;
+                
+                document.getElementById('title').value = entry.title;
+                document.getElementById('type').value = entry.type;
+                document.getElementById('content').value = entry.content;
+                
+                this.editingId = id;
+                document.getElementById('submitBtn').textContent = 'Update Entry';
+                document.getElementById('cancelBtn').classList.remove('hidden');
+            },
+            
+            deleteEntry(id) {
+                if (confirm('Delete this entry?')) {
+                    this.entries = this.entries.filter(e => e.id !== id);
+                    this.render();
+                }
+            },
+            
+            cancelEdit() {
+                this.resetForm();
+                this.clearForm();
+            },
+            
+            resetForm() {
+                this.editingId = null;
+                document.getElementById('submitBtn').textContent = 'Add Entry';
+                document.getElementById('cancelBtn').classList.add('hidden');
+            },
+            
+            clearForm() {
+                document.getElementById('entryForm').reset();
+            },
+            
+            handleSearch() {
+                this.render();
+            },
+            
+            handleFilter() {
+                this.render();
+            },
+            
+            render() {
+                const searchTerm = document.getElementById('search').value.toLowerCase();
+                const filterType = document.getElementById('filter').value;
+                
+                let filtered = this.entries.filter(entry => {
+                    const matchesSearch = !searchTerm || 
+                        entry.title.toLowerCase().includes(searchTerm) ||
+                        entry.content.toLowerCase().includes(searchTerm);
+                    const matchesType = !filterType || entry.type === filterType;
+                    return matchesSearch && matchesType;
+                });
+                
+                const container = document.getElementById('entries');
+                
+                if (filtered.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <h3>${this.entries.length === 0 ? 'No entries yet' : 'No matching entries'}</h3>
+                            <p>${this.entries.length === 0 ? 'Start by adding your first journal entry!' : 'Try different search terms.'}</p>
+                        </div>`;
+                    return;
+                }
+                
+                container.innerHTML = filtered.map(entry => `
+                    <article class="entry-card">
+                        <div class="entry-header">
+                            <div>
+                                <h3 class="entry-title">${entry.title}</h3>
+                                <div class="entry-meta">
+                                    ${new Date(entry.createdAt).toLocaleDateString('en-US', { 
+                                        weekday: 'short', 
+                                        month: 'short', 
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}
+                                    ${entry.updatedAt !== entry.createdAt ? '(edited)' : ''}
+                                </div>
+                            </div>
+                            <span class="entry-type">${this.getTypeIcon(entry.type)} ${this.capitalize(entry.type)}</span>
+                        </div>
+                        <div class="entry-content">${entry.content.replace(/\n/g, '<br>')}</div>
+                        <div>
+                            <button class="btn btn-edit btn-small" onclick="app.editEntry(${entry.id})">Edit</button>
+                            <button class="btn btn-delete btn-small" onclick="app.deleteEntry(${entry.id})">Delete</button>
+                        </div>
+                    </article>
+                `).join('');
+            },
+            
+            getTypeIcon(type) {
+                const icons = { journal: '📔', note: '📝', idea: '💡', reflection: '🤔', goal: '🎯' };
+                return icons[type] || '📝';
+            },
+            
+            capitalize(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            },
+            
+            sanitize(str) {
+                return str.replace(/[<>\"'&]/g, match => {
+                    const escapes = { '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' };
+                    return escapes[match];
+                });
+            }
+        };
+        
+        const app = JournalApp;
+        app.init();
+    </script>
+</body>
+</html>
