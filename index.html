@@ -28,8 +28,8 @@
         .contact a { color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.3s; }
         .contact a:hover { color: white; text-decoration: underline; }
         .nav { display: flex; background: var(--bg); border-bottom: 1px solid var(--border); }
-        .nav button { flex: 1; padding: 1rem; background: none; border: none; cursor: pointer; transition: all 0.3s; color: var(--light); border-bottom: 2px solid transparent; }
-        .nav button:hover { background: rgba(59,130,246,0.05); color: var(--primary); }
+        .nav button, .nav a { flex: 1; padding: 1rem; background: none; border: none; cursor: pointer; transition: all 0.3s; color: var(--light); border-bottom: 2px solid transparent; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .nav button:hover, .nav a:hover { background: rgba(59,130,246,0.05); color: var(--primary); }
         .nav button.active { color: var(--primary); border-bottom-color: var(--primary); background: white; }
         .section { padding: 2rem; min-height: 400px; }
         .section-title { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -49,6 +49,16 @@
         .loading { display: flex; justify-content: center; align-items: center; padding: 2rem; }
         .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Blog preview styles */
+        .blog-preview { background: var(--bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); transition: all 0.3s; }
+        .blog-preview:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .blog-preview h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary); }
+        .blog-preview .date { color: var(--light); font-size: 0.9rem; margin-bottom: 1rem; }
+        .blog-preview p { margin-bottom: 1rem; }
+        .read-more { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .read-more:hover { text-decoration: underline; }
+        
         @media (max-width: 768px) {
             .container { padding: 10px; }
             .profile { flex-direction: column; }
@@ -56,6 +66,8 @@
             .name { font-size: 2rem; }
             .skills { grid-template-columns: 1fr; }
             .entry-meta { flex-direction: column; gap: 0.5rem; }
+            .nav { flex-wrap: wrap; }
+            .nav button, .nav a { min-width: 120px; }
         }
     </style>
 </head>
@@ -77,6 +89,7 @@
                 <button class="active" data-tab="skills"><i class="fas fa-cogs"></i> Skills</button>
                 <button data-tab="experience"><i class="fas fa-briefcase"></i> Experience</button>
                 <button data-tab="education"><i class="fas fa-graduation-cap"></i> Education</button>
+                <button data-tab="blog"><i class="fas fa-blog"></i> Blog</button>
                 <button data-tab="roadmap"><i class="fas fa-road"></i> Roadmap</button>
             </nav>
 
@@ -194,6 +207,32 @@
                         <span><i class="fas fa-graduation-cap"></i> Mt. San Jacinto College</span>
                         <span><i class="fas fa-check-circle"></i> Completed</span>
                     </div>
+                </div>
+            </section>`,
+            blog: `<section class="section">
+                <h2 class="section-title"><i class="fas fa-blog"></i> Latest Blog Posts</h2>
+                <div class="blog-preview">
+                    <h3>Getting Started with Web Development</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> January 15, 2025</div>
+                    <p>A beginner's guide to web development, covering HTML, CSS, and JavaScript fundamentals. Perfect for those starting their coding journey...</p>
+                    <a href="blog.html#post-1" class="read-more">Read more →</a>
+                </div>
+                <div class="blog-preview">
+                    <h3>My CompTIA Certification Journey</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> December 20, 2024</div>
+                    <p>Sharing my experience and tips for passing CompTIA certifications. From A+ to Security+, here's what I learned along the way...</p>
+                    <a href="blog.html#post-2" class="read-more">Read more →</a>
+                </div>
+                <div class="blog-preview">
+                    <h3>IT Support Best Practices</h3>
+                    <div class="date"><i class="fas fa-calendar"></i> November 30, 2024</div>
+                    <p>Seven years of IT support has taught me valuable lessons about troubleshooting and customer service. Here are my top recommendations...</p>
+                    <a href="blog.html#post-3" class="read-more">Read more →</a>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="blog.html" class="tag" style="display: inline-block; padding: 0.8rem 1.5rem; text-decoration: none;">
+                        <i class="fas fa-external-link-alt"></i> View Full Blog
+                    </a>
                 </div>
             </section>`,
             roadmap: `<section class="section">
