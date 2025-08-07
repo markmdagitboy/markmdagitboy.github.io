@@ -16,9 +16,10 @@ Roadmap:
 |-------|-------------|----------|
 | 1.| Move PDF resume to a web page | Completed |
 | 2.| Add related resume information to my web page | Work in Progress |
-| 3.| Build a useful solution that I will actually use often | Pending |
-| 4.| Ask for feedback from people and revise that first project | Pending |
-| 5.| Build a second solution that I and others will use often | Pending |
+| 3.| Test out 1 new AI tool | Pending |
+| 4.| Make something useful with that AI tool | Pending |
+| 5.| Test out another AI tool | Pending |
+| 6.| MAke another useful thin with that AI tool | Pending |
 
 Ideas:
 -
