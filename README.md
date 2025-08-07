@@ -19,7 +19,7 @@ Roadmap:
 | 3.| Test out 1 new AI tool | Pending |
 | 4.| Make something useful with that AI tool | Pending |
 | 5.| Test out another AI tool | Pending |
-| 6.| MAke another useful thin with that AI tool | Pending |
+| 6.| Make another useful thing with that AI tool | Pending |
 
 Ideas:
 -
