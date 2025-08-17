@@ -27,25 +27,3 @@ Ideas:
 |------------------|-------------|----------|
 | Wiki Page for  | Pending | Pending |
 
-## How to View This Website
-
-This website uses modern web technologies (HTMX) to load content dynamically. For security reasons, these technologies do not work when you open the `index.html` file directly from your computer.
-
-To view the website correctly, you need to serve it from a simple local web server. Python provides a built-in web server that you can start with a single command.
-
-### Running the Local Server
-
-1.  **Open your terminal or command prompt.**
-2.  **Navigate to the root directory of this project.**
-3.  **Run the following command:**
-
-    ```bash
-    python -m http.server 8000
-    ```
-
-4.  **Open your web browser** and go to the following address:
-
-    **http://localhost:8000/**
-
-You should now see the website with all its styling and functionality working correctly.
-
