@@ -66,14 +66,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Tab switching active class handler.
-    // This script complements the HTMX tab switching by managing the 'active' class on the buttons.
-    // HTMX handles loading the content, while this script handles the visual feedback for the user.
+    // Tab switching functionality
     const navButtons = document.querySelectorAll('.nav button');
+    const sections = document.querySelectorAll('.section');
+
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
+            // Update active button
             navButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
+
+            // Show/hide content sections
+            const tab = button.getAttribute('data-tab');
+            sections.forEach(section => {
+                if (section.id === tab) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
         });
     });
 });
