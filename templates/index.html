@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Alvarez</title>
+    <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="progress-bar" aria-hidden="true"></div>
+
+    <div class="container">
+        <main id="main-content" class="card">
+            <header class="header">
+                <div class="profile-section">
+                    <img src="{{ url_for('static', filename='images/profile/headshot.png') }}" alt="Marcos Alvarez" class="profile-image">
+                    <div>
+                        <h1 class="name">Marcos Alvarez</h1>
+                        <p class="title">IT Support Professional</p>
+                    </div>
+                </div>
+                <div class="contact">
+                    <div class="contact-item">
+                        <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://github.com/markmdagitboy" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <nav class="nav" hx-target="#content" hx-swap="innerHTML">
+                <button class="active" hx-get="/skills" hx-trigger="click, load" hx-indicator="#content-loader"><i class="fas fa-cogs"></i> Skills</button>
+                <button hx-get="/experience" hx-indicator="#content-loader"><i class="fas fa-briefcase"></i> Experience</button>
+                <button hx-get="/education" hx-indicator="#content-loader"><i class="fas fa-graduation-cap"></i> Education</button>
+                <button hx-get="/projects" hx-indicator="#content-loader"><i class="fas fa-project-diagram"></i> Projects</button>
+            </nav>
+
+            <div id="content" class="content">
+                 <div id="content-loader" class="htmx-indicator">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p><i class="fas fa-code"></i> Built with Claude AI & HTMX</p>
+            </footer>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+</html>
