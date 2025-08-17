@@ -27,49 +27,25 @@ Ideas:
 |------------------|-------------|----------|
 | Wiki Page for  | Pending | Pending |
 
-## How to Run This Website
+## How to View This Website
 
-This website has been updated to a dynamic Flask application and requires a server to run correctly. Please follow these steps to run the website locally:
+This website uses modern web technologies (HTMX) to load content dynamically. For security reasons, these technologies do not work when you open the `index.html` file directly from your computer.
 
-### 1. Set Up the Environment
+To view the website correctly, you need to serve it from a simple local web server. Python provides a built-in web server that you can start with a single command.
 
-First, make sure you have Python installed. Then, create a virtual environment and install the required dependencies.
+### Running the Local Server
 
-```bash
-# Create and activate a virtual environment (optional but recommended)
-python -m venv .venv
-source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
+1.  **Open your terminal or command prompt.**
+2.  **Navigate to the root directory of this project.**
+3.  **Run the following command:**
 
-# Install the dependencies
-pip install -r requirements.txt
-```
+    ```bash
+    python -m http.server 8000
+    ```
 
-### 2. Initialize the Database
+4.  **Open your web browser** and go to the following address:
 
-The website now uses a database to store projects. You need to initialize the database before running the server for the first time.
+    **http://localhost:8000/**
 
-```bash
-# Set the FLASK_APP environment variable
-export FLASK_APP=app.py  # On Windows, use `set FLASK_APP=app.py`
-
-# Initialize the database
-flask init-db
-```
-
-### 3. Run the Server
-
-Now you can run the Flask server.
-
-```bash
-# The FLASK_APP variable should still be set from the previous step
-flask run --port=8001
-```
-
-The server will start, and you can view the website by opening your browser and navigating to **http://localhost:8001/**.
-
-**Important:** You must access the website through this localhost URL. Opening the HTML files directly in your browser will not work and will result in broken styling and functionality.
-
-### Troubleshooting
-
-If the styling still looks broken, try clearing your browser's cache for this website.
+You should now see the website with all its styling and functionality working correctly.
 
