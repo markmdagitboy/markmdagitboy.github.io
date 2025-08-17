@@ -27,3 +27,49 @@ Ideas:
 |------------------|-------------|----------|
 | Wiki Page for  | Pending | Pending |
 
+## How to Run This Website
+
+This website has been updated to a dynamic Flask application and requires a server to run correctly. Please follow these steps to run the website locally:
+
+### 1. Set Up the Environment
+
+First, make sure you have Python installed. Then, create a virtual environment and install the required dependencies.
+
+```bash
+# Create and activate a virtual environment (optional but recommended)
+python -m venv .venv
+source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
+
+# Install the dependencies
+pip install -r requirements.txt
+```
+
+### 2. Initialize the Database
+
+The website now uses a database to store projects. You need to initialize the database before running the server for the first time.
+
+```bash
+# Set the FLASK_APP environment variable
+export FLASK_APP=app.py  # On Windows, use `set FLASK_APP=app.py`
+
+# Initialize the database
+flask init-db
+```
+
+### 3. Run the Server
+
+Now you can run the Flask server.
+
+```bash
+# The FLASK_APP variable should still be set from the previous step
+flask run --port=8001
+```
+
+The server will start, and you can view the website by opening your browser and navigating to **http://localhost:8001/**.
+
+**Important:** You must access the website through this localhost URL. Opening the HTML files directly in your browser will not work and will result in broken styling and functionality.
+
+### Troubleshooting
+
+If the styling still looks broken, try clearing your browser's cache for this website.
+
