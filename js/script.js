@@ -65,6 +65,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateY(0)';
         });
     });
+
+    // Tab switching active class handler.
+    // This script complements the HTMX tab switching by managing the 'active' class on the buttons.
+    // HTMX handles loading the content, while this script handles the visual feedback for the user.
+    const navButtons = document.querySelectorAll('.nav button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+        });
+    });
 });
 
 // Keyboard navigation accessibility

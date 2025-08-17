@@ -6,108 +6,49 @@
     <title>Marcos Alvarez</title>
     <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --text: #1f2937;
-            --light: #6b7280;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --border: #e5e7eb;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-        .card { background: var(--card); border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); overflow: hidden; }
-        .header { background: linear-gradient(135deg, var(--primary), #1e40af); color: white; padding: 2rem; text-align: center; }
-        .profile { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
-        .profile img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.2); }
-        .name { font-size: 2.5rem; font-weight: 300; margin-bottom: 0.5rem; }
-        .contact { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
-        .contact a { color: rgba(255,255,255,0.9); text-decoration: none; transition: all 0.3s; }
-        .contact a:hover { color: white; text-decoration: underline; }
-        .nav { display: flex; background: var(--bg); border-bottom: 1px solid var(--border); }
-        .nav button, .nav a { flex: 1; padding: 1rem; background: none; border: none; cursor: pointer; transition: all 0.3s; color: var(--light); border-bottom: 2px solid transparent; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-        .nav button:hover, .nav a:hover { background: rgba(59,130,246,0.05); color: var(--primary); }
-        .nav button.active { color: var(--primary); border-bottom-color: var(--primary); background: white; }
-        .section { padding: 2rem; min-height: 400px; }
-        .section-title { font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-        .skill { background: var(--bg); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); }
-        .skill h3 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .skill ul { list-style: none; }
-        .skill li::before { content: "▸"; color: var(--primary); margin-right: 0.5rem; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tag { background: var(--primary); color: white; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; transition: all 0.3s; }
-        .tag:hover { background: #1e40af; transform: translateY(-1px); }
-        .entry { background: var(--bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; transition: all 0.3s; }
-        .entry:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .entry h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .entry-meta { display: flex; gap: 1.5rem; color: var(--light); font-size: 0.9rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .footer { background: var(--bg); padding: 1.5rem; text-align: center; color: var(--light); border-top: 1px solid var(--border); }
-        .loading { display: flex; justify-content: center; align-items: center; padding: 2rem; }
-        .spinner { width: 30px; height: 30px; border: 3px solid var(--border); border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        @media (max-width: 768px) {
-            .container { padding: 10px; }
-            .profile { flex-direction: column; }
-            .profile img { width: 100px; height: 100px; }
-            .name { font-size: 2rem; }
-            .skills { grid-template-columns: 1fr; }
-            .entry-meta { flex-direction: column; gap: 0.5rem; }
-            .nav { flex-wrap: wrap; }
-            .nav button, .nav a { min-width: 120px; }
-        }
-    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div class="progress-bar" aria-hidden="true"></div>
+
     <div class="container">
-        <main class="card">
+        <main id="main-content" class="card">
             <header class="header">
-                <div class="profile">
-                    <img src="images/profile/headshot.png" alt="Marcos Alvarez">
-                    <h1 class="name">Marcos Alvarez</h1>
+                <div class="profile-section">
+                    <img src="images/profile/headshot.png" alt="Marcos Alvarez" class="profile-image">
+                    <div>
+                        <h1 class="name">Marcos Alvarez</h1>
+                        <p class="title">IT Support Professional</p>
+                    </div>
                 </div>
                 <div class="contact">
-                    <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/markmdagitboy" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <div class="contact-item">
+                        <a href="https://www.linkedin.com/in/marcos-alvarez-ab2ba5109/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <a href="https://github.com/markmdagitboy" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+                        </a>
+                    </div>
                 </div>
             </header>
 
-            <nav class="nav">
-                <button class="active" data-tab="skills"><i class="fas fa-cogs"></i> Skills</button>
-                <button data-tab="experience"><i class="fas fa-briefcase"></i> Experience</button>
-                <button data-tab="education"><i class="fas fa-graduation-cap"></i> Education</button>
+            <nav class="nav" hx-target="#content" hx-swap="innerHTML">
+                <button class="active" hx-get="skills.html" hx-trigger="click, load" hx-indicator="#content-loader"><i class="fas fa-cogs"></i> Skills</button>
+                <button hx-get="experience.html" hx-indicator="#content-loader"><i class="fas fa-briefcase"></i> Experience</button>
+                <button hx-get="education.html" hx-indicator="#content-loader"><i class="fas fa-graduation-cap"></i> Education</button>
             </nav>
 
-            <div id="content">
-                <section class="section">
-                    <h2 class="section-title"><i class="fas fa-cogs"></i> Core Competencies</h2>
-                    <div class="skills">
-                        <div class="skill">
-                            <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
-                            <ul>
-                                <li>Expert technical communication across various formats</li>
-                                <li>Exceptional dedication with consistent track record</li>
-                            </ul>
-                        </div>
-                        <div class="skill">
-                            <h3><i class="fas fa-cogs"></i> Technical Expertise</h3>
-                            <ul>
-                                <li>7+ years IT customer service and troubleshooting</li>
-                                <li>CompTIA trained: A+, Network+, Project+, Security+</li>
-                            </ul>
-                        </div>
+            <div id="content" class="content">
+                 <div id="content-loader" class="htmx-indicator">
+                    <div class="loading">
+                        <div class="spinner"></div>
                     </div>
-                    <div class="tags">
-                        <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JavaScript</span>
-                        <span class="tag">Java</span> <span class="tag">SQL</span> <span class="tag">MySQL</span>
-                        <span class="tag">C++</span> <span class="tag">C#</span> <span class="tag">Python</span>
-                        <span class="tag">Assembly x86</span> <span class="tag">HTMX</span>
-                    </div>
-                </section>
+                </div>
             </div>
 
             <footer class="footer">
@@ -115,110 +56,6 @@
             </footer>
         </main>
     </div>
-
-    <script>
-        const content = {
-            skills: `<section class="section">
-                <h2 class="section-title"><i class="fas fa-cogs"></i> Core Competencies</h2>
-                <div class="skills">
-                    <div class="skill">
-                        <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
-                        <ul>
-                            <li>Expert technical communication across various formats</li>
-                            <li>Exceptional dedication with consistent track record</li>
-                        </ul>
-                    </div>
-                    <div class="skill">
-                        <h3><i class="fas fa-cogs"></i> Technical Expertise</h3>
-                        <ul>
-                            <li>7+ years IT customer service and troubleshooting</li>
-                            <li>CompTIA trained: A+, Network+, Project+, Security+</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tags">
-                    <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JavaScript</span>
-                    <span class="tag">Java</span> <span class="tag">SQL</span> <span class="tag">MySQL</span>
-                    <span class="tag">C++</span> <span class="tag">C#</span> <span class="tag">Python</span>
-                    <span class="tag">Assembly x86</span> <span class="tag">HTMX</span>
-                </div>
-            </section>`,
-            experience: `<section class="section">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-                <div class="entry">
-                    <h3>IT Support Associate II</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-building"></i> Amazon Fulfillment Center PSP1, Beaumont, CA</span>
-                        <span><i class="fas fa-calendar"></i> 2020 - Present</span>
-                    </div>
-                    <p>Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
-                </div>
-                <div class="entry">
-                    <h3>IT Support Technician</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-building"></i> Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
-                        <span><i class="fas fa-calendar"></i> 2019 - 2020</span>
-                    </div>
-                    <p>Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
-                </div>
-                <div class="entry">
-                    <h3>Fulfillment Associate</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-building"></i> Amazon Fulfillment Center ONT6, Moreno Valley, CA</span>
-                        <span><i class="fas fa-calendar"></i> 2015 - 2019</span>
-                    </div>
-                    <p>Processed orders in the following departments:</p>
-                    <p>-Picking</p>
-                    <p>-Packing</p>
-                    <p>-Ship Dock</p>
-                    <p>-ICQA</p>
-                </div>
-            </section>`,
-            education: `<section class="section">
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div class="entry">
-                    <h3>Bachelor of Science - Computer Science</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-graduation-cap"></i> California State University San Bernardino</span>
-                        <span><i class="fas fa-clock"></i> In Progress</span>
-                    </div>
-                </div>
-                <div class="entry">
-                    <h3>Associate of Science for Transfer - Computer Systems & Technology</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-graduation-cap"></i> Mt. San Jacinto College</span>
-                        <span><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="entry">
-                    <h3>Associate of Science - Computer & Information Systems</h3>
-                    <div class="entry-meta">
-                        <span><i class="fas fa-graduation-cap"></i> Mt. San Jacinto College</span>
-                        <span><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-            </section>`
-        };
-
-        // Tab switching functionality
-        document.addEventListener('click', e => {
-            const button = e.target.closest('.nav button');
-            if (button) {
-                // Update active tab
-                document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Show loading spinner briefly for smooth transition
-                const contentDiv = document.getElementById('content');
-                contentDiv.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-                
-                // Load content after brief delay
-                setTimeout(() => {
-                    const tab = button.getAttribute('data-tab');
-                    contentDiv.innerHTML = content[tab];
-                }, 300);
-            }
-        });
-    </script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
