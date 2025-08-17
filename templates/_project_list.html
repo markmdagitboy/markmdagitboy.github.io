@@ -1,0 +1,14 @@
+{% for project in projects %}
+<div class="entry">
+    <h3>{{ project.name }}</h3>
+    <div class="entry-meta">
+        <span><i class="fas fa-calendar"></i> {{ project.date }}</span>
+        {% if project.url %}
+        <span><i class="fas fa-link"></i> <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.url }}</a></span>
+        {% endif %}
+    </div>
+    <p>{{ project.description }}</p>
+</div>
+{% else %}
+<p>No projects yet. Add one using the form below!</p>
+{% endfor %}
