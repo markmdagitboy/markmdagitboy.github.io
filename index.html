@@ -6,7 +6,7 @@
     <title>Marcos Alvarez</title>
     <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
 <body>
@@ -17,7 +17,7 @@
         <main id="main-content" class="card">
             <header class="header">
                 <div class="profile-section">
-                    <img src="{{ url_for('static', filename='images/profile/headshot.png') }}" alt="Marcos Alvarez" class="profile-image">
+                    <img src="images/profile/headshot.png" alt="Marcos Alvarez" class="profile-image">
                     <div>
                         <h1 class="name">Marcos Alvarez</h1>
                         <p class="title">IT Support Professional</p>
@@ -38,10 +38,9 @@
             </header>
 
             <nav class="nav" hx-target="#content" hx-swap="innerHTML">
-                <button class="active" hx-get="/skills" hx-trigger="click, load" hx-indicator="#content-loader"><i class="fas fa-cogs"></i> Skills</button>
-                <button hx-get="/experience" hx-indicator="#content-loader"><i class="fas fa-briefcase"></i> Experience</button>
-                <button hx-get="/education" hx-indicator="#content-loader"><i class="fas fa-graduation-cap"></i> Education</button>
-                <button hx-get="/projects" hx-indicator="#content-loader"><i class="fas fa-project-diagram"></i> Projects</button>
+                <button class="active" hx-get="skills.html" hx-trigger="click, load" hx-indicator="#content-loader"><i class="fas fa-cogs"></i> Skills</button>
+                <button hx-get="experience.html" hx-indicator="#content-loader"><i class="fas fa-briefcase"></i> Experience</button>
+                <button hx-get="education.html" hx-indicator="#content-loader"><i class="fas fa-graduation-cap"></i> Education</button>
             </nav>
 
             <div id="content" class="content">
@@ -57,6 +56,6 @@
             </footer>
         </main>
     </div>
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
