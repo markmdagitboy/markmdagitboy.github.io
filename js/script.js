@@ -41,34 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
     }
-    
-    // Entry cards hover effects
-    const entries = document.querySelectorAll('.entry');
-    entries.forEach(entry => {
-        entry.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-4px) scale(1.02)';
-        });
-        
-        entry.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Tech tags hover effects
-    const techTags = document.querySelectorAll('.tech-tag');
-    techTags.forEach(tag => {
-        tag.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-1px)';
-        });
-        
-        tag.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
 
     // Tab switching functionality
     const navButtons = document.querySelectorAll('.nav button');
-    const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll('.content .section');
 
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -80,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const tab = button.getAttribute('data-tab');
             sections.forEach(section => {
                 if (section.id === tab) {
-                    section.style.display = 'block';
+                    section.classList.remove('hidden');
                 } else {
-                    section.style.display = 'none';
+                    section.classList.add('hidden');
                 }
             });
         });
