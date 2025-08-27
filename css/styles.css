@@ -2,9 +2,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --primary: #4a90e2; /* Soft Blue */
-  --secondary: #50e3c2; /* Gentle Teal */
-  --accent: #f5a623; /* Warm Coral */
+  --primary: #001f3f; /* Navy Blue */
+  --secondary: #0074D9; /* Lighter Blue */
+  --accent: #FFD700; /* Gold */
   --text-dark: #333; /* Deep Charcoal */
   --text-light: #555; /* Lighter Gray */
   --text-muted: #888; /* Muted Gray */
