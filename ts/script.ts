@@ -62,6 +62,49 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Blog post loading functionality
+    const blogLinks = document.querySelectorAll<HTMLAnchorElement>('.blog-link');
+    const blogSection = document.getElementById('blog');
+    const blogPostSection = document.getElementById('blog-post');
+
+    blogLinks.forEach(link => {
+        link.addEventListener('click', async (e: MouseEvent) => {
+            e.preventDefault();
+            const url = link.getAttribute('href');
+            if (url && blogSection && blogPostSection) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const content = await response.text();
+
+                    blogPostSection.innerHTML = content;
+                    blogSection.classList.add('hidden');
+                    blogPostSection.classList.remove('hidden');
+
+                } catch (error) {
+                    console.error('Error fetching blog post:', error);
+                    blogPostSection.innerHTML = '<p>Sorry, there was an error loading the blog post. Please try again later.</p><button class="back-to-blog">Back to Blog</button>';
+                    blogSection.classList.add('hidden');
+                    blogPostSection.classList.remove('hidden');
+                }
+            }
+        });
+    });
+
+    if (blogPostSection) {
+        blogPostSection.addEventListener('click', (e: MouseEvent) => {
+            if ((e.target as HTMLElement).classList.contains('back-to-blog')) {
+                if (blogSection && blogPostSection) {
+                    blogPostSection.classList.add('hidden');
+                    blogSection.classList.remove('hidden');
+                    blogPostSection.innerHTML = '';
+                }
+            }
+        });
+    }
 });
 
 // Keyboard navigation accessibility
