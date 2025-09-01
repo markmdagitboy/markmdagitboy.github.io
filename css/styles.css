@@ -135,7 +135,7 @@ body {
   background: rgba(102, 126, 234, .1);
 }
 .nav button.active {
-  color: var(--primary);
+  color: var(--secondary);
   font-weight: 600;
 }
 .nav button.active::after {
