@@ -117,7 +117,7 @@ body {
   border-bottom: 1px solid var(--border);
   padding: var(--space) 0;
 }
-.nav button {
+.nav button, .back-to-blog {
   background: transparent;
   border: none;
   color: var(--text-muted);
@@ -130,7 +130,7 @@ body {
   border-radius: var(--radius);
   margin: 0 var(--space);
 }
-.nav button:hover {
+.nav button:hover, .back-to-blog:hover {
   color: var(--primary);
   background: rgba(102, 126, 234, .1);
 }
