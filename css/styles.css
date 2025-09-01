@@ -131,13 +131,15 @@ body {
   margin: 0 var(--space);
 }
 .nav button:hover, .back-to-blog:hover {
-  color: var(--primary);
-  background: rgba(102, 126, 234, .1);
+  /* Style changed as per user request */
 }
 .nav button.active {
   color: var(--secondary);
   font-weight: 600;
 }
+
+.nav button:hover::after,
+.back-to-blog:hover::after,
 .nav button.active::after {
   content: '';
   position: absolute;
@@ -147,6 +149,7 @@ body {
   width: 50%;
   height: 2px;
   background: var(--primary);
+  transition: width 0.3s ease;
 }
 
 .content{padding:var(--space-xl)}
