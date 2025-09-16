@@ -105,6 +105,66 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // HP Parts Database functionality
+    async function loadAndDisplayHPParts() {
+        const projectsSection = document.getElementById('projects');
+        if (!projectsSection) return;
+
+        const entryDiv = projectsSection.querySelector('.entry');
+        if (!entryDiv) return;
+
+        try {
+            const response = await fetch('data/hp_parts.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+
+            if (!Array.isArray(data) || data.length === 0) {
+                entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>No data available.</p>';
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.classList.add('hp-parts-table');
+
+            // Create table header
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const headers = Object.keys(data[0]);
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement('tbody');
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                headers.forEach(header => {
+                    const cell = document.createElement('td');
+                    cell.textContent = item[header];
+                    row.appendChild(cell);
+                });
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+
+            // Clear existing content and append table
+            entryDiv.innerHTML = '<h3>HP Parts List Database</h3>';
+            entryDiv.appendChild(table);
+
+        } catch (error) {
+            console.error('Error fetching or displaying HP parts data:', error);
+            entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Could not load data.</p>';
+        }
+    }
+
+    loadAndDisplayHPParts();
 });
 
 // Keyboard navigation accessibility
