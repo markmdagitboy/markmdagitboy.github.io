@@ -64,7 +64,7 @@ body {
   will-change:width;transform:translateZ(0);
 }
 
-.container{max-width:min(1000px,100vw - var(--space-xl));margin:0 auto;padding:var(--space-xl)}
+.container{max-width:min(1400px,100vw - var(--space-xl));margin:0 auto;padding:var(--space-xl)}
 
 .card{
   background:var(--bg-white);border-radius:var(--radius);box-shadow:var(--shadow-lg);
@@ -269,12 +269,9 @@ body {
 
 /* HP Parts Table Styles */
 .hp-parts-table {
-  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   font-size: var(--font-sm);
-  overflow-x: auto;
-  display: block;
 }
 
 .hp-parts-table th,
@@ -282,7 +279,7 @@ body {
   padding: 12px 15px;
   border: 1px solid var(--border);
   text-align: left;
-  white-space: nowrap;
+  word-break: break-word;
 }
 
 .hp-parts-table th {
@@ -298,4 +295,11 @@ body {
 .hp-parts-table tbody tr:hover {
   background-color: #f1f1f1;
   color: var(--text-dark);
+}
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    overflow-x: auto;
+    display: block;
+  }
 }

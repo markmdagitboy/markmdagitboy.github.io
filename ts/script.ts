@@ -154,9 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             table.appendChild(tbody);
 
+            // Create a wrapper for the table to handle responsive scrolling
+            const tableWrapper = document.createElement('div');
+            tableWrapper.classList.add('table-wrapper');
+            tableWrapper.appendChild(table);
+
             // Clear existing content and append table
             entryDiv.innerHTML = '<h3>HP Parts List Database</h3>';
-            entryDiv.appendChild(table);
+            entryDiv.appendChild(tableWrapper);
 
         } catch (error) {
             console.error('Error fetching or displaying HP parts data:', error);
