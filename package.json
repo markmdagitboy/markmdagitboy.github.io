@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "ethers": "^6.13.1"
   }
 }
