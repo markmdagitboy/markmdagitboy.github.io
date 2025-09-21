@@ -1,23 +1,3 @@
-import { ethers } from "ethers";
-
-declare global {
-    interface Window {
-        ethereum: any;
-    }
-}
-
-const TOKEN_ADDRESS = '0x779877A7B0D9E8603169DdbD7836e478b4624789'; // Sepolia LINK token
-const TOKEN_ABI = [
-    {
-        "constant": true,
-        "inputs": [{"name": "_owner", "type": "address"}],
-        "name": "balanceOf",
-        "outputs": [{"name": "balance", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }
-];
 
 // Progress Bar Functionality
 function updateProgressBar(): void {
@@ -101,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Could not load data.</p>';
         }
     }
-    // loadAndDisplayHPParts(); // Commented out for diagnostic purposes
+    loadAndDisplayHPParts(); // Commented out for diagnostic purposes
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image') as HTMLImageElement | null;
     if (profileImage) {
@@ -155,56 +135,25 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const url = link.getAttribute('href');
 
-            if (link.classList.contains('token-gated-link')) {
-                // Token gating logic
-                if (!provider) {
-                    alert('Please connect your wallet to view this post.');
-                    return;
-                }
-                const signer = await provider.getSigner();
-                const address = await signer.getAddress();
-                const tokenContract = new ethers.Contract(TOKEN_ADDRESS, TOKEN_ABI, provider);
-
+            // The token gating logic has been temporarily disabled to fix a bug.
+            // All blog links will be treated as regular posts for now.
+            if (url && blogSection && blogPostSection) {
                 try {
-                    const balance = await tokenContract.balanceOf(address);
-                    if (balance > 0) {
-                        // User has the token, load the post
-                        if (url && blogSection && blogPostSection) {
-                            const response = await fetch(url);
-                            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                            const content = await response.text();
-                            blogPostSection.innerHTML = content;
-                            blogSection.classList.add('hidden');
-                            blogPostSection.classList.remove('hidden');
-                        }
-                    } else {
-                        // User does not have the token
-                        alert("You don't have the required token to view this post. (This demo uses Sepolia LINK token)");
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
+                    const content = await response.text();
+
+                    blogPostSection.innerHTML = content;
+                    blogSection.classList.add('hidden');
+                    blogPostSection.classList.remove('hidden');
+
                 } catch (error) {
-                    console.error('Error checking token balance:', error);
-                    alert('Could not verify your token balance. Please try again.');
-                }
-            } else {
-                // Regular blog post logic
-                if (url && blogSection && blogPostSection) {
-                    try {
-                        const response = await fetch(url);
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        const content = await response.text();
-
-                        blogPostSection.innerHTML = content;
-                        blogSection.classList.add('hidden');
-                        blogPostSection.classList.remove('hidden');
-
-                    } catch (error) {
-                        console.error('Error fetching blog post:', error);
-                        blogPostSection.innerHTML = '<p>Sorry, there was an error loading the blog post. Please try again later.</p><button class="back-to-blog">Back to Blog</button>';
-                        blogSection.classList.add('hidden');
-                        blogPostSection.classList.remove('hidden');
-                    }
+                    console.error('Error fetching blog post:', error);
+                    blogPostSection.innerHTML = '<p>Sorry, there was an error loading the blog post. Please try again later.</p><button class="back-to-blog">Back to Blog</button>';
+                    blogSection.classList.add('hidden');
+                    blogPostSection.classList.remove('hidden');
                 }
             }
         });
@@ -222,44 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Web3 functionality
-    const connectWalletBtn = document.getElementById('connectWalletBtn') as HTMLButtonElement | null;
-    let provider: ethers.BrowserProvider | null = null;
-
-    if (connectWalletBtn) {
-        connectWalletBtn.addEventListener('click', async () => {
-            if (window.ethereum) {
-                try {
-                    // Request account access
-                    provider = new ethers.BrowserProvider(window.ethereum);
-                    await provider.send("eth_requestAccounts", []);
-                    const signer = await provider.getSigner();
-                    const address = await signer.getAddress();
-
-                    console.log('Connected to wallet:', address);
-
-                    // Get balance
-                    const balance = await provider.getBalance(address);
-                    const formattedBalance = ethers.formatEther(balance);
-
-                    // Update UI
-                    connectWalletBtn.innerHTML = `<i class="fas fa-wallet"></i> ${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-                    connectWalletBtn.disabled = true;
-
-                    const walletInfoDiv = document.getElementById('walletInfo');
-                    if (walletInfoDiv) {
-                        walletInfoDiv.innerHTML = `<span>Balance: ${parseFloat(formattedBalance).toFixed(4)} ETH</span>`;
-                    }
-
-                } catch (error) {
-                    console.error('Failed to connect to wallet:', error);
-                    alert('Failed to connect to wallet. Please make sure you have MetaMask installed and unlocked.');
-                }
-            } else {
-                alert('Please install MetaMask to use this feature.');
-            }
-        });
-    }
+    // Web3 functionality has been removed.
 });
 
 // Keyboard navigation accessibility
