@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    loadAndDisplayHPParts();
+    setTimeout(() => loadAndDisplayHPParts(), 0);
     // Web3 functionality
     const connectWalletBtn = document.getElementById('connectWalletBtn');
     let provider = null;
