@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    loadAndDisplayHPParts();
+    // loadAndDisplayHPParts(); // Commented out for diagnostic purposes
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image');
     if (profileImage) {

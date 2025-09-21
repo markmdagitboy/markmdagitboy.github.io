@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Could not load data.</p>';
         }
     }
-    loadAndDisplayHPParts();
+    // loadAndDisplayHPParts(); // Commented out for diagnostic purposes
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image') as HTMLImageElement | null;
     if (profileImage) {
