@@ -40,6 +40,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 // Enhanced hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', () => {
+    loadAndDisplayHPParts();
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image');
     if (profileImage) {
@@ -160,9 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const projectsSection = document.getElementById('projects');
             if (!projectsSection)
                 return;
-            const entryDiv = projectsSection.querySelector('.entry');
+            const entryDiv = projectsSection.querySelector('#hp-parts-entry');
             if (!entryDiv)
                 return;
+            // Add a loading message immediately
+            entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Loading data...</p>';
             try {
                 const response = yield fetch('data/hp_parts.json');
                 if (!response.ok) {
@@ -198,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     tbody.appendChild(row);
                 });
                 table.appendChild(tbody);
-                // Clear existing content and append table
+                // Clear the loading message and append the table
                 entryDiv.innerHTML = '<h3>HP Parts List Database</h3>';
                 entryDiv.appendChild(table);
             }
@@ -208,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    setTimeout(() => loadAndDisplayHPParts(), 0);
     // Web3 functionality
     const connectWalletBtn = document.getElementById('connectWalletBtn');
     let provider = null;
