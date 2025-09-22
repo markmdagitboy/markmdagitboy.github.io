@@ -117,6 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sections.forEach(section => {
                 if (section.id === tab) {
                     section.classList.remove('hidden');
+                    if (section.id === 'projects') {
+                        initializeMap();
+                    }
                 }
                 else {
                     section.classList.add('hidden');
@@ -166,6 +169,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Web3 functionality has been removed.
+    // ArcGIS Map initialization
+    function initializeMap() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const viewDiv = document.getElementById('viewDiv');
+            if (!viewDiv || viewDiv.dataset.initialized) {
+                return;
+            }
+            // @ts-ignore
+            require([
+                "esri/config",
+                "esri/Map",
+                "esri/views/MapView"
+            ], function (esriConfig, Map, MapView) {
+                const map = new Map({
+                    basemap: "arcgis-topographic" // Basemap layer service
+                });
+                const view = new MapView({
+                    map: map,
+                    center: [-118.805, 34.027], // Longitude, latitude
+                    zoom: 13, // Zoom level
+                    container: "viewDiv" // Div element
+                });
+                viewDiv.dataset.initialized = 'true';
+            });
+        });
+    }
 });
 // Keyboard navigation accessibility
 document.addEventListener('keydown', (e) => {
