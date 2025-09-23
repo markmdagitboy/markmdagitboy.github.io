@@ -169,31 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Web3 functionality has been removed.
-    // ArcGIS Map initialization
+    // Leaflet Map initialization
     function initializeMap() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const viewDiv = document.getElementById('viewDiv');
-            if (!viewDiv || viewDiv.dataset.initialized) {
-                return;
-            }
-            // @ts-ignore
-            require([
-                "esri/config",
-                "esri/Map",
-                "esri/views/MapView"
-            ], function (esriConfig, Map, MapView) {
-                const map = new Map({
-                    basemap: "arcgis-topographic" // Basemap layer service
-                });
-                const view = new MapView({
-                    map: map,
-                    center: [-118.805, 34.027], // Longitude, latitude
-                    zoom: 13, // Zoom level
-                    container: "viewDiv" // Div element
-                });
-                viewDiv.dataset.initialized = 'true';
-            });
-        });
+        const viewDiv = document.getElementById('viewDiv');
+        if (!viewDiv || viewDiv.dataset.initialized === 'true') {
+            return;
+        }
+        // @ts-ignore
+        const L = window.L;
+        const map = L.map('viewDiv').setView([34.027, -118.805], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        viewDiv.dataset.initialized = 'true';
     }
 });
 // Keyboard navigation accessibility
