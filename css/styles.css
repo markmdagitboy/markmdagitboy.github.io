@@ -310,3 +310,42 @@ body {
   background-color: #f1f1f1;
   color: var(--text-dark);
 }
+
+/* Card-based layout for HP parts and supply chain entries */
+.hp-parts-list, .supply-chain-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.hp-part-card, .supply-chain-card {
+  background: linear-gradient(180deg, var(--bg-white), var(--bg-light));
+  padding: var(--space-lg);
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--border);
+}
+
+.hp-part-card h4, .supply-chain-card h4 {
+  margin-bottom: calc(var(--space) / 2);
+  font-size: var(--font-lg);
+  color: var(--text-dark);
+}
+
+.hp-part-desc, .supply-chain-desc {
+  color: var(--text-light);
+  font-size: var(--font-sm);
+  line-height: 1.4;
+}
+
+.hp-part-extras {
+  margin-top: calc(var(--space) / 2);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 600px) {
+  .hp-parts-list, .supply-chain-list {
+    grid-template-columns: 1fr;
+  }
+}

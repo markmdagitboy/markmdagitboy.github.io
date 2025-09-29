@@ -49,34 +49,64 @@ document.addEventListener('DOMContentLoaded', () => {
                     entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>No data available.</p>';
                     return;
                 }
-                const table = document.createElement('table');
-                table.classList.add('hp-parts-table');
-                // Create table header
-                const thead = document.createElement('thead');
-                const headerRow = document.createElement('tr');
-                const headers = Object.keys(data[0]);
-                headers.forEach(headerText => {
-                    const th = document.createElement('th');
-                    th.textContent = headerText;
-                    headerRow.appendChild(th);
-                });
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-                // Create table body
-                const tbody = document.createElement('tbody');
-                data.forEach(item => {
-                    const row = document.createElement('tr');
-                    headers.forEach(header => {
-                        const cell = document.createElement('td');
-                        cell.textContent = item[header];
-                        row.appendChild(cell);
-                    });
-                    tbody.appendChild(row);
-                });
-                table.appendChild(tbody);
-                // Clear the loading message and append the table
+                // Render each HP part as a descriptive entry (heading + paragraphs)
                 entryDiv.innerHTML = '<h3>HP Parts List Database</h3>';
-                entryDiv.appendChild(table);
+                const listContainer = document.createElement('div');
+                listContainer.className = 'hp-parts-list';
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'hp-part-card entry';
+                    const title = document.createElement('h4');
+                    title.textContent = item['Model'] || 'Unnamed Model';
+                    card.appendChild(title);
+                    // Build a compact descriptive paragraph from common fields
+                    const descParts = [];
+                    if (item['Processor Family'] || item['Processor']) {
+                        const proc = [item['Processor Family'], item['Processor']].filter(Boolean).join(' — ');
+                        descParts.push(`<strong>Processor:</strong> ${proc}`);
+                    }
+                    if (item['Memory']) {
+                        descParts.push(`<strong>Memory:</strong> ${item['Memory']} (${item['Memory Type'] || 'type N/A'})`);
+                    }
+                    if (item['Internal Drive']) {
+                        descParts.push(`<strong>Storage:</strong> ${item['Internal Drive']}`);
+                    }
+                    if (item['Display']) {
+                        descParts.push(`<strong>Display:</strong> ${item['Display']}`);
+                    }
+                    if (item['Graphics']) {
+                        descParts.push(`<strong>Graphics:</strong> ${item['Graphics']}`);
+                    }
+                    if (item['External I/O Ports']) {
+                        descParts.push(`<strong>Ports:</strong> ${item['External I/O Ports']}`);
+                    }
+                    if (item['Weight']) {
+                        descParts.push(`<strong>Weight:</strong> ${item['Weight']}`);
+                    }
+                    if (item['Warranty']) {
+                        descParts.push(`<strong>Warranty:</strong> ${item['Warranty']}`);
+                    }
+                    const descPara = document.createElement('p');
+                    descPara.className = 'hp-part-desc';
+                    descPara.innerHTML = descParts.join(' · ');
+                    card.appendChild(descPara);
+                    // Optional part numbers
+                    const extras = [];
+                    if (item['Screen Replacement Part # (Common)']) {
+                        extras.push(`<strong>Screen PN:</strong> ${item['Screen Replacement Part # (Common)']}`);
+                    }
+                    if (item['Battery Replacement Part # (Common)']) {
+                        extras.push(`<strong>Battery PN:</strong> ${item['Battery Replacement Part # (Common)']}`);
+                    }
+                    if (extras.length) {
+                        const extrasPara = document.createElement('p');
+                        extrasPara.className = 'hp-part-extras';
+                        extrasPara.innerHTML = extras.join(' · ');
+                        card.appendChild(extrasPara);
+                    }
+                    listContainer.appendChild(card);
+                });
+                entryDiv.appendChild(listContainer);
             }
             catch (error) {
                 console.error('Error fetching or displaying HP parts data:', error);
@@ -106,34 +136,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3><p>No data available.</p>';
                     return;
                 }
-                const table = document.createElement('table');
-                table.classList.add('supply-chain-table');
-                // Create table header
-                const thead = document.createElement('thead');
-                const headerRow = document.createElement('tr');
-                const headers = Object.keys(data[0]);
-                headers.forEach(headerText => {
-                    const th = document.createElement('th');
-                    th.textContent = headerText;
-                    headerRow.appendChild(th);
-                });
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-                // Create table body
-                const tbody = document.createElement('tbody');
-                data.forEach(item => {
-                    const row = document.createElement('tr');
-                    headers.forEach(header => {
-                        const cell = document.createElement('td');
-                        cell.textContent = item[header];
-                        row.appendChild(cell);
-                    });
-                    tbody.appendChild(row);
-                });
-                table.appendChild(tbody);
-                // Clear the loading message and append the table
+                // Render supply chain entries as descriptive cards
                 entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3>';
-                entryDiv.appendChild(table);
+                const listContainer = document.createElement('div');
+                listContainer.className = 'supply-chain-list';
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'supply-chain-card entry';
+                    const title = document.createElement('h4');
+                    const series = item['Model Series'] || item['Model'] || 'Model Series';
+                    const generation = item['Generation'] ? ` ${item['Generation']}` : '';
+                    title.textContent = `${series}${generation}`;
+                    card.appendChild(title);
+                    const parts = [];
+                    if (item['Typical Final Assembly Location(s)']) {
+                        parts.push(`<strong>Assembly:</strong> ${item['Typical Final Assembly Location(s)']}`);
+                    }
+                    if (item['Primary Assembly Partners (ODMs)']) {
+                        parts.push(`<strong>Partners:</strong> ${item['Primary Assembly Partners (ODMs)']}`);
+                    }
+                    if (item['Notes & Context']) {
+                        parts.push(`<strong>Notes:</strong> ${item['Notes & Context']}`);
+                    }
+                    const descPara = document.createElement('p');
+                    descPara.className = 'supply-chain-desc';
+                    descPara.innerHTML = parts.join(' · ');
+                    card.appendChild(descPara);
+                    listContainer.appendChild(card);
+                });
+                entryDiv.appendChild(listContainer);
             }
             catch (error) {
                 console.error('Error fetching or displaying supply chain data:', error);
@@ -145,9 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image');
     if (profileImage) {
-        // Handle image load error gracefully
+        // Handle image load error gracefully: hide the broken img and show SVG fallback
         profileImage.addEventListener('error', function () {
             this.style.display = 'none';
+            const fallback = document.getElementById('profile-fallback');
+            if (fallback) {
+                fallback.style.display = 'block';
+            }
             console.warn('Profile image not found. Please add your headshot to images/profile/headshot.png');
         });
         // Add subtle animation on load
