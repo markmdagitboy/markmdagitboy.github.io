@@ -102,6 +102,44 @@ document.addEventListener('DOMContentLoaded', () => {
                         const extrasPara = document.createElement('p');
                         extrasPara.className = 'hp-part-extras';
                         extrasPara.innerHTML = extras.join(' · ');
+                        // add copy buttons for part numbers
+                        const pnContainer = document.createElement('span');
+                        pnContainer.className = 'pn-container';
+                        const parts = extrasPara.innerText.split(' · ');
+                        parts.forEach((partText, idx) => {
+                            const span = document.createElement('span');
+                            span.className = 'pn-item';
+                            span.textContent = partText;
+                            const btn = document.createElement('button');
+                            btn.type = 'button';
+                            btn.className = 'copy-btn';
+                            btn.setAttribute('aria-label', `Copy part number: ${partText}`);
+                            btn.textContent = 'Copy';
+                            btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+                                try {
+                                    // try to copy only the PN after the colon
+                                    const pn = partText.split(':').slice(1).join(':').trim();
+                                    yield navigator.clipboard.writeText(pn);
+                                    announceLive(`Copied ${pn}`);
+                                }
+                                catch (err) {
+                                    console.error('Copy failed', err);
+                                    announceLive('Copy failed');
+                                }
+                            }));
+                            const wrapper = document.createElement('span');
+                            wrapper.className = 'pn-wrapper';
+                            wrapper.appendChild(span);
+                            wrapper.appendChild(btn);
+                            pnContainer.appendChild(wrapper);
+                            if (idx < parts.length - 1) {
+                                const sep = document.createElement('span');
+                                sep.textContent = ' · ';
+                                pnContainer.appendChild(sep);
+                            }
+                        });
+                        extrasPara.innerHTML = '';
+                        extrasPara.appendChild(pnContainer);
                         card.appendChild(extrasPara);
                     }
                     listContainer.appendChild(card);
@@ -246,6 +284,16 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTop.classList.remove('visible');
         }
     }, { passive: true });
+    // ARIA live region for copy notifications
+    const live = document.createElement('div');
+    live.setAttribute('aria-live', 'polite');
+    live.setAttribute('aria-atomic', 'true');
+    live.className = 'sr-only';
+    document.body.appendChild(live);
+    function announceLive(message) {
+        live.textContent = '';
+        setTimeout(() => { live.textContent = message; }, 100);
+    }
     // Blog post loading functionality
     const blogLinks = document.querySelectorAll('.blog-link');
     const blogSection = document.getElementById('blog');

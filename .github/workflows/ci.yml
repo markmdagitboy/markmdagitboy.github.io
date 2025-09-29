@@ -42,3 +42,13 @@ jobs:
 
       - name: List built files
         run: ls -la dist || true
+
+      - name: Install http-server
+        run: npm install -g http-server
+
+      - name: Start preview server (background)
+        run: nohup http-server -p 8080 dist > server.log 2>&1 &
+
+      - name: Run Lighthouse CI
+        run: |
+          npx @lhci/cli autorun --upload.target=temporary-public-storage

@@ -14,6 +14,11 @@
     "preview": "npx http-server -c-1 -p 8080",
     "convert-images": "node scripts/convert-to-webp.js"
   },
+  "lhci": {
+    "collect": {
+      "numberOfRuns": 1
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,6 +26,7 @@
     "typescript": "^5.9.2",
     "sharp": "^0.32.4",
     "html-validate": "^7.13.0"
+    ,"@lhci/cli": "^0.8.0"
   },
   "dependencies": {}
 }
