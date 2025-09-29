@@ -237,6 +237,11 @@ body {
   margin-bottom: 0;
 }
 
+/* No-JS warning */
+.no-js-warning{
+  display:block;background:#fff3cd;color:#856404;border:1px solid #ffeeba;padding:var(--space);text-align:center;font-size:var(--font-sm);
+}
+
 .footer {
   text-align: center;
   padding: var(--space-lg);
@@ -349,3 +354,18 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Focus and accessibility helpers */
+.hp-part-card:focus, .supply-chain-card:focus {
+  outline: 3px solid rgba(0,123,255,0.25);
+  outline-offset: 3px;
+}
+
+/* Back to top button */
+.back-to-top{
+  position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:999px;background:var(--primary);color:white;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow);transform:translateY(10px);opacity:0;transition:all .2s ease;z-index:1200;
+}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+
+/* Ensure keyboard-visible focus ring for interactive elements */
+:focus{outline:2px solid var(--secondary);outline-offset:2px}

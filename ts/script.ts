@@ -211,12 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tab switching functionality
     const navButtons = document.querySelectorAll<HTMLButtonElement>('.nav button');
     const sections = document.querySelectorAll<HTMLElement>('.content .section');
-
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Update active button
-            navButtons.forEach(btn => btn.classList.remove('active'));
+            // Update active button and aria state
+            navButtons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-pressed', 'false');
+            });
             button.classList.add('active');
+            button.setAttribute('aria-pressed', 'true');
 
             // Show/hide content sections
             const tab: string | null = button.getAttribute('data-tab');
@@ -229,6 +232,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Make generated cards focusable for keyboard users
+    function makeCardsFocusable() {
+        const cards = document.querySelectorAll<HTMLElement>('.hp-part-card, .supply-chain-card');
+        cards.forEach(card => {
+            card.tabIndex = 0;
+            card.setAttribute('role', 'article');
+        });
+    }
+    // Call once after initial load and also after data loads finish
+    setTimeout(makeCardsFocusable, 250);
+
+    // Back-to-top button: create and show on scroll
+    const backToTop = document.createElement('button');
+    backToTop.className = 'back-to-top';
+    backToTop.type = 'button';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    backToTop.innerHTML = '↑';
+    document.body.appendChild(backToTop);
+
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    }, { passive: true });
 
     // Blog post loading functionality
     const blogLinks = document.querySelectorAll<HTMLAnchorElement>('.blog-link');
