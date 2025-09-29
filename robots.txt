@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://markmdagitboy.github.io/sitemap.xml
