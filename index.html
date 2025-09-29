@@ -26,7 +26,18 @@
         <main id="main-content" class="card">
             <header class="header">
                 <div class="profile-section">
-                    <img src="images/profile/headshot.png" alt="Marcos Alvarez" class="profile-image" loading="lazy" decoding="async" srcset="/images/profile/headshot.png 1x, /images/profile/headshot@2x.png 2x">
+                    <picture class="profile-picture">
+                        <source srcset="/images/profile/headshot.webp" type="image/webp">
+                        <img src="/images/profile/headshot.png" alt="Marcos Alvarez" class="profile-image" loading="lazy" decoding="async" srcset="/images/profile/headshot.png 1x, /images/profile/headshot@2x.png 2x">
+                        <!-- Inline fallback SVG shown only if the image cannot load -->
+                        <svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Profile placeholder" style="display:none;">
+                            <rect width="100%" height="100%" fill="#d8e3f0" rx="60" />
+                            <g transform="translate(20,24)" fill="#557">
+                                <circle cx="40" cy="16" r="16" />
+                                <path d="M0 72c0-22 80-22 80 0v4H0v-4z" />
+                            </g>
+                        </svg>
+                    </picture>
                     <div>
                         <h1 class="name">Marcos Alvarez</h1>
                         <p class="title">IT Support Professional</p>
