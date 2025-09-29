@@ -28,6 +28,63 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 // Enhanced hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', () => {
+    // HP Parts Database functionality
+    function loadAndDisplayHPParts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const projectsSection = document.getElementById('projects');
+            if (!projectsSection)
+                return;
+            const entryDiv = projectsSection.querySelector('#hp-parts-entry');
+            if (!entryDiv)
+                return;
+            // Add a loading message immediately
+            entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Loading data...</p>';
+            try {
+                const response = yield fetch('data/hp_parts.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = yield response.json();
+                if (!Array.isArray(data) || data.length === 0) {
+                    entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>No data available.</p>';
+                    return;
+                }
+                const table = document.createElement('table');
+                table.classList.add('hp-parts-table');
+                // Create table header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                const headers = Object.keys(data[0]);
+                headers.forEach(headerText => {
+                    const th = document.createElement('th');
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+                // Create table body
+                const tbody = document.createElement('tbody');
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+                    headers.forEach(header => {
+                        const cell = document.createElement('td');
+                        cell.textContent = item[header];
+                        row.appendChild(cell);
+                    });
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+                // Clear the loading message and append the table
+                entryDiv.innerHTML = '<h3>HP Parts List Database</h3>';
+                entryDiv.appendChild(table);
+            }
+            catch (error) {
+                console.error('Error fetching or displaying HP parts data:', error);
+                entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Could not load data.</p>';
+            }
+        });
+    }
+    loadAndDisplayHPParts(); // Commented out for diagnostic purposes
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image');
     if (profileImage) {
@@ -52,18 +109,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('.content .section');
     navButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log(`Button clicked: ${button.getAttribute('data-tab')}`);
             // Update active button
             navButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             // Show/hide content sections
             const tab = button.getAttribute('data-tab');
-            console.log(`Switching to tab: ${tab}`);
             sections.forEach(section => {
-                console.log(`Checking section: ${section.id}`);
                 if (section.id === tab) {
-                    console.log(`Showing section: ${section.id}`);
                     section.classList.remove('hidden');
+                    if (section.id === 'projects') {
+                        initializeMap();
+                    }
                 }
                 else {
                     section.classList.add('hidden');
@@ -113,138 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Web3 functionality has been removed.
-    // Ticketing System Functionality
-    const loginView = document.getElementById('login-view');
-    const ticketingView = document.getElementById('ticketing-view');
-    const loginForm = document.getElementById('login-form');
-    const logoutButton = document.getElementById('logout-button');
-    const ticketsTableBody = document.querySelector('#tickets-table tbody');
-    const addTicketForm = document.getElementById('add-ticket-form');
-    let tickets = [];
-    function fetchTickets() {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield fetch('/api/tickets');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                tickets = yield response.json();
-                renderTickets();
-            }
-            catch (error) {
-                console.error('Error fetching tickets:', error);
-            }
-        });
-    }
-    function renderTickets() {
-        if (!ticketsTableBody)
+    // Leaflet Map initialization
+    function initializeMap() {
+        const viewDiv = document.getElementById('viewDiv');
+        if (!viewDiv || viewDiv.dataset.initialized === 'true') {
             return;
-        ticketsTableBody.innerHTML = '';
-        tickets.forEach(ticket => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${ticket.id}</td>
-                <td>${ticket.title}</td>
-                <td>${ticket.status}</td>
-                <td><button class="delete-ticket" data-id="${ticket.id}">Delete</button></td>
-            `;
-            ticketsTableBody.appendChild(row);
-        });
-    }
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => __awaiter(void 0, void 0, void 0, function* () {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            try {
-                const response = yield fetch('/login', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ username, password })
-                });
-                const data = yield response.json();
-                if (data.success) {
-                    if (loginView && ticketingView) {
-                        loginView.classList.add('hidden');
-                        ticketingView.classList.remove('hidden');
-                        fetchTickets();
-                    }
-                }
-                else {
-                    alert(data.message || 'Invalid credentials');
-                }
-            }
-            catch (error) {
-                console.error('Login error:', error);
-                alert('An error occurred during login.');
-            }
-        }));
-    }
-    if (logoutButton) {
-        logoutButton.addEventListener('click', () => {
-            if (loginView && ticketingView) {
-                ticketingView.classList.add('hidden');
-                loginView.classList.remove('hidden');
-            }
-        });
-    }
-    if (addTicketForm) {
-        addTicketForm.addEventListener('submit', (e) => __awaiter(void 0, void 0, void 0, function* () {
-            e.preventDefault();
-            const titleInput = document.getElementById('ticket-title');
-            const newTicket = {
-                title: titleInput.value,
-                status: 'Open'
-            };
-            try {
-                const response = yield fetch('/api/tickets', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(newTicket)
-                });
-                if (response.ok) {
-                    titleInput.value = '';
-                    yield fetchTickets();
-                }
-                else {
-                    alert('Failed to add ticket');
-                }
-            }
-            catch (error) {
-                console.error('Error adding ticket:', error);
-                alert('An error occurred while adding the ticket.');
-            }
-        }));
-    }
-    if (ticketsTableBody) {
-        ticketsTableBody.addEventListener('click', (e) => __awaiter(void 0, void 0, void 0, function* () {
-            const target = e.target;
-            if (target.classList.contains('delete-ticket')) {
-                const idAttr = target.getAttribute('data-id');
-                if (idAttr) {
-                    const id = parseInt(idAttr, 10);
-                    try {
-                        const response = yield fetch(`/api/tickets/${id}`, {
-                            method: 'DELETE'
-                        });
-                        if (response.ok) {
-                            yield fetchTickets();
-                        }
-                        else {
-                            alert('Failed to delete ticket');
-                        }
-                    }
-                    catch (error) {
-                        console.error('Error deleting ticket:', error);
-                        alert('An error occurred while deleting the ticket.');
-                    }
-                }
-            }
-        }));
+        }
+        // @ts-ignore
+        const L = window.L;
+        const map = L.map('viewDiv').setView([34.027, -118.805], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        viewDiv.dataset.initialized = 'true';
     }
 });
 // Keyboard navigation accessibility
