@@ -117,9 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sections.forEach(section => {
                 if (section.id === tab) {
                     section.classList.remove('hidden');
-                    if (section.id === 'projects') {
-                        initializeMap();
-                    }
                 }
                 else {
                     section.classList.add('hidden');
@@ -169,20 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     // Web3 functionality has been removed.
-    // Leaflet Map initialization
-    function initializeMap() {
-        const viewDiv = document.getElementById('viewDiv');
-        if (!viewDiv || viewDiv.dataset.initialized === 'true') {
-            return;
-        }
-        // @ts-ignore
-        const L = window.L;
-        const map = L.map('viewDiv').setView([34.027, -118.805], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        viewDiv.dataset.initialized = 'true';
-    }
 });
 // Keyboard navigation accessibility
 document.addEventListener('keydown', (e) => {
