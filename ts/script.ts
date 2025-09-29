@@ -57,89 +57,84 @@ document.addEventListener('DOMContentLoaded', () => {
                 title.textContent = item['Model'] || 'Unnamed Model';
                 card.appendChild(title);
 
-                // Build a compact descriptive paragraph from common fields
-                const descParts: string[] = [];
+                // Render each spec on its own line for readability
+                const specs: Array<[string, string]> = [];
                 if (item['Processor Family'] || item['Processor']) {
                     const proc = [item['Processor Family'], item['Processor']].filter(Boolean).join(' — ');
-                    descParts.push(`<strong>Processor:</strong> ${proc}`);
+                    specs.push(['Processor', proc]);
                 }
-                if (item['Memory']) {
-                    descParts.push(`<strong>Memory:</strong> ${item['Memory']} (${item['Memory Type'] || 'type N/A'})`);
-                }
-                if (item['Internal Drive']) {
-                    descParts.push(`<strong>Storage:</strong> ${item['Internal Drive']}`);
-                }
-                if (item['Display']) {
-                    descParts.push(`<strong>Display:</strong> ${item['Display']}`);
-                }
-                if (item['Graphics']) {
-                    descParts.push(`<strong>Graphics:</strong> ${item['Graphics']}`);
-                }
-                if (item['External I/O Ports']) {
-                    descParts.push(`<strong>Ports:</strong> ${item['External I/O Ports']}`);
-                }
-                if (item['Weight']) {
-                    descParts.push(`<strong>Weight:</strong> ${item['Weight']}`);
-                }
-                if (item['Warranty']) {
-                    descParts.push(`<strong>Warranty:</strong> ${item['Warranty']}`);
-                }
+                if (item['Memory']) specs.push(['Memory', `${item['Memory']} (${item['Memory Type'] || 'type N/A'})`]);
+                if (item['Internal Drive']) specs.push(['Storage', item['Internal Drive']]);
+                if (item['Display']) specs.push(['Display', item['Display']]);
+                if (item['Graphics']) specs.push(['Graphics', item['Graphics']]);
+                if (item['External I/O Ports']) specs.push(['Ports', item['External I/O Ports']]);
+                if (item['Weight']) specs.push(['Weight', item['Weight']]);
+                if (item['Warranty']) specs.push(['Warranty', item['Warranty']]);
 
-                const descPara = document.createElement('p');
-                descPara.className = 'hp-part-desc';
-                descPara.innerHTML = descParts.join(' · ');
-                card.appendChild(descPara);
+                specs.forEach(([label, value]) => {
+                    const p = document.createElement('p');
+                    p.className = 'hp-part-desc';
+                    p.innerHTML = `<strong>${label}:</strong> ${value}`;
+                    card.appendChild(p);
+                });
 
                 // Optional part numbers
-                const extras: string[] = [];
-                if (item['Screen Replacement Part # (Common)']) {
-                    extras.push(`<strong>Screen PN:</strong> ${item['Screen Replacement Part # (Common)']}`);
-                }
-                if (item['Battery Replacement Part # (Common)']) {
-                    extras.push(`<strong>Battery PN:</strong> ${item['Battery Replacement Part # (Common)']}`);
-                }
-                if (extras.length) {
-                    const extrasPara = document.createElement('p');
-                    extrasPara.className = 'hp-part-extras';
-                    extrasPara.innerHTML = extras.join(' · ');
-                    // add copy buttons for part numbers
-                    const pnContainer = document.createElement('span');
-                    pnContainer.className = 'pn-container';
-                    const parts = extrasPara.innerText.split(' · ');
-                    parts.forEach((partText, idx) => {
-                        const span = document.createElement('span');
-                        span.className = 'pn-item';
-                        span.textContent = partText;
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.className = 'copy-btn';
-                        btn.setAttribute('aria-label', `Copy part number: ${partText}`);
-                        btn.textContent = 'Copy';
-                        btn.addEventListener('click', async () => {
-                            try {
-                                // try to copy only the PN after the colon
-                                const pn = partText.split(':').slice(1).join(':').trim();
-                                await navigator.clipboard.writeText(pn);
-                                announceLive(`Copied ${pn}`);
-                            } catch (err) {
-                                console.error('Copy failed', err);
-                                announceLive('Copy failed');
-                            }
-                        });
-                        const wrapper = document.createElement('span');
-                        wrapper.className = 'pn-wrapper';
-                        wrapper.appendChild(span);
-                        wrapper.appendChild(btn);
-                        pnContainer.appendChild(wrapper);
-                        if (idx < parts.length - 1) {
-                            const sep = document.createElement('span');
-                            sep.textContent = ' · ';
-                            pnContainer.appendChild(sep);
+                // Screen and Battery PN lines (each on its own line with copy button)
+                const screenPN = item['Screen Replacement Part # (Common)'];
+                const batteryPN = item['Battery Replacement Part # (Common)'];
+                if (screenPN) {
+                    const p = document.createElement('p');
+                    p.className = 'hp-part-extras';
+                    const label = document.createElement('strong');
+                    label.textContent = 'Screen PN:';
+                    const text = document.createElement('span');
+                    text.textContent = ` ${screenPN}`;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'copy-btn';
+                    btn.setAttribute('aria-label', `Copy screen part number: ${screenPN}`);
+                    btn.textContent = 'Copy';
+                    btn.addEventListener('click', async () => {
+                        try {
+                            await navigator.clipboard.writeText(screenPN);
+                            announceLive(`Copied ${screenPN}`);
+                        } catch (err) {
+                            console.error('Copy failed', err);
+                            announceLive('Copy failed');
                         }
                     });
-                    extrasPara.innerHTML = '';
-                    extrasPara.appendChild(pnContainer);
-                    card.appendChild(extrasPara);
+                    p.appendChild(label);
+                    p.appendChild(text);
+                    p.appendChild(document.createTextNode(' '));
+                    p.appendChild(btn);
+                    card.appendChild(p);
+                }
+                if (batteryPN) {
+                    const p = document.createElement('p');
+                    p.className = 'hp-part-extras';
+                    const label = document.createElement('strong');
+                    label.textContent = 'Battery PN:';
+                    const text = document.createElement('span');
+                    text.textContent = ` ${batteryPN}`;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'copy-btn';
+                    btn.setAttribute('aria-label', `Copy battery part number: ${batteryPN}`);
+                    btn.textContent = 'Copy';
+                    btn.addEventListener('click', async () => {
+                        try {
+                            await navigator.clipboard.writeText(batteryPN);
+                            announceLive(`Copied ${batteryPN}`);
+                        } catch (err) {
+                            console.error('Copy failed', err);
+                            announceLive('Copy failed');
+                        }
+                    });
+                    p.appendChild(label);
+                    p.appendChild(text);
+                    p.appendChild(document.createTextNode(' '));
+                    p.appendChild(btn);
+                    card.appendChild(p);
                 }
 
                 listContainer.appendChild(card);
