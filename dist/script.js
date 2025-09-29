@@ -26,6 +26,110 @@ window.addEventListener('scroll', () => {
     }
     scrollTimeout = window.requestAnimationFrame(updateProgressBar);
 }, { passive: true });
+// Top-level helper function to create an HP part card (available for tests)
+function createHPPartCardForTest(item) {
+    const card = document.createElement('div');
+    card.className = 'hp-part-card entry';
+    const title = document.createElement('h4');
+    title.textContent = item['Model'] || 'Unnamed Model';
+    card.appendChild(title);
+    function renderField(labelText, value) {
+        if (!value)
+            return;
+        const separators = /\s*[,·]\s*/;
+        const parts = value.split(separators).map((s) => s.trim()).filter(Boolean);
+        if (parts.length <= 1) {
+            const p = document.createElement('p');
+            p.className = 'hp-part-desc';
+            p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
+            card.appendChild(p);
+        }
+        else {
+            const p = document.createElement('p');
+            p.className = 'hp-part-desc';
+            p.innerHTML = `<strong>${labelText}:</strong>`;
+            const ul = document.createElement('ul');
+            ul.className = 'hp-part-list';
+            parts.forEach((part) => {
+                const li = document.createElement('li');
+                li.textContent = part;
+                ul.appendChild(li);
+            });
+            card.appendChild(p);
+            card.appendChild(ul);
+        }
+    }
+    if (item['Processor Family'] || item['Processor']) {
+        const proc = [item['Processor Family'], item['Processor']].filter(Boolean).join(' — ');
+        renderField('Processor', proc);
+    }
+    renderField('Memory', item['Memory'] ? `${item['Memory']} (${item['Memory Type'] || 'type N/A'})` : undefined);
+    renderField('Storage', item['Internal Drive']);
+    renderField('Display', item['Display']);
+    renderField('Graphics', item['Graphics']);
+    renderField('Ports', item['External I/O Ports']);
+    renderField('Weight', item['Weight']);
+    renderField('Warranty', item['Warranty']);
+    function pnLine(labelText, pn) {
+        if (!pn)
+            return;
+        const p = document.createElement('p');
+        p.className = 'hp-part-extras';
+        const label = document.createElement('strong');
+        label.textContent = `${labelText}:`;
+        const text = document.createElement('span');
+        text.textContent = ` ${pn}`;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-btn';
+        btn.setAttribute('aria-label', `Copy ${labelText.toLowerCase()} part number: ${pn}`);
+        btn.textContent = 'Copy';
+        const tip = document.createElement('span');
+        tip.className = 'copy-tip';
+        tip.setAttribute('aria-hidden', 'true');
+        tip.textContent = '';
+        btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield navigator.clipboard.writeText(pn);
+                announceLive(`Copied ${pn}`);
+                tip.textContent = 'Copied!';
+                setTimeout(() => { tip.textContent = ''; }, 1200);
+            }
+            catch (err) {
+                console.error('Copy failed', err);
+                announceLive('Copy failed');
+                tip.textContent = 'Failed';
+                setTimeout(() => { tip.textContent = ''; }, 1200);
+            }
+        }));
+        p.appendChild(label);
+        p.appendChild(text);
+        p.appendChild(document.createTextNode(' '));
+        p.appendChild(btn);
+        p.appendChild(tip);
+        card.appendChild(p);
+    }
+    pnLine('Screen PN', item['Screen Replacement Part # (Common)']);
+    pnLine('Battery PN', item['Battery Replacement Part # (Common)']);
+    return card;
+}
+// Expose helper for test runners
+globalThis.__createHPPartCardForTest = createHPPartCardForTest;
+// Top-level announceLive stub for use by helper; DOMContentLoaded will set window.__announceLive
+function announceLiveStub(message) {
+    try {
+        // If the DOM-installed announcer is available, call it
+        const fn = globalThis.__announceLive;
+        if (typeof fn === 'function') {
+            fn(message);
+        }
+    }
+    catch (e) {
+        // no-op in test environment
+    }
+}
+// Ensure helper uses the stub if announceLive is not yet defined
+const announceLive = globalThis.__announceLive ? globalThis.__announceLive : announceLiveStub;
 // Enhanced hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', () => {
     // HP Parts Database functionality
@@ -54,97 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listContainer = document.createElement('div');
                 listContainer.className = 'hp-parts-list';
                 data.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'hp-part-card entry';
-                    const title = document.createElement('h4');
-                    title.textContent = item['Model'] || 'Unnamed Model';
-                    card.appendChild(title);
-                    // Render each spec on its own line for readability
-                    const specs = [];
-                    if (item['Processor Family'] || item['Processor']) {
-                        const proc = [item['Processor Family'], item['Processor']].filter(Boolean).join(' — ');
-                        specs.push(['Processor', proc]);
-                    }
-                    if (item['Memory'])
-                        specs.push(['Memory', `${item['Memory']} (${item['Memory Type'] || 'type N/A'})`]);
-                    if (item['Internal Drive'])
-                        specs.push(['Storage', item['Internal Drive']]);
-                    if (item['Display'])
-                        specs.push(['Display', item['Display']]);
-                    if (item['Graphics'])
-                        specs.push(['Graphics', item['Graphics']]);
-                    if (item['External I/O Ports'])
-                        specs.push(['Ports', item['External I/O Ports']]);
-                    if (item['Weight'])
-                        specs.push(['Weight', item['Weight']]);
-                    if (item['Warranty'])
-                        specs.push(['Warranty', item['Warranty']]);
-                    specs.forEach(([label, value]) => {
-                        const p = document.createElement('p');
-                        p.className = 'hp-part-desc';
-                        p.innerHTML = `<strong>${label}:</strong> ${value}`;
-                        card.appendChild(p);
-                    });
-                    // Optional part numbers
-                    // Screen and Battery PN lines (each on its own line with copy button)
-                    const screenPN = item['Screen Replacement Part # (Common)'];
-                    const batteryPN = item['Battery Replacement Part # (Common)'];
-                    if (screenPN) {
-                        const p = document.createElement('p');
-                        p.className = 'hp-part-extras';
-                        const label = document.createElement('strong');
-                        label.textContent = 'Screen PN:';
-                        const text = document.createElement('span');
-                        text.textContent = ` ${screenPN}`;
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.className = 'copy-btn';
-                        btn.setAttribute('aria-label', `Copy screen part number: ${screenPN}`);
-                        btn.textContent = 'Copy';
-                        btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
-                            try {
-                                yield navigator.clipboard.writeText(screenPN);
-                                announceLive(`Copied ${screenPN}`);
-                            }
-                            catch (err) {
-                                console.error('Copy failed', err);
-                                announceLive('Copy failed');
-                            }
-                        }));
-                        p.appendChild(label);
-                        p.appendChild(text);
-                        p.appendChild(document.createTextNode(' '));
-                        p.appendChild(btn);
-                        card.appendChild(p);
-                    }
-                    if (batteryPN) {
-                        const p = document.createElement('p');
-                        p.className = 'hp-part-extras';
-                        const label = document.createElement('strong');
-                        label.textContent = 'Battery PN:';
-                        const text = document.createElement('span');
-                        text.textContent = ` ${batteryPN}`;
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.className = 'copy-btn';
-                        btn.setAttribute('aria-label', `Copy battery part number: ${batteryPN}`);
-                        btn.textContent = 'Copy';
-                        btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
-                            try {
-                                yield navigator.clipboard.writeText(batteryPN);
-                                announceLive(`Copied ${batteryPN}`);
-                            }
-                            catch (err) {
-                                console.error('Copy failed', err);
-                                announceLive('Copy failed');
-                            }
-                        }));
-                        p.appendChild(label);
-                        p.appendChild(text);
-                        p.appendChild(document.createTextNode(' '));
-                        p.appendChild(btn);
-                        card.appendChild(p);
-                    }
+                    const card = createHPPartCardForTest(item);
                     listContainer.appendChild(card);
                 });
                 entryDiv.appendChild(listContainer);
@@ -297,6 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
         live.textContent = '';
         setTimeout(() => { live.textContent = message; }, 100);
     }
+    // expose to top-level helpers/tests
+    globalThis.__announceLive = announceLive;
     // Blog post loading functionality
     const blogLinks = document.querySelectorAll('.blog-link');
     const blogSection = document.getElementById('blog');
