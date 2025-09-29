@@ -269,7 +269,8 @@ body {
 }
 
 /* HP Parts Table Styles */
-.hp-parts-table {
+.hp-parts-table,
+.supply-chain-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
@@ -279,24 +280,29 @@ body {
 }
 
 .hp-parts-table th,
-.hp-parts-table td {
+.hp-parts-table td,
+.supply-chain-table th,
+.supply-chain-table td {
   padding: 12px 15px;
   border: 1px solid var(--border);
   text-align: left;
   white-space: nowrap;
 }
 
-.hp-parts-table th {
+.hp-parts-table th,
+.supply-chain-table th {
   background-color: var(--primary);
   color: white;
   font-weight: 600;
 }
 
-.hp-parts-table tbody tr:nth-of-type(even) {
+.hp-parts-table tbody tr:nth-of-type(even),
+.supply-chain-table tbody tr:nth-of-type(even) {
   background-color: var(--bg-light);
 }
 
-.hp-parts-table tbody tr:hover {
+.hp-parts-table tbody tr:hover,
+.supply-chain-table tbody tr:hover {
   background-color: #f1f1f1;
   color: var(--text-dark);
 }
