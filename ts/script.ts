@@ -81,7 +81,70 @@ document.addEventListener('DOMContentLoaded', () => {
             entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>Could not load data.</p>';
         }
     }
-    loadAndDisplayHPParts(); // Commented out for diagnostic purposes
+    loadAndDisplayHPParts();
+
+    // Supply Chain Analysis functionality
+    async function loadAndDisplaySupplyChainData() {
+        const projectsSection = document.getElementById('projects');
+        if (!projectsSection) return;
+
+        const entryDiv = projectsSection.querySelector('#supply-chain-entry');
+        if (!entryDiv) return;
+
+        // Add a loading message immediately
+        entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3><p>Loading data...</p>';
+
+        try {
+            const response = await fetch('data/supply_chain.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+
+            if (!Array.isArray(data) || data.length === 0) {
+                entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3><p>No data available.</p>';
+                return;
+            }
+
+            const table = document.createElement('table');
+            table.classList.add('supply-chain-table');
+
+            // Create table header
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            const headers = Object.keys(data[0]);
+            headers.forEach(headerText => {
+                const th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement('tbody');
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                headers.forEach(header => {
+                    const cell = document.createElement('td');
+                    cell.textContent = item[header];
+                    row.appendChild(cell);
+                });
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+
+            // Clear the loading message and append the table
+            entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3>';
+            entryDiv.appendChild(table);
+
+        } catch (error) {
+            console.error('Error fetching or displaying supply chain data:', error);
+            entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3><p>Could not load data.</p>';
+        }
+    }
+    loadAndDisplaySupplyChainData();
+
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image') as HTMLImageElement | null;
     if (profileImage) {
