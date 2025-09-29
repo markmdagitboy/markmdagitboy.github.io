@@ -6,17 +6,21 @@
   "scripts": {
     "test": "echo \"No tests configured\" && exit 0",
     "build": "tsc",
+    "validate:html": "html-validate --config .htmlvalidate.json \"./**/*.html\"",
     "typecheck": "tsc --noEmit",
     "watch": "tsc -w",
     "clean": "rimraf dist",
     "start": "npx http-server -c-1 -p 8080",
-    "preview": "npx http-server -c-1 -p 8080"
+    "preview": "npx http-server -c-1 -p 8080",
+    "convert-images": "node scripts/convert-to-webp.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "sharp": "^0.32.4",
+    "html-validate": "^7.13.0"
   },
   "dependencies": {}
 }
