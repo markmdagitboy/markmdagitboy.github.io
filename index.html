@@ -7,8 +7,6 @@
     <meta name="description" content="Experienced IT Support Professional with 7+ years in customer service and troubleshooting. CompTIA certified with expertise in multiple programming languages.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
@@ -42,8 +40,8 @@
                 <button class="active" data-tab="skills"><i class="fas fa-cogs"></i> Skills</button>
                 <button data-tab="experience"><i class="fas fa-briefcase"></i> Experience</button>
                 <button data-tab="education"><i class="fas fa-graduation-cap"></i> Education</button>
-                <button data-tab="projects"><i class="fas fa-project-diagram"></i> Projects</button>
                 <button data-tab="blog"><i class="fas fa-blog"></i> Blog</button>
+                <button data-tab="ticketing"><i class="fas fa-ticket-alt"></i> Ticketing</button>
             </nav>
 
             <div id="content" class="content">
@@ -137,17 +135,6 @@
                     </div>
                 </section>
 
-                <section id="projects" class="section hidden">
-                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
-                    <div class="entry" id="hp-parts-entry">
-                        <h3>HP Parts List Database</h3>
-                    </div>
-                    <div class="entry">
-                        <h3>OpenStreetMap</h3>
-                        <div id="viewDiv" style="height: 400px;"></div>
-                    </div>
-                </section>
-
                 <section id="blog" class="section hidden">
                     <h2 class="section-title"><i class="fas fa-blog"></i> Blog</h2>
                     <div class="entry">
@@ -165,6 +152,52 @@
                 </section>
 
                 <section id="blog-post" class="section hidden"></section>
+
+                <section id="ticketing" class="section hidden">
+                    <h2 class="section-title"><i class="fas fa-ticket-alt"></i> Ticketing System</h2>
+                    <div id="login-view">
+                        <h3>Login</h3>
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+                    <div id="ticketing-view" class="hidden">
+                        <h3>Welcome to the Ticketing System</h3>
+                        <button id="logout-button">Logout</button>
+                        <div id="tickets-container">
+                            <table id="tickets-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="add-ticket-form-container">
+                            <h3>Add New Ticket</h3>
+                            <form id="add-ticket-form">
+                                <div class="form-group">
+                                    <label for="ticket-title">Title</label>
+                                    <input type="text" id="ticket-title" name="ticket-title" required>
+                                </div>
+                                <button type="submit">Add Ticket</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
             </div>
             <footer class="footer">
                 <p><i class="fas fa-code"></i> Built with Claude AI by Anthropic and Jules by Google</p>

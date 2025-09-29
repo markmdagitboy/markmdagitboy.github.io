@@ -1,1 +1,10 @@
-node_modules
+# Logs
+server.log
+
+# Jules scratch directory
+jules-scratch/
+
+# Data files
+data/
+dist/
+node_modules/
