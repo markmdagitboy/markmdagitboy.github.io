@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Alvarez | IT Support Professional</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* --- General & Body Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00aaff;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #33bbff;
+        }
+        
+        /* --- Header Section --- */
+        .resume-header {
+            background-color: #1a3a5a;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .resume-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .resume-header .job-title {
+            font-size: 1.2rem;
+            color: #c0c0c0;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: #e0e0e0;
+            margin: 0 0.75rem;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a:hover {
+            color: #00aaff;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 0.75rem 0;
+            border-top: 1px solid #444;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            color: #d0d0d0;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: #ffffff;
+            border-bottom-color: #00aaff;
+        }
+
+        /* --- Main Content Sections --- */
+        .resume-body {
+            background-color: #212529;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 12px 12px;
+        }
+        
+        section {
+            padding: 2.5rem 2rem;
+            border-top: 1px solid #3a3f44;
+        }
+        section:first-child {
+            border-top: none;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #f0f0f0;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid #00aaff;
+        }
+        
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: #343a40;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #e0e0e0;
+        }
+        
+        .skill-card ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+        }
+        
+        .skill-card li, .skill-card p {
+            margin-bottom: 0.5rem;
+            color: #c0c0c0;
+        }
+
+        .languages .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: #007acc;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- Experience & Education Section --- */
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline-item {
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            border-left: 2px solid #555;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #00aaff;
+            border: 3px solid #212529;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.25rem;
+            color: #f0f0f0;
+        }
+        
+        .item-meta {
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-description {
+            color: #c0c0c0;
+        }
+        
+        .item-description ul {
+            list-style: disc;
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="resume-header">
+            <img src="https://i.imgur.com/8QtmFQX.png" alt="Marcos Alvarez" class="profile-pic">
+            <h1>Marcos Alvarez</h1>
+            <p class="job-title">IT Support Professional</p>
+            <div class="social-links">
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#skills" class="active"><i class="fas fa-cogs"></i> Skills</a></li>
+                <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                <li><a href="#education"><i class="fas fa-user-graduate"></i> Education</a></li>
+                <li><a href="#"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+            </ul>
+        </nav>
+
+        <main class="resume-body">
+            
+            <section id="skills">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    
+                    <div class="skill-card">
+                        <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
+                        <ul>
+                            <li>Expert technical communication across various formats</li>
+                            <li>Exceptional dedication with consistent track record</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h3><i class="fas fa-tools"></i> Technical Expertise</h3>
+                        <p>8+ years IT customer service and troubleshooting</p>
+                        <p>CompTIA trained: A+, Network+, Project+, Security+</p>
+                    </div>
+
+                    <div class="skill-card languages">
+                        <h3><i class="fas fa-code"></i> Languages & Technologies</h3>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">C</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Assembly x86</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+            <section id="experience">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>IT Support Associate II</h3>
+                        <p class="item-meta">Amazon Fulfillment Center PSP1, Beaumont, CA | 2020 - Present</p>
+                        <p class="item-description">Advanced technical assistance and troubleshooting for hardware, software, and network infrastructure. Ensure minimal downtime in fast-paced fulfillment environment.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>IT Support Technician</h3>
+                        <p class="item-meta">Amazon Fulfillment Center ONT6, Moreno Valley, CA | 2019 - 2020</p>
+                        <p class="item-description">Diagnosed and resolved complex IT issues while performing routine maintenance. Provided comprehensive user support and technical guidance.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Fulfillment Associate</h3>
+                        <p class="item-meta">Amazon Fulfillment Center ONT6, Moreno Valley, CA | 2015 - 2019</p>
+                        <div class="item-description">
+                            Processed orders in the following departments:
+                            <ul>
+                                <li>Picking</li>
+                                <li>Packing</li>
+                                <li>Ship Dock</li>
+                                <li>ICQA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="education">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Bachelor of Science - Computer Science</h3>
+                        <p class="item-meta">California State University San Bernardino | Status: In Progress</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Associate of Science for Transfer - Computer Systems & Technology</h3>
+                        <p class="item-meta">Mt. San Jacinto College | Status: Completed</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Associate of Science - Computer & Information Systems</h3>
+                        <p class="item-meta">Mt. San Jacinto College | Status: Completed</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer>
+            <p>&lt;/&gt; Built with Gemini by Google</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
