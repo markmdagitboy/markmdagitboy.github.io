@@ -53,6 +53,36 @@ describe('HP Part card rendering', () => {
   const p = card.querySelector('p.supply-chain-desc')!;
   expect(p.textContent).toContain('Screen PN');
   const btn = p.querySelector('button.copy-btn');
-  expect(btn).toBeNull();
+    expect(btn).toBeTruthy();
+  });
+
+  test('copy button shows temporary tooltip when clicked', async () => {
+    const item = {
+      'Model': 'Test',
+      'Screen Replacement Part # (Common)': 'PN123'
+    };
+    const card = createHPPartCardForTest(item) as HTMLElement;
+
+    // Mock clipboard
+    Object.assign(navigator, {
+      clipboard: {
+        writeText: jest.fn().mockResolvedValue(undefined)
+      }
+    });
+
+    const p = card.querySelector('p.supply-chain-desc')!;
+    const btn = p.querySelector('button.copy-btn') as HTMLButtonElement;
+    const tip = p.querySelector('.copy-tip') as HTMLElement;
+    expect(tip.textContent).toBe('');
+
+    // Click
+    btn.click();
+    // allow event loop
+    await new Promise(r => setTimeout(r, 50));
+    expect(tip.textContent).toBe('Copied!');
+
+    // after timeout the tip should clear (the function uses 1200ms)
+    await new Promise(r => setTimeout(r, 1250));
+    expect(tip.textContent).toBe('');
   });
 });

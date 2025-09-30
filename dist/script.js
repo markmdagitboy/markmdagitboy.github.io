@@ -60,8 +60,35 @@ export function createHPPartCardForTest(item) {
         label.textContent = `${labelText}:`;
         const text = document.createElement('span');
         text.textContent = ` ${pn}`;
+        // copy button + tooltip
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'copy-btn';
+        btn.setAttribute('aria-label', `Copy ${labelText.toLowerCase()} part number: ${pn}`);
+        btn.textContent = 'Copy';
+        const tip = document.createElement('span');
+        tip.className = 'copy-tip';
+        tip.setAttribute('aria-hidden', 'true');
+        tip.textContent = '';
+        btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield navigator.clipboard.writeText(pn);
+                announceLive(`Copied ${pn}`);
+                tip.textContent = 'Copied!';
+                setTimeout(() => { tip.textContent = ''; }, 1200);
+            }
+            catch (err) {
+                console.error('Copy failed', err);
+                announceLive('Copy failed');
+                tip.textContent = 'Failed';
+                setTimeout(() => { tip.textContent = ''; }, 1200);
+            }
+        }));
         p.appendChild(label);
         p.appendChild(text);
+        p.appendChild(document.createTextNode(' '));
+        p.appendChild(btn);
+        p.appendChild(tip);
         card.appendChild(p);
     }
     pnLine('Screen PN', item['Screen Replacement Part # (Common)']);
