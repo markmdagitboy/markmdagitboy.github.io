@@ -5,16 +5,17 @@
   "main": "index.html",
   "scripts": {
     "test": "jest --config jest.config.cjs --runInBand",
-  "build": "tsc",
-  "bundle": "esbuild ts/script.ts --bundle --platform=browser --target=es2017 --outfile=dist/script.bundle.js --sourcemap",
+    "build": "tsc",
+    "bundle": "esbuild ts/script.ts --bundle --platform=browser --target=es2017 --outfile=dist/script.bundle.js --sourcemap",
     "validate:html": "html-validate --config .htmlvalidate.json \"./**/*.html\"",
     "typecheck": "tsc --noEmit",
     "watch": "tsc -w",
     "clean": "rimraf dist",
+  "lint": "eslint \"{ts,test}/**/*.{ts,js}\" --max-warnings=0",
     "start": "npx http-server -c-1 -p 8080",
     "preview": "npx http-server -c-1 -p 8080",
-    "convert-images": "node scripts/convert-to-webp.js"
-  ,"generate-thumbs": "node scripts/generate-map-thumbs.js"
+    "convert-images": "node scripts/convert-to-webp.js",
+    "generate-thumbs": "node scripts/generate-map-thumbs.js"
   },
   "lhci": {
     "collect": {
@@ -25,16 +26,19 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.9.2",
-    "sharp": "^0.32.4",
-      "esbuild": "^0.18.16",
-    "html-validate": "^7.13.0",
     "@lhci/cli": "^0.8.0",
-    "jest": "^29.6.1",
     "@types/jest": "^29.5.3",
-    "ts-jest": "^29.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "esbuild": "^0.18.16",
+    "eslint": "^9.36.0",
+    "eslint-plugin-import": "^2.32.0",
+    "html-validate": "^7.13.0",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.0",
     "jsdom": "^22.1.0",
-    "jest-environment-jsdom": "^29.6.0"
-  },
-  "dependencies": {}
+    "sharp": "^0.32.4",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.9.2"
+  }
 }
