@@ -12,7 +12,6 @@ export interface HPPart {
   'Warranty'?: string;
   'Screen Replacement Part # (Common)'?: string;
   'Battery Replacement Part # (Common)'?: string;
-  [key: string]: any;
 }
 
 export interface SupplyChainEntry {
@@ -22,7 +21,6 @@ export interface SupplyChainEntry {
   'Typical Final Assembly Location(s)'?: string;
   'Primary Assembly Partners (ODMs)'?: string;
   'Notes & Context'?: string;
-  [key: string]: any;
 }
 
 export interface MapDef {
@@ -31,3 +29,19 @@ export interface MapDef {
   subtitle?: string;
   src: string;
 }
+
+export interface MapsRender {
+  renderEmbedded: () => void;
+  renderGrid: () => void;
+  renderThumbnails: () => void;
+  openMapModal: (map: MapDef) => void;
+  closeMapModal: () => void;
+}
+
+declare global {
+  // augment the globalThis so modules can access these without casting to any
+  var __announceLive: ((m: string) => void) | undefined;
+  var __mapsRender: MapsRender | undefined;
+}
+
+export {};

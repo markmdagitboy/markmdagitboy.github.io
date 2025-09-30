@@ -4,3 +4,9 @@ dist/
 npm-debug.log
 .DS_Store
 /.env
+coverage/
+coverage/**
+/.parcel-cache
+/.cache
+dist
+/*.log

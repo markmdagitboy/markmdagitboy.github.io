@@ -20,7 +20,7 @@ describe('Manufacturer maps render', () => {
   document.dispatchEvent(new Event('DOMContentLoaded'));
   // run embedded render
   await new Promise(resolve => setTimeout(resolve, 5));
-  (globalThis as any).__mapsRender.renderEmbedded();
+  globalThis.__mapsRender!.renderEmbedded();
     const container = document.getElementById('map-container');
     expect(container).not.toBeNull();
     // should contain at least one iframe
@@ -32,7 +32,7 @@ describe('Manufacturer maps render', () => {
   const script = await import('../ts/script');
   document.dispatchEvent(new Event('DOMContentLoaded'));
   await new Promise(resolve => setTimeout(resolve, 5));
-  (globalThis as any).__mapsRender.renderThumbnails();
+  globalThis.__mapsRender!.renderThumbnails();
     const container = document.getElementById('map-container');
     expect(container).not.toBeNull();
     // thumbnails are buttons

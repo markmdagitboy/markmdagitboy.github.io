@@ -104,7 +104,7 @@ export function createHPPartCardForTest(item: HPPart): HTMLElement {
 function announceLiveStub(message: string) {
     try {
         // If the DOM-installed announcer is available, call it
-        const fn = (globalThis as any).__announceLive as ((m: string) => void) | undefined;
+        const fn = globalThis.__announceLive;
         if (typeof fn === 'function') {
             fn(message);
         }
@@ -114,7 +114,7 @@ function announceLiveStub(message: string) {
 }
 
 // Ensure helper uses the stub if announceLive is not yet defined
-const announceLive = (globalThis as any).__announceLive ? (globalThis as any).__announceLive : announceLiveStub;
+const announceLive = typeof globalThis.__announceLive === 'function' ? globalThis.__announceLive! : announceLiveStub;
 
 // Enhanced hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -421,8 +421,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // initial render: embedded by default (user preference)
     renderEmbedded();
 
-        // expose for testing if needed
-        (globalThis as any).__mapsRender = { renderEmbedded, renderGrid, renderThumbnails, openMapModal, closeMapModal };
+    // expose for testing if needed
+    globalThis.__mapsRender = { renderEmbedded, renderGrid, renderThumbnails, openMapModal, closeMapModal };
     })();
 
     // Profile image interaction
@@ -450,30 +450,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Tab switching functionality
-    const navButtons = document.querySelectorAll<HTMLButtonElement>('.nav button');
+    // Tab switching functionality — use event delegation on the nav for robustness
+    const nav = document.querySelector<HTMLElement>('.nav');
     const sections = document.querySelectorAll<HTMLElement>('.content .section');
-    navButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Update active button and aria state
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            button.classList.add('active');
-            button.setAttribute('aria-pressed', 'true');
 
-            // Show/hide content sections
-            const tab: string | null = button.getAttribute('data-tab');
-            sections.forEach(section => {
-                if (section.id === tab) {
-                    section.classList.remove('hidden');
-                } else {
-                    section.classList.add('hidden');
-                }
-            });
+    function showTab(tabId: string | null) {
+        const btns = Array.from(document.querySelectorAll<HTMLButtonElement>('.nav button'));
+        btns.forEach(btn => {
+            const isActive = btn.getAttribute('data-tab') === tabId;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', String(isActive));
         });
-    });
+
+        sections.forEach(section => {
+            if (section.id === tabId) section.classList.remove('hidden');
+            else section.classList.add('hidden');
+        });
+    }
+
+    if (nav) {
+        nav.addEventListener('click', (e: MouseEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (!target) return;
+            const button = target.closest('button[data-tab]') as HTMLButtonElement | null;
+            if (!button) return;
+            const tab = button.getAttribute('data-tab');
+            showTab(tab);
+        });
+    } else {
+        // Fallback: try wiring up existing buttons if nav container is missing
+        const navButtons = document.querySelectorAll<HTMLButtonElement>('.nav button');
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => showTab(button.getAttribute('data-tab')));
+        });
+    }
 
     // Make generated cards focusable for keyboard users
     function makeCardsFocusable() {
@@ -516,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // expose to top-level helpers/tests
-    (globalThis as any).__announceLive = announceLive;
+    globalThis.__announceLive = announceLive;
 
     // Blog post loading functionality
     const blogLinks = document.querySelectorAll<HTMLAnchorElement>('.blog-link');

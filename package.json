@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "watch": "tsc -w",
     "clean": "rimraf dist",
-  "lint": "eslint \"{ts,test}/**/*.{ts,js}\" --max-warnings=0",
+  "lint": "node ./node_modules/eslint/bin/eslint.js \"{ts,test}/**/*.{ts,js}\"",
     "start": "npx http-server -c-1 -p 8080",
     "preview": "npx http-server -c-1 -p 8080",
     "convert-images": "node scripts/convert-to-webp.js",
@@ -26,6 +26,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.28.4",
     "@lhci/cli": "^0.8.0",
     "@types/jest": "^29.5.3",
     "@typescript-eslint/eslint-plugin": "^8.45.0",
