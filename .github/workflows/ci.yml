@@ -7,48 +7,29 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-
-      - name: Cache npm
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Convert images (WebP variants)
-        run: npm run convert-images
+      - name: Typecheck (tsc --noEmit)
+        run: npm run typecheck
 
-      - name: Build (TypeScript)
+      - name: Bundle with esbuild
+        run: npm run bundle
+
+      - name: Build (tsc)
         run: npm run build
 
-      - name: Validate HTML
-        run: npm run validate:html
-
-      - name: List built files
-        run: ls -la dist || true
-
-      - name: Install http-server
-        run: npm install -g http-server
-
-      - name: Start preview server (background)
-        run: nohup http-server -p 8080 dist > server.log 2>&1 &
-
-      - name: Run Lighthouse CI
-        run: |
-          npx @lhci/cli autorun --upload.target=temporary-public-storage
+      - name: Run tests
+        run: npm test

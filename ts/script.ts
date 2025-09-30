@@ -20,7 +20,9 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Top-level helper function to create an HP part card (available for tests)
-export function createHPPartCardForTest(item: any): HTMLElement {
+import type { HPPart, SupplyChainEntry, MapDef } from './types';
+
+export function createHPPartCardForTest(item: HPPart): HTMLElement {
     const card = document.createElement('div');
     card.className = 'hp-part-card entry';
 
@@ -132,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const data = await response.json();
+            const data = await response.json() as HPPart[];
 
             if (!Array.isArray(data) || data.length === 0) {
                 entryDiv.innerHTML = '<h3>HP Parts List Database</h3><p>No data available.</p>';
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listContainer.className = 'hp-parts-list';
 
             data.forEach(item => {
-                const card = createHPPartCardForTest(item);
+                const card = createHPPartCardForTest(item as HPPart);
                 listContainer.appendChild(card);
             });
 
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const data = await response.json();
+            const data = await response.json() as SupplyChainEntry[];
 
             if (!Array.isArray(data) || data.length === 0) {
                 entryDiv.innerHTML = '<h3>Supply Chain Analysis</h3><p>No data available.</p>';
@@ -224,12 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manufacturer maps: support three view modes - embedded, grid, thumbnails
     (function manageManufacturerMaps() {
         const mapContainer = document.getElementById('map-container');
-        const viewSelect = document.getElementById('map-view-select') as HTMLSelectElement | null;
+    const viewSelect = document.getElementById('map-view-select') as HTMLSelectElement | null;
         const modal = document.getElementById('map-modal') as HTMLElement | null;
         const modalBody = document.getElementById('map-modal-body') as HTMLElement | null;
         const modalClose = modal ? modal.querySelector('.map-modal-close') as HTMLButtonElement | null : null;
 
-    if (!mapContainer || !viewSelect) return;
+    if (!mapContainer) return;
     const mc = mapContainer as HTMLElement;
 
         type MapDef = { id: string; name: string; subtitle?: string; src: string };
@@ -401,21 +403,23 @@ document.addEventListener('DOMContentLoaded', () => {
             _prevFocused = null;
         }
 
-        // wire up controls
-        viewSelect.addEventListener('change', () => {
-            const val = viewSelect.value;
-            if (val === 'embedded') renderEmbedded();
-            else if (val === 'grid') renderGrid();
-            else renderThumbnails();
-        });
+        // wire up controls if the selector exists
+        if (viewSelect) {
+            viewSelect.addEventListener('change', () => {
+                const val = viewSelect.value;
+                if (val === 'embedded') renderEmbedded();
+                else if (val === 'grid') renderGrid();
+                else renderThumbnails();
+            });
+        }
 
         if (modalClose) modalClose.addEventListener('click', closeMapModal);
         if (modal) modal.addEventListener('click', (e) => {
             if (e.target === modal) closeMapModal();
         });
 
-        // initial render: choose embedded by default
-        renderEmbedded();
+    // initial render: embedded by default (user preference)
+    renderEmbedded();
 
         // expose for testing if needed
         (globalThis as any).__mapsRender = { renderEmbedded, renderGrid, renderThumbnails, openMapModal, closeMapModal };
