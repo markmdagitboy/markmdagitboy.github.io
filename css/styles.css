@@ -131,9 +131,6 @@ body {
   border-radius: var(--radius);
   margin: 0 var(--space);
 }
-.nav button:hover, .back-to-blog:hover {
-  /* Style changed as per user request */
-}
 .nav button.active {
   color: var(--secondary);
   font-weight: 600;
