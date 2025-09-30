@@ -213,21 +213,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 title.textContent = `${series}${generation}`;
                 card.appendChild(title);
 
-                const parts: string[] = [];
-                if (item['Typical Final Assembly Location(s)']) {
-                    parts.push(`<strong>Assembly:</strong> ${item['Typical Final Assembly Location(s)']}`);
-                }
-                if (item['Primary Assembly Partners (ODMs)']) {
-                    parts.push(`<strong>Partners:</strong> ${item['Primary Assembly Partners (ODMs)']}`);
-                }
-                if (item['Notes & Context']) {
-                    parts.push(`<strong>Notes:</strong> ${item['Notes & Context']}`);
+                // Render each supply-chain field on its own line for readability
+                function renderSCField(labelText: string, value?: string) {
+                    if (!value) return;
+                    const p = document.createElement('p');
+                    p.className = 'supply-chain-desc';
+                    p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
+                    card.appendChild(p);
                 }
 
-                const descPara = document.createElement('p');
-                descPara.className = 'supply-chain-desc';
-                descPara.innerHTML = parts.join(' · ');
-                card.appendChild(descPara);
+                renderSCField('Assembly', item['Typical Final Assembly Location(s)']);
+                renderSCField('Partners', item['Primary Assembly Partners (ODMs)']);
+                renderSCField('Notes', item['Notes & Context']);
 
                 listContainer.appendChild(card);
             });
