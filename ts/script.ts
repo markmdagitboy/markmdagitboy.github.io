@@ -285,14 +285,28 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.className = 'map-thumb';
             btn.type = 'button';
             btn.setAttribute('aria-label', `Open ${map.name} map`);
+
+            // Prefer an image thumbnail if present; fall back to text
+            const img = document.createElement('img');
+            img.alt = `${map.name} thumbnail`;
+            img.className = 'map-thumb-img';
+            // thumbnail path convention: images/maps/<id>-thumb.png
+            img.src = `images/maps/${map.id}-thumb.png`;
+            img.loading = 'lazy';
+
+            const textWrap = document.createElement('div');
             const title = document.createElement('div');
             title.className = 'thumb-title';
             title.textContent = map.name;
             const sub = document.createElement('div');
             sub.className = 'thumb-sub';
             sub.textContent = map.subtitle || '';
-            btn.appendChild(title);
-            btn.appendChild(sub);
+            textWrap.appendChild(title);
+            textWrap.appendChild(sub);
+
+            btn.appendChild(img);
+            btn.appendChild(textWrap);
+
             btn.addEventListener('click', () => openMapModal(map));
             wrapper.appendChild(btn);
             return wrapper;
@@ -316,8 +330,12 @@ document.addEventListener('DOMContentLoaded', () => {
             maps.forEach(m => mc.appendChild(createThumbEl(m)));
         }
 
+        let _prevFocused: Element | null = null;
+        let _keydownHandler: ((e: KeyboardEvent) => void) | null = null;
+
         function openMapModal(map: MapDef) {
             if (!modal || !modalBody) return;
+            _prevFocused = document.activeElement;
             modal.classList.remove('hidden');
             modal.setAttribute('aria-hidden', 'false');
             modalBody.innerHTML = '';
@@ -330,6 +348,39 @@ document.addEventListener('DOMContentLoaded', () => {
             iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
             embed.appendChild(iframe);
             modalBody.appendChild(embed);
+
+            // focus management & trap
+            const focusableSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])';
+            const focusables = Array.from(modal.querySelectorAll<HTMLElement>(focusableSelector));
+            const firstFocusable = focusables[0] || modal;
+            const lastFocusable = focusables[focusables.length - 1] || modal;
+
+            // focus the close button if present
+            if (modalClose) modalClose.focus(); else (firstFocusable as HTMLElement).focus();
+
+            _keydownHandler = function (e: KeyboardEvent) {
+                if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeMapModal();
+                } else if (e.key === 'Tab') {
+                    // trap focus inside modal
+                    if (!focusables.length) return;
+                    const active = document.activeElement as HTMLElement;
+                    if (e.shiftKey) {
+                        if (active === firstFocusable) {
+                            e.preventDefault();
+                            (lastFocusable as HTMLElement).focus();
+                        }
+                    } else {
+                        if (active === lastFocusable) {
+                            e.preventDefault();
+                            (firstFocusable as HTMLElement).focus();
+                        }
+                    }
+                }
+            };
+
+            document.addEventListener('keydown', _keydownHandler);
         }
 
         function closeMapModal() {
@@ -337,6 +388,17 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('hidden');
             modal.setAttribute('aria-hidden', 'true');
             modalBody.innerHTML = '';
+            if (_keydownHandler) {
+                document.removeEventListener('keydown', _keydownHandler);
+                _keydownHandler = null;
+            }
+            // restore focus
+            try {
+                ( _prevFocused as HTMLElement )?.focus?.();
+            } catch (e) {
+                // ignore
+            }
+            _prevFocused = null;
         }
 
         // wire up controls
