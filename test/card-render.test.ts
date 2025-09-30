@@ -2,19 +2,9 @@
  * @jest-environment jsdom
  */
 
-import fs from 'fs';
-import path from 'path';
-
-// Load the compiled script so that __createHPPartCardForTest is attached to window
-const script = fs.readFileSync(path.resolve(__dirname, '..', 'dist', 'script.js'), 'utf8');
+import { createHPPartCardForTest } from '../ts/script';
 
 describe('HP Part card rendering', () => {
-  beforeAll(() => {
-    // Evaluate the compiled script in the jsdom global context
-    // eslint-disable-next-line no-eval
-    (0, eval)(script);
-  });
-
   test('renders spec fields as separate paragraphs and lists', () => {
     const item = {
       'Model': 'HP EliteBook G5',
@@ -31,11 +21,7 @@ describe('HP Part card rendering', () => {
       'Battery Replacement Part # (Common)': 'SS03XL'
     };
 
-    // @ts-ignore access global created by script
-    const createFn = (globalThis as any).__createHPPartCardForTest as Function;
-    expect(typeof createFn).toBe('function');
-
-    const card = createFn(item) as HTMLElement;
+  const card = createHPPartCardForTest(item) as HTMLElement;
     // Title
     const h4 = card.querySelector('h4');
     expect(h4).not.toBeNull();
@@ -67,9 +53,7 @@ describe('HP Part card rendering', () => {
       'Model': 'Test',
       'Screen Replacement Part # (Common)': 'PN123'
     };
-    // @ts-ignore
-    const createFn = (globalThis as any).__createHPPartCardForTest as Function;
-    const card = createFn(item) as HTMLElement;
+  const card = createHPPartCardForTest(item) as HTMLElement;
 
     // Mock clipboard
     Object.assign(navigator, {

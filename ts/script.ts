@@ -20,7 +20,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Top-level helper function to create an HP part card (available for tests)
-function createHPPartCardForTest(item: any): HTMLElement {
+export function createHPPartCardForTest(item: any): HTMLElement {
     const card = document.createElement('div');
     card.className = 'hp-part-card entry';
 
@@ -112,8 +112,7 @@ function createHPPartCardForTest(item: any): HTMLElement {
     return card;
 }
 
-// Expose helper for test runners
-(globalThis as any).__createHPPartCardForTest = createHPPartCardForTest;
+// Note: helper is exported for tests; do not rely on global exposure.
 
 // Top-level announceLive stub for use by helper; DOMContentLoaded will set window.__announceLive
 function announceLiveStub(message: string) {
