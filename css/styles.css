@@ -382,5 +382,9 @@ body {
 .copy-tip:empty{display:inline-block;opacity:0}
 .copy-tip:not(:empty){opacity:1}
 
+/* Responsive iframe wrapper for embedded maps */
+.iframe-wrapper{margin-top:var(--space);display:flex;justify-content:center}
+.iframe-wrapper iframe{width:100%;height:auto;border:0;border-radius:6px;max-width:100%}
+
 /* Screen-reader only utility */
 .sr-only{position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0}
