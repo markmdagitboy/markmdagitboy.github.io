@@ -1,4 +1,4 @@
-File Structure Explained by Gemini (https://gemini.google.com/app):
+File Structure Explained by ![Gemini](https://gemini.google.com/app):
 =
 
 This file structure represents a standard modern web project using TypeScript, packaged with **Webpack**(https://webpack.js.org/). It separates the raw source files **( src/ )** from the compiled, production-ready output **( dist/ )** and includes various configuration files for managing the project's dependencies, building, and TypeScript setup. 
