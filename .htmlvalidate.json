@@ -1,8 +1,0 @@
-{
-  "extends": ["html-validate:recommended"],
-  "rules": {
-    "no-unknown-elements": "warn",
-    "attr-bans": "off",
-    "no-inline-style": "off"
-  }
-}
