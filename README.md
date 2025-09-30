@@ -16,8 +16,8 @@ Roadmap:
 |-------|-------------|----------|
 | 1.| Move PDF resume to a web page | Completed |
 | 2.| Add related resume information to my web page | Work in Progress |
-| 3.| Test out 1 new AI tool | Pending |
-| 4.| Make something useful with that AI tool | Pending |
+| 3.| Test out 1 new AI tool | Work in Progress |
+| 4.| Make something useful with that AI tool | Work in Progress |
 | 5.| Test out another AI tool | Pending |
 | 6.| Make another useful thing with that AI tool | Pending |
 
@@ -26,4 +26,5 @@ Ideas:
 | Solution | Description | Progress |
 |------------------|-------------|----------|
 | Wiki Page for  | Pending | Pending |
+
 
