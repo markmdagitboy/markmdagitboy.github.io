@@ -30,27 +30,10 @@ export function createHPPartCardForTest(item: any): HTMLElement {
 
     function renderField(labelText: string, value: string | undefined) {
         if (!value) return;
-        const separators = /\s*[,·]\s*/;
-        const parts = value.split(separators).map((s: string) => s.trim()).filter(Boolean);
-        if (parts.length <= 1) {
-            const p = document.createElement('p');
-            p.className = 'hp-part-desc';
-            p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
-            card.appendChild(p);
-        } else {
-            const p = document.createElement('p');
-            p.className = 'hp-part-desc';
-            p.innerHTML = `<strong>${labelText}:</strong>`;
-            const ul = document.createElement('ul');
-            ul.className = 'hp-part-list';
-            parts.forEach((part: string) => {
-                const li = document.createElement('li');
-                li.textContent = part;
-                ul.appendChild(li);
-            });
-            card.appendChild(p);
-            card.appendChild(ul);
-        }
+        const p = document.createElement('p');
+        p.className = 'supply-chain-desc';
+        p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
+        card.appendChild(p);
     }
 
     if (item['Processor Family'] || item['Processor']) {
@@ -68,41 +51,13 @@ export function createHPPartCardForTest(item: any): HTMLElement {
     function pnLine(labelText: string, pn: string | undefined) {
         if (!pn) return;
         const p = document.createElement('p');
-        p.className = 'hp-part-extras';
+        p.className = 'supply-chain-desc';
         const label = document.createElement('strong');
         label.textContent = `${labelText}:`;
         const text = document.createElement('span');
         text.textContent = ` ${pn}`;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'copy-btn';
-        btn.setAttribute('aria-label', `Copy ${labelText.toLowerCase()} part number: ${pn}`);
-        btn.textContent = 'Copy';
-
-        const tip = document.createElement('span');
-        tip.className = 'copy-tip';
-        tip.setAttribute('aria-hidden', 'true');
-        tip.textContent = '';
-
-        btn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(pn);
-                announceLive(`Copied ${pn}`);
-                tip.textContent = 'Copied!';
-                setTimeout(() => { tip.textContent = ''; }, 1200);
-            } catch (err) {
-                console.error('Copy failed', err);
-                announceLive('Copy failed');
-                tip.textContent = 'Failed';
-                setTimeout(() => { tip.textContent = ''; }, 1200);
-            }
-        });
-
         p.appendChild(label);
         p.appendChild(text);
-        p.appendChild(document.createTextNode(' '));
-        p.appendChild(btn);
-        p.appendChild(tip);
         card.appendChild(p);
     }
 

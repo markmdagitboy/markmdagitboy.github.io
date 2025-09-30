@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -27,7 +26,7 @@ window.addEventListener('scroll', () => {
     scrollTimeout = window.requestAnimationFrame(updateProgressBar);
 }, { passive: true });
 // Top-level helper function to create an HP part card (available for tests)
-function createHPPartCardForTest(item) {
+export function createHPPartCardForTest(item) {
     const card = document.createElement('div');
     card.className = 'hp-part-card entry';
     const title = document.createElement('h4');
@@ -36,28 +35,10 @@ function createHPPartCardForTest(item) {
     function renderField(labelText, value) {
         if (!value)
             return;
-        const separators = /\s*[,·]\s*/;
-        const parts = value.split(separators).map((s) => s.trim()).filter(Boolean);
-        if (parts.length <= 1) {
-            const p = document.createElement('p');
-            p.className = 'hp-part-desc';
-            p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
-            card.appendChild(p);
-        }
-        else {
-            const p = document.createElement('p');
-            p.className = 'hp-part-desc';
-            p.innerHTML = `<strong>${labelText}:</strong>`;
-            const ul = document.createElement('ul');
-            ul.className = 'hp-part-list';
-            parts.forEach((part) => {
-                const li = document.createElement('li');
-                li.textContent = part;
-                ul.appendChild(li);
-            });
-            card.appendChild(p);
-            card.appendChild(ul);
-        }
+        const p = document.createElement('p');
+        p.className = 'supply-chain-desc';
+        p.innerHTML = `<strong>${labelText}:</strong> ${value}`;
+        card.appendChild(p);
     }
     if (item['Processor Family'] || item['Processor']) {
         const proc = [item['Processor Family'], item['Processor']].filter(Boolean).join(' — ');
@@ -74,47 +55,20 @@ function createHPPartCardForTest(item) {
         if (!pn)
             return;
         const p = document.createElement('p');
-        p.className = 'hp-part-extras';
+        p.className = 'supply-chain-desc';
         const label = document.createElement('strong');
         label.textContent = `${labelText}:`;
         const text = document.createElement('span');
         text.textContent = ` ${pn}`;
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'copy-btn';
-        btn.setAttribute('aria-label', `Copy ${labelText.toLowerCase()} part number: ${pn}`);
-        btn.textContent = 'Copy';
-        const tip = document.createElement('span');
-        tip.className = 'copy-tip';
-        tip.setAttribute('aria-hidden', 'true');
-        tip.textContent = '';
-        btn.addEventListener('click', () => __awaiter(this, void 0, void 0, function* () {
-            try {
-                yield navigator.clipboard.writeText(pn);
-                announceLive(`Copied ${pn}`);
-                tip.textContent = 'Copied!';
-                setTimeout(() => { tip.textContent = ''; }, 1200);
-            }
-            catch (err) {
-                console.error('Copy failed', err);
-                announceLive('Copy failed');
-                tip.textContent = 'Failed';
-                setTimeout(() => { tip.textContent = ''; }, 1200);
-            }
-        }));
         p.appendChild(label);
         p.appendChild(text);
-        p.appendChild(document.createTextNode(' '));
-        p.appendChild(btn);
-        p.appendChild(tip);
         card.appendChild(p);
     }
     pnLine('Screen PN', item['Screen Replacement Part # (Common)']);
     pnLine('Battery PN', item['Battery Replacement Part # (Common)']);
     return card;
 }
-// Expose helper for test runners
-globalThis.__createHPPartCardForTest = createHPPartCardForTest;
+// Note: helper is exported for tests; do not rely on global exposure.
 // Top-level announceLive stub for use by helper; DOMContentLoaded will set window.__announceLive
 function announceLiveStub(message) {
     try {
