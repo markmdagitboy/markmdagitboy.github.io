@@ -209,6 +209,7 @@
             </footer>
         </main>
     </div>
-    <script type="module" src="dist/script.js" defer></script>
+    <!-- Prefer the bundled script for production; fallback to older dist/script.js if present -->
+    <script src="dist/script.bundle.js" defer></script>
 </body>
 </html>
