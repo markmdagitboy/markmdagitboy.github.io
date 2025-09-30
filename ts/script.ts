@@ -221,6 +221,144 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     loadAndDisplaySupplyChainData();
 
+    // Manufacturer maps: support three view modes - embedded, grid, thumbnails
+    (function manageManufacturerMaps() {
+        const mapContainer = document.getElementById('map-container');
+        const viewSelect = document.getElementById('map-view-select') as HTMLSelectElement | null;
+        const modal = document.getElementById('map-modal') as HTMLElement | null;
+        const modalBody = document.getElementById('map-modal-body') as HTMLElement | null;
+        const modalClose = modal ? modal.querySelector('.map-modal-close') as HTMLButtonElement | null : null;
+
+    if (!mapContainer || !viewSelect) return;
+    const mc = mapContainer as HTMLElement;
+
+        type MapDef = { id: string; name: string; subtitle?: string; src: string };
+        const maps: MapDef[] = [
+            {
+                id: 'quanta',
+                name: 'Quanta Computer',
+                subtitle: 'Quanta Computer Inc.',
+                src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60918979.32972123!2d47.548828125000014!3d25.04579224030345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a73f83a3ab5d%3A0xc391ab1cf5f8bae9!2sQuanta%20Computer%20Inc.!5e1!3m2!1sen!2sus!4v1759192107767!5m2!1sen!2sus'
+            },
+            {
+                id: 'compal',
+                name: 'Compal Electronics',
+                subtitle: 'Compal Electronics, Inc.',
+                src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d67178764.97335072!2d-55.26281920403455!3d2.479846959788862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc93fbc6c9cff%3A0xbaf94dc0397341c1!2sCompal%20Electronics%2C%20Inc.!5e1!3m2!1sen!2sus!4v1759192158327!5m2!1sen!2sus'
+            },
+            {
+                id: 'wistron',
+                name: 'Wistron',
+                subtitle: 'Wistron Corp.',
+                src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59697452.47319248!2d58.63536408252298!3d27.40147589261721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd698fa1c9d%3A0x2c836807dbe09706!2zV0lUUyAoV2lzdHJvbiBJVFMpIOe3r-WJtei7n-mrlA!5e1!3m2!1sen!2sus!4v1759192215510!5m2!1sen!2sus'
+            },
+            {
+                id: 'foxconn',
+                name: 'Foxconn',
+                subtitle: 'Foxconn',
+                src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56710943.70579673!2d-160.82321526865508!3d32.50025850000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d93893a57f5ee3%3A0x843d8290d945980f!2sFoxconn!5e1!3m2!1sen!2sus!4v1759192259776!5m2!1sen!2sus'
+            }
+        ];
+
+        function createEmbedEl(map: MapDef) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'map-item';
+            const title = document.createElement('h4');
+            title.textContent = map.name;
+            wrapper.appendChild(title);
+            const embed = document.createElement('div');
+            embed.className = 'map-embed';
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+            iframe.setAttribute('title', `${map.name} map`);
+            iframe.src = map.src;
+            embed.appendChild(iframe);
+            wrapper.appendChild(embed);
+            return wrapper;
+        }
+
+        function createThumbEl(map: MapDef) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'map-item';
+            const btn = document.createElement('button');
+            btn.className = 'map-thumb';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', `Open ${map.name} map`);
+            const title = document.createElement('div');
+            title.className = 'thumb-title';
+            title.textContent = map.name;
+            const sub = document.createElement('div');
+            sub.className = 'thumb-sub';
+            sub.textContent = map.subtitle || '';
+            btn.appendChild(title);
+            btn.appendChild(sub);
+            btn.addEventListener('click', () => openMapModal(map));
+            wrapper.appendChild(btn);
+            return wrapper;
+        }
+
+        function renderEmbedded() {
+            mc.className = 'map-container embedded';
+            mc.innerHTML = '';
+            maps.forEach(m => mc.appendChild(createEmbedEl(m)));
+        }
+
+        function renderGrid() {
+            mc.className = 'map-container grid';
+            mc.innerHTML = '';
+            maps.forEach(m => mc.appendChild(createEmbedEl(m)));
+        }
+
+        function renderThumbnails() {
+            mc.className = 'map-container thumbnails';
+            mc.innerHTML = '';
+            maps.forEach(m => mc.appendChild(createThumbEl(m)));
+        }
+
+        function openMapModal(map: MapDef) {
+            if (!modal || !modalBody) return;
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden', 'false');
+            modalBody.innerHTML = '';
+            const embed = document.createElement('div');
+            embed.className = 'map-embed';
+            const iframe = document.createElement('iframe');
+            iframe.src = map.src;
+            iframe.setAttribute('title', `${map.name} map (modal)`);
+            iframe.setAttribute('loading', 'lazy');
+            iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+            embed.appendChild(iframe);
+            modalBody.appendChild(embed);
+        }
+
+        function closeMapModal() {
+            if (!modal || !modalBody) return;
+            modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden', 'true');
+            modalBody.innerHTML = '';
+        }
+
+        // wire up controls
+        viewSelect.addEventListener('change', () => {
+            const val = viewSelect.value;
+            if (val === 'embedded') renderEmbedded();
+            else if (val === 'grid') renderGrid();
+            else renderThumbnails();
+        });
+
+        if (modalClose) modalClose.addEventListener('click', closeMapModal);
+        if (modal) modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeMapModal();
+        });
+
+        // initial render: choose embedded by default
+        renderEmbedded();
+
+        // expose for testing if needed
+        (globalThis as any).__mapsRender = { renderEmbedded, renderGrid, renderThumbnails, openMapModal, closeMapModal };
+    })();
+
     // Profile image interaction
     const profileImage = document.querySelector('.profile-image') as HTMLImageElement | null;
     if (profileImage) {
