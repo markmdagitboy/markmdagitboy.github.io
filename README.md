@@ -27,4 +27,26 @@ Ideas:
 |------------------|-------------|----------|
 | Wiki Page for  | Pending | Pending |
 
+## Developer
+
+Quick commands for development:
+
+```powershell
+# install deps
+npm ci
+
+# build TypeScript
+npm run build
+
+# run tests
+npm test
+
+# run a quick static server (for local preview)
+npx http-server -c-1 -p 8080
+```
+
+Notes:
+- Source data lives in `data/` (remove duplicates if you edit files).
+- Use `npm run generate-thumbs` to regenerate map thumbnails if you edit the map list.
+
 
