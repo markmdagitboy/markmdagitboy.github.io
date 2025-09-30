@@ -14,8 +14,9 @@
   "lint": "node ./node_modules/eslint/bin/eslint.js \"{ts,test}/**/*.{ts,js}\"",
     "start": "npx http-server -c-1 -p 8080",
     "preview": "npx http-server -c-1 -p 8080",
-    "convert-images": "node scripts/convert-to-webp.js",
-    "generate-thumbs": "node scripts/generate-map-thumbs.js"
+    "convert-images": "node scripts/images.js convert",
+    "generate-thumbs": "node scripts/images.js thumbs",
+    "images:all": "node scripts/images.js all"
   },
   "lhci": {
     "collect": {
