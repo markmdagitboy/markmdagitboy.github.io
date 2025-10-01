@@ -29,7 +29,6 @@ function createTable(container, data, headers) {
         const row = document.createElement("tr");
         headers.forEach(header => {
             const cell = document.createElement("td");
-            // Use the header as the key to access the data
             cell.textContent = String(item[header] || '');
             row.appendChild(cell);
         });
@@ -41,19 +40,56 @@ function createTable(container, data, headers) {
     container.appendChild(table);
 }
 
+function createLaptopCard(container, laptop) {
+    const card = document.createElement('div');
+    card.className = 'laptop-card';
+
+    const title = document.createElement('h3');
+    title.textContent = laptop.Model;
+    card.appendChild(title);
+
+    const specsToShow = {
+        "Processor": laptop.Processor,
+        "Memory": laptop.Memory,
+        "Internal Drive": laptop["Internal Drive"],
+        "Display": laptop.Display,
+        "Graphics": laptop.Graphics,
+        "Screen Part #": laptop["Screen Replacement Part # (Common)"],
+        "Battery Part #": laptop["Battery Replacement Part # (Common)"],
+        "RAM Part #": laptop["RAM Replacement Part # (Common)"],
+        "SSD Part #": laptop["SSD Replacement Part # (Common)"]
+    };
+
+    for (const [key, value] of Object.entries(specsToShow)) {
+        if (value) {
+            const specDiv = document.createElement('div');
+            specDiv.className = 'spec';
+
+            const keySpan = document.createElement('span');
+            keySpan.className = 'spec-key';
+            keySpan.textContent = key + ':';
+            specDiv.appendChild(keySpan);
+
+            const valueSpan = document.createElement('span');
+            valueSpan.className = 'spec-value';
+            valueSpan.textContent = value;
+            specDiv.appendChild(valueSpan);
+
+            card.appendChild(specDiv);
+        }
+    }
+
+    container.appendChild(card);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const laptopsContainer = document.getElementById("laptops-table-container");
+    const laptopsContainer = document.getElementById("laptops-card-container");
     if (laptopsContainer) {
         fetchData("../laptops.json")
             .then(data => {
-                const headers = [
-                    "Model", "Processor", "Memory", "Internal Drive", "Display", "Graphics",
-                    "Screen Replacement Part # (Common)", "Battery Replacement Part # (Common)",
-                    "RAM Replacement Part # (Common)", "SSD Replacement Part # (Common)"
-                ];
-                createTable(laptopsContainer, data, headers);
+                data.forEach(laptop => createLaptopCard(laptopsContainer, laptop));
             })
-            .catch(error => console.error("Error fetching or creating laptops table:", error));
+            .catch(error => console.error("Error fetching or creating laptops cards:", error));
     }
 
     const supplyChainContainer = document.getElementById("supply-chain-table-container");
