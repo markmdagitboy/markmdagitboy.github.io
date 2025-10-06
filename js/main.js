@@ -116,64 +116,38 @@ function createSupplyChainCard(container, item) {
         });
     }
 
-    // Infographic for Assembly Partners (ODMs)
-    if (item["Primary Assembly Partners (ODMs)"] && item["Primary Assembly Partners (ODMs)"].length > 0) {
+    // Logos for Assembly Partners (ODMs)
+    if (Array.isArray(item["Primary Assembly Partners (ODMs)"]) && item["Primary Assembly Partners (ODMs)"].length > 0) {
         const specDiv = document.createElement('div');
-        specDiv.className = 'spec';
+        specDiv.className = 'spec spec-partners';
 
         const keySpan = document.createElement('span');
         keySpan.className = 'spec-key';
         keySpan.textContent = 'Assembly Partners (ODMs):';
         specDiv.appendChild(keySpan);
 
-        const chartContainer = document.createElement('div');
-        chartContainer.className = 'infographic-container infographic-container-pie';
-        const canvas = document.createElement('canvas');
-        const canvasId = `partners-chart-${item["Model Series"]}-${item["Generation"]}`.replace(/\s+/g, '-');
-        canvas.id = canvasId;
-        chartContainer.appendChild(canvas);
-        specDiv.appendChild(chartContainer);
-        card.appendChild(specDiv);
+        const logoContainer = document.createElement('div');
+        logoContainer.className = 'logo-container';
 
-        setTimeout(() => {
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            const partners = item["Primary Assembly Partners (ODMs)"].map(p => p.name);
-            new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    labels: partners,
-                    datasets: [{
-                        data: partners.map(() => 1), // Equal slices
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.6)',
-                            'rgba(54, 162, 235, 0.6)',
-                            'rgba(255, 206, 86, 0.6)',
-                            'rgba(75, 192, 192, 0.6)',
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                             labels: {
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }, 0);
+        item["Primary Assembly Partners (ODMs)"].forEach(partner => {
+            if (partner.logo_url) {
+                const logoLink = document.createElement('a');
+                logoLink.href = partner.map_url;
+                logoLink.target = '_blank';
+                logoLink.title = `View map of ${partner.name}`;
+
+                const logoImg = document.createElement('img');
+                logoImg.src = partner.logo_url;
+                logoImg.alt = `${partner.name} logo`;
+                logoImg.className = 'partner-logo';
+
+                logoLink.appendChild(logoImg);
+                logoContainer.appendChild(logoLink);
+            }
+        });
+
+        specDiv.appendChild(logoContainer);
+        card.appendChild(specDiv);
     }
 
     // Infographic for Notes & Context
