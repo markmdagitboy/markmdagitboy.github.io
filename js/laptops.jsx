@@ -1,3 +1,22 @@
+const CopyToClipboard = ({ text }) => {
+    const [isCopied, setIsCopied] = React.useState(false);
+
+    const copy = () => {
+        navigator.clipboard.writeText(text).then(() => {
+            setIsCopied(true);
+            setTimeout(() => {
+                setIsCopied(false);
+            }, 2000); // Reset after 2 seconds
+        });
+    };
+
+    return (
+        <button onClick={copy} className="copy-button" title="Copy to clipboard">
+            {isCopied ? <i className="fas fa-check"></i> : <i className="fas fa-copy"></i>}
+        </button>
+    );
+};
+
 const LaptopCard = ({ laptop }) => {
     const specsToShow = {
         "Processor": laptop.Processor,
@@ -5,11 +24,13 @@ const LaptopCard = ({ laptop }) => {
         "Internal Drive": laptop["Internal Drive"],
         "Display": laptop.Display,
         "Graphics": laptop.Graphics,
-        "Screen Part #": laptop["Screen Replacement Part # (Common)"],
-        "Battery Part #": laptop["Battery Replacement Part # (Common)"],
-        "RAM Part #": laptop["RAM Replacement Part # (Common)"],
-        "SSD Part #": laptop["SSD Replacement Part # (Common)"]
+        "Screen Part #(s)": laptop["Screen Replacement Part # (Common)"],
+        "Battery Part #(s)": laptop["Battery Replacement Part # (Common)"],
+        "RAM Part #(s)": laptop["RAM Replacement Part # (Common)"],
+        "SSD Part #(s)": laptop["SSD Replacement Part # (Common)"]
     };
+
+    const partNumberKeys = ["Screen Part #(s)", "Battery Part #(s)", "RAM Part #(s)", "SSD Part #(s)"];
 
     return (
         <div className="laptop-card">
@@ -20,6 +41,7 @@ const LaptopCard = ({ laptop }) => {
                         <div key={key} className="spec">
                             <span className="spec-key">{key}:</span>
                             <span className="spec-value">{value}</span>
+                            {partNumberKeys.includes(key) && <CopyToClipboard text={value} />}
                         </div>
                     );
                 }
