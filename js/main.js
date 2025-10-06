@@ -82,10 +82,36 @@ function createSupplyChainCard(container, item) {
 
             const valueSpan = document.createElement('span');
             valueSpan.className = 'spec-value';
-            valueSpan.textContent = value;
-            specDiv.appendChild(valueSpan);
 
+            if (key === "Assembly Partners (ODMs)" && Array.isArray(value)) {
+                valueSpan.textContent = value.map(partner => partner.name).join(', ');
+            } else {
+                valueSpan.textContent = value;
+            }
+
+            specDiv.appendChild(valueSpan);
             card.appendChild(specDiv);
+
+            if (key === "Assembly Partners (ODMs)" && Array.isArray(value)) {
+                value.forEach(partner => {
+                    if (partner.map_url) {
+                        const mapContainer = document.createElement('div');
+                        mapContainer.className = 'map-container';
+
+                        const iframe = document.createElement('iframe');
+                        iframe.src = partner.map_url;
+                        iframe.width = '100%';
+                        iframe.height = '250';
+                        iframe.style.border = 0;
+                        iframe.allowFullscreen = true;
+                        iframe.loading = 'lazy';
+                        iframe.title = `Map of ${partner.name} headquarters`;
+
+                        mapContainer.appendChild(iframe);
+                        card.appendChild(mapContainer);
+                    }
+                });
+            }
         }
     }
     container.appendChild(card);
