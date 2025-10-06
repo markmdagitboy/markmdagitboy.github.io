@@ -2,7 +2,10 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G5",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"}
@@ -12,7 +15,10 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G5",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"}
@@ -22,7 +28,10 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G6",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -33,7 +42,10 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G6",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -44,7 +56,10 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G7",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -55,7 +70,10 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G7",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -66,7 +84,10 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G8",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"}
@@ -76,7 +97,10 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G8",
-    "Typical Final Assembly Location(s)": "China (Primarily Chongqing, Kunshan)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "Chongqing, China", "map_url": "https://maps.google.com/maps?q=Chongqing,China&t=&z=9&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"}
@@ -86,7 +110,10 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G9",
-    "Typical Final Assembly Location(s)": "China, Vietnam",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -97,7 +124,10 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G9",
-    "Typical Final Assembly Location(s)": "China, Vietnam",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -108,7 +138,11 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G10",
-    "Typical Final Assembly Location(s)": "China, Vietnam, Mexico",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -119,7 +153,11 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G10",
-    "Typical Final Assembly Location(s)": "China, Vietnam, Mexico",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -130,7 +168,12 @@
   {
     "Model Series": "Elitebook",
     "Generation": "G11",
-    "Typical Final Assembly Location(s)": "China, Vietnam, Mexico, USA (Limited)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "USA (Limited)", "map_url": "https://maps.google.com/maps?q=USA&t=&z=4&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
@@ -141,7 +184,12 @@
   {
     "Model Series": "Zbook Studio",
     "Generation": "G11",
-    "Typical Final Assembly Location(s)": "China, Vietnam, Mexico, USA (Limited)",
+    "Typical Final Assembly Location(s)": [
+        {"name": "China", "map_url": "https://maps.google.com/maps?q=China&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"},
+        {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"},
+        {"name": "USA (Limited)", "map_url": "https://maps.google.com/maps?q=USA&t=&z=4&ie=UTF8&iwloc=&output=embed"}
+    ],
     "Primary Assembly Partners (ODMs)": [
         {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},
         {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed"},

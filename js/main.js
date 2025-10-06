@@ -80,8 +80,8 @@ function createSupplyChainCard(container, item) {
     title.textContent = `${item["Model Series"]} ${item["Generation"]}`;
     card.appendChild(title);
 
-    // Infographic for Assembly Location(s)
-    if (item["Typical Final Assembly Location(s)"]) {
+    // Maps for Assembly Location(s)
+    if (Array.isArray(item["Typical Final Assembly Location(s)"]) && item["Typical Final Assembly Location(s)"].length > 0) {
         const specDiv = document.createElement('div');
         specDiv.className = 'spec';
 
@@ -89,57 +89,31 @@ function createSupplyChainCard(container, item) {
         keySpan.className = 'spec-key';
         keySpan.textContent = 'Assembly Location(s):';
         specDiv.appendChild(keySpan);
-
-        const chartContainer = document.createElement('div');
-        chartContainer.className = 'infographic-container infographic-container-bar';
-        const canvas = document.createElement('canvas');
-        // Generate a unique ID for the canvas
-        const canvasId = `locations-chart-${item["Model Series"]}-${item["Generation"]}`.replace(/\s+/g, '-');
-        canvas.id = canvasId;
-        chartContainer.appendChild(canvas);
-        specDiv.appendChild(chartContainer);
         card.appendChild(specDiv);
 
-        // Defer chart creation until the card is in the DOM
-        setTimeout(() => {
-            const ctx = document.getElementById(canvasId).getContext('2d');
-            const locations = item["Typical Final Assembly Location(s)"].split(',').map(s => s.trim());
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: locations,
-                    datasets: [{
-                        label: 'Assembly Presence',
-                        data: locations.map(() => 1), // Equal representation
-                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            display: false,
-                            beginAtZero: true,
-                            max: 1.1
-                        },
-                        y: {
-                             ticks: {
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
-                }
-            });
-        }, 0);
+        item["Typical Final Assembly Location(s)"].forEach(location => {
+            if (location.map_url) {
+                const mapContainer = document.createElement('div');
+                mapContainer.className = 'map-container';
+
+                const locationTitle = document.createElement('h4');
+                locationTitle.className = 'map-title';
+                locationTitle.textContent = location.name;
+                mapContainer.appendChild(locationTitle);
+
+                const iframe = document.createElement('iframe');
+                iframe.src = location.map_url;
+                iframe.width = '100%';
+                iframe.height = '250';
+                iframe.style.border = 0;
+                iframe.allowFullscreen = true;
+                iframe.loading = 'lazy';
+                iframe.title = `Map of ${location.name}`;
+
+                mapContainer.appendChild(iframe);
+                card.appendChild(mapContainer);
+            }
+        });
     }
 
     // Infographic for Assembly Partners (ODMs)
