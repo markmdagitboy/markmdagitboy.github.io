@@ -98,11 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch(error => console.error("Error fetching or creating laptops cards:", error));
     }
 
-    const supplyChainContainer = document.getElementById("supply-chain-card-container");
-    if (supplyChainContainer) {
+    const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
+    const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
+    if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {
         fetchData("../supply_chain.json")
             .then(data => {
-                data.forEach(item => createSupplyChainCard(supplyChainContainer, item));
+                const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
+                const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
+
+                elitebookSupplyData.forEach(item => createSupplyChainCard(elitebookSupplyChainContainer, item));
+                zbookSupplyData.forEach(item => createSupplyChainCard(zbookSupplyChainContainer, item));
             })
             .catch(error => console.error("Error fetching or creating supply chain cards:", error));
     }
