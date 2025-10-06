@@ -40,7 +40,23 @@ function createTable(container, data, headers) {
     container.appendChild(table);
 }
 
+function setActiveNav() {
+    const navLinks = document.querySelectorAll('nav a');
+    const currentPage = window.location.pathname.split('/').pop();
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    setActiveNav();
+
     const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
     if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {
