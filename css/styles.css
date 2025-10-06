@@ -373,3 +373,52 @@ table.table tbody tr:hover {
 .copy-button .fa-check {
     color: #42f598;
 }
+
+/* --- Infographic and Supply Chain Styles --- */
+.infographic-container {
+    padding-top: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.infographic-container-bar {
+    min-height: 120px;
+}
+
+.infographic-container-pie {
+    min-height: 220px;
+}
+
+/* Restyle spec blocks that contain our new infographics */
+.spec:has(.infographic-container),
+.spec:has(.spec-value-context) {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.spec:has(.infographic-container) .spec-key,
+.spec:has(.spec-value-context) .spec-key {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.spec-value-context {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #f0f0f0;
+    margin-top: 0.5rem;
+}
+
+.context-icon {
+    font-size: 1.5rem;
+    color: #00aaff;
+    flex-shrink: 0;
+}
+
+.map-container {
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
