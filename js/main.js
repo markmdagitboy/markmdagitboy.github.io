@@ -40,64 +40,7 @@ function createTable(container, data, headers) {
     container.appendChild(table);
 }
 
-function createLaptopCard(container, laptop) {
-    const card = document.createElement('div');
-    card.className = 'laptop-card';
-
-    const title = document.createElement('h3');
-    title.textContent = laptop.Model;
-    card.appendChild(title);
-
-    const specsToShow = {
-        "Processor": laptop.Processor,
-        "Memory": laptop.Memory,
-        "Internal Drive": laptop["Internal Drive"],
-        "Display": laptop.Display,
-        "Graphics": laptop.Graphics,
-        "Screen Part #": laptop["Screen Replacement Part # (Common)"],
-        "Battery Part #": laptop["Battery Replacement Part # (Common)"],
-        "RAM Part #": laptop["RAM Replacement Part # (Common)"],
-        "SSD Part #": laptop["SSD Replacement Part # (Common)"]
-    };
-
-    for (const [key, value] of Object.entries(specsToShow)) {
-        if (value) {
-            const specDiv = document.createElement('div');
-            specDiv.className = 'spec';
-
-            const keySpan = document.createElement('span');
-            keySpan.className = 'spec-key';
-            keySpan.textContent = key + ':';
-            specDiv.appendChild(keySpan);
-
-            const valueSpan = document.createElement('span');
-            valueSpan.className = 'spec-value';
-            valueSpan.textContent = value;
-            specDiv.appendChild(valueSpan);
-
-            card.appendChild(specDiv);
-        }
-    }
-
-    container.appendChild(card);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    const elitebookContainer = document.getElementById("elitebook-cards");
-    const zbookContainer = document.getElementById("zbook-cards");
-
-    if (elitebookContainer && zbookContainer) {
-        fetchData("../laptops.json")
-            .then(data => {
-                const elitebooks = data.filter(laptop => laptop.Model.includes('EliteBook'));
-                const zbooks = data.filter(laptop => laptop.Model.includes('ZBook'));
-
-                elitebooks.forEach(laptop => createLaptopCard(elitebookContainer, laptop));
-                zbooks.forEach(laptop => createLaptopCard(zbookContainer, laptop));
-            })
-            .catch(error => console.error("Error fetching or creating laptops cards:", error));
-    }
-
     const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
     if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {

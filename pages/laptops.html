@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
@@ -42,11 +45,7 @@
         <main class="resume-body">
 
             <section id="laptops">
-                <h1 class="section-title">HP Laptops Parts List Database</h1>
-                <h3 class="section-title">HP EliteBook</h3>
-                <div id="elitebook-cards" class="card-grid"></div>
-                <h3 class="section-title">HP ZBook Studio</h3>
-                <div id="zbook-cards" class="card-grid"></div>
+                <div id="root"></div>
             </section>
 
         </main>
@@ -56,6 +55,6 @@
         </footer>
 
     </div>
-    <script src="../js/main.js"></script>
+    <script src="../js/laptops.jsx" type="text/babel"></script>
 </body>
 </html>
