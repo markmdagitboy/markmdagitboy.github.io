@@ -432,3 +432,31 @@ table.table tbody tr:hover {
     color: #e0e0e0;
     margin-bottom: 0.75rem;
 }
+
+/* --- Partner Logo Styles --- */
+.spec-partners {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.partner-logo {
+    max-height: 40px;
+    max-width: 120px;
+    filter: brightness(0) invert(0.9); /* Make logos white to match theme */
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.partner-logo:hover {
+    opacity: 1;
+    filter: brightness(0) invert(1); /* Make logos pure white on hover */
+}
