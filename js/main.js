@@ -83,25 +83,62 @@ function createLaptopCard(container, laptop) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const laptopsContainer = document.getElementById("laptops-card-container");
-    if (laptopsContainer) {
+    const elitebookContainer = document.getElementById("elitebook-cards");
+    const zbookContainer = document.getElementById("zbook-cards");
+
+    if (elitebookContainer && zbookContainer) {
         fetchData("../laptops.json")
             .then(data => {
-                data.forEach(laptop => createLaptopCard(laptopsContainer, laptop));
+                const elitebooks = data.filter(laptop => laptop.Model.includes('EliteBook'));
+                const zbooks = data.filter(laptop => laptop.Model.includes('ZBook'));
+
+                elitebooks.forEach(laptop => createLaptopCard(elitebookContainer, laptop));
+                zbooks.forEach(laptop => createLaptopCard(zbookContainer, laptop));
             })
             .catch(error => console.error("Error fetching or creating laptops cards:", error));
     }
 
-    const supplyChainContainer = document.getElementById("supply-chain-table-container");
+    const supplyChainContainer = document.getElementById("supply-chain-card-container");
     if (supplyChainContainer) {
         fetchData("../supply_chain.json")
             .then(data => {
-                const headers = [
-                    "Model Series", "Generation", "Typical Final Assembly Location(s)",
-                    "Primary Assembly Partners (ODMs)", "Notes & Context"
-                ];
-                createTable(supplyChainContainer, data, headers);
+                data.forEach(item => createSupplyChainCard(supplyChainContainer, item));
             })
-            .catch(error => console.error("Error fetching or creating supply chain table:", error));
+            .catch(error => console.error("Error fetching or creating supply chain cards:", error));
     }
 });
+
+function createSupplyChainCard(container, item) {
+    const card = document.createElement('div');
+    card.className = 'laptop-card'; // Re-use laptop-card styling
+
+    const title = document.createElement('h3');
+    title.textContent = `${item["Model Series"]} ${item["Generation"]}`;
+    card.appendChild(title);
+
+    const specsToShow = {
+        "Assembly Location(s)": item["Typical Final Assembly Location(s)"],
+        "Assembly Partners (ODMs)": item["Primary Assembly Partners (ODMs)"],
+        "Notes & Context": item["Notes & Context"]
+    };
+
+    for (const [key, value] of Object.entries(specsToShow)) {
+        if (value) {
+            const specDiv = document.createElement('div');
+            specDiv.className = 'spec';
+
+            const keySpan = document.createElement('span');
+            keySpan.className = 'spec-key';
+            keySpan.textContent = key + ':';
+            specDiv.appendChild(keySpan);
+
+            const valueSpan = document.createElement('span');
+            valueSpan.className = 'spec-value';
+            valueSpan.textContent = value;
+            specDiv.appendChild(valueSpan);
+
+            card.appendChild(specDiv);
+        }
+    }
+    container.appendChild(card);
+}
