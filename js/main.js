@@ -134,7 +134,7 @@ function createSupplyChainCard(container, item) {
                 const logoLink = document.createElement('a');
                 logoLink.href = partner.map_url;
                 logoLink.target = '_blank';
-                logoLink.title = `View map of ${partner.name}`;
+                logoLink.title = `Visit website of ${partner.name}`;
 
                 const logoImg = document.createElement('img');
                 logoImg.src = partner.logo_url;

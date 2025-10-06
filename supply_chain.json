@@ -7,8 +7,8 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
     ],
     "Notes & Context": "At the time of the G5's production, Chongqing was solidifying its status as the world's largest laptop manufacturing base."
   },
@@ -20,8 +20,8 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
     ],
     "Notes & Context": "At the time of the G5's production, Chongqing was solidifying its status as the world's largest laptop manufacturing base."
   },
@@ -33,9 +33,9 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Wistron", "map_url": "https://maps.google.com/maps?q=Wistron+Corporation,+No.+158,+Xingshan+Road,+Neihu+District,+Taipei,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Wistron", "map_url": "https://www.wistron.com/en", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
     ],
     "Notes & Context": "Supply chains were heavily concentrated in mainland China. The G6 followed this established manufacturing footprint."
   },
@@ -47,9 +47,9 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Wistron", "map_url": "https://maps.google.com/maps?q=Wistron+Corporation,+No.+158,+Xingshan+Road,+Neihu+District,+Taipei,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Wistron", "map_url": "https://www.wistron.com/en", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
     ],
     "Notes & Context": "Supply chains were heavily concentrated in mainland China. The G6 followed this established manufacturing footprint."
   },
@@ -61,9 +61,9 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Wistron", "map_url": "https://maps.google.com/maps?q=Wistron+Corporation,+No.+158,+Xingshan+Road,+Neihu+District,+Taipei,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Wistron", "map_url": "https://www.wistron.com/en", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
     ],
     "Notes & Context": "Production continued in established Chinese industrial hubs. Minor disruptions began to appear due to early pandemic-related supply chain issues."
   },
@@ -75,9 +75,9 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Wistron", "map_url": "https://maps.google.com/maps?q=Wistron+Corporation,+No.+158,+Xingshan+Road,+Neihu+District,+Taipei,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Wistron", "map_url": "https://www.wistron.com/en", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Wistron_logo.svg"}
     ],
     "Notes & Context": "Production continued in established Chinese industrial hubs. Minor disruptions began to appear due to early pandemic-related supply chain issues."
   },
@@ -89,8 +89,8 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
     ],
     "Notes & Context": "The pandemic solidified the reliance on these large-scale manufacturing centers, even as global logistics became more complex."
   },
@@ -102,8 +102,8 @@
         {"name": "Kunshan, China", "map_url": "https://maps.google.com/maps?q=Kunshan,Suzhou,Jiangsu,China&t=&z=9&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"}
     ],
     "Notes & Context": "The pandemic solidified the reliance on these large-scale manufacturing centers, even as global logistics became more complex."
   },
@@ -115,9 +115,9 @@
         {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "HP began to diversify its assembly locations more significantly. While still primarily in China, some production shifted to Vietnam as part of a 'China +1' strategy."
   },
@@ -129,9 +129,9 @@
         {"name": "Vietnam", "map_url": "https://maps.google.com/maps?q=Vietnam&t=&z=6&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "HP began to diversify its assembly locations more significantly. While still primarily in China, some production shifted to Vietnam as part of a 'China +1' strategy."
   },
@@ -144,9 +144,9 @@
         {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "Diversification continues. Assembly in Mexico often serves the North American market more directly, reducing shipping times and tariffs."
   },
@@ -159,9 +159,9 @@
         {"name": "Mexico", "map_url": "https://maps.google.com/maps?q=Mexico&t=&z=5&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "Diversification continues. Assembly in Mexico often serves the North American market more directly, reducing shipping times and tariffs."
   },
@@ -175,9 +175,9 @@
         {"name": "USA (Limited)", "map_url": "https://maps.google.com/maps?q=USA&t=&z=4&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "The trend of geographic diversification is most pronounced with the latest models. Limited final assembly or 'fulfillment' for specific large corporate or government orders may occur in the USA."
   },
@@ -191,9 +191,9 @@
         {"name": "USA (Limited)", "map_url": "https://maps.google.com/maps?q=USA&t=&z=4&ie=UTF8&iwloc=&output=embed"}
     ],
     "Primary Assembly Partners (ODMs)": [
-        {"name": "Quanta Computer", "map_url": "https://maps.google.com/maps?q=Quanta+Computer+Inc.,+No.+211,+Wenhua+2nd+Rd.,+Guishan+Dist.,+Taoyuan+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
-        {"name": "Compal Electronics", "map_url": "https://maps.google.com/maps?q=Compal+Electronics,+No.+581,+Ruiguang+Rd.,+Neihu+District,+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
-        {"name": "Foxconn", "map_url": "https://maps.google.com/maps?q=Foxconn,+No.+66-1,+Zhongshan+Road,+Tucheng+District,+New+Taipei+City,+Taiwan&t=&z=13&ie=UTF8&iwloc=&output=embed", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
+        {"name": "Quanta Computer", "map_url": "https://www.quantatw.com/quanta/english/default.aspx", "logo_url": "https://www.quantatw.com/quantatw/english/images/logo.png"},
+        {"name": "Compal Electronics", "map_url": "https://www.compal.com/en-us/", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Compal_Electronics_logo.svg"},
+        {"name": "Foxconn", "map_url": "https://www.foxconn.com/en-us", "logo_url": "https://upload.wikimedia.org/wikipedia/commons/2/28/Foxconn_logo.svg"}
     ],
     "Notes & Context": "The trend of geographic diversification is most pronounced with the latest models. Limited final assembly or 'fulfillment' for specific large corporate or government orders may occur in the USA."
   }
