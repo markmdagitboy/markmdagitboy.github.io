@@ -273,6 +273,39 @@ footer {
 }
 
 
+/* --- Project Toggle Buttons --- */
+.project-toggle {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.project-toggle button {
+    background-color: #343a40; /* Brighter than laptop-card */
+    color: #f0f0f0;
+    border: 1px solid #4a4a4a;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-toggle button:hover {
+    background-color: #495057;
+    border-color: #6c757d;
+}
+
+.project-toggle button.active {
+    background-color: #00aaff;
+    color: #ffffff;
+    border-color: #00aaff;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+}
+
+
 /* --- Table Styles --- */
 #laptops-table-container,
 #supply-chain-table-container {
