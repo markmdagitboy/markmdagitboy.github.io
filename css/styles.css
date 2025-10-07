@@ -341,7 +341,7 @@ table.table tbody tr:hover {
 .laptop-card .spec-key {
     font-weight: 600;
     color: #c0c0c0;
-    width: 120px;
+    width: 400px;
     flex-shrink: 0;
 }
 
