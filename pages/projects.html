@@ -45,6 +45,7 @@
                 <div class="project-toggle">
                     <button id="laptops-btn" class="active">Laptops</button>
                     <button id="supply-chain-btn">Supply Chain</button>
+                    <button id="accessories-btn">Laptop Accessories</button>
                 </div>
 
                 <section id="laptops">
@@ -57,6 +58,10 @@
                     <div id="elitebook-supply-chain-cards" class="card-grid"></div>
                     <h3 class="section-title">HP ZBook Studio</h3>
                     <div id="zbook-supply-chain-cards" class="card-grid"></div>
+                </section>
+
+                <section id="accessories" style="display: none;">
+                    <!-- This section is intentionally blank for now -->
                 </section>
 
             </main>
@@ -74,21 +79,36 @@
         document.addEventListener('DOMContentLoaded', function() {
             const laptopsBtn = document.getElementById('laptops-btn');
             const supplyChainBtn = document.getElementById('supply-chain-btn');
+            const accessoriesBtn = document.getElementById('accessories-btn');
             const laptopsSection = document.getElementById('laptops');
             const supplyChainSection = document.getElementById('supply-chain');
+            const accessoriesSection = document.getElementById('accessories');
 
             laptopsBtn.addEventListener('click', () => {
                 laptopsSection.style.display = 'block';
                 supplyChainSection.style.display = 'none';
+                accessoriesSection.style.display = 'none';
                 laptopsBtn.classList.add('active');
                 supplyChainBtn.classList.remove('active');
+                accessoriesBtn.classList.remove('active');
             });
 
             supplyChainBtn.addEventListener('click', () => {
                 laptopsSection.style.display = 'none';
                 supplyChainSection.style.display = 'block';
+                accessoriesSection.style.display = 'none';
                 supplyChainBtn.classList.add('active');
                 laptopsBtn.classList.remove('active');
+                accessoriesBtn.classList.remove('active');
+            });
+
+            accessoriesBtn.addEventListener('click', () => {
+                laptopsSection.style.display = 'none';
+                supplyChainSection.style.display = 'none';
+                accessoriesSection.style.display = 'block';
+                accessoriesBtn.classList.add('active');
+                laptopsBtn.classList.remove('active');
+                supplyChainBtn.classList.remove('active');
             });
         });
     </script>
