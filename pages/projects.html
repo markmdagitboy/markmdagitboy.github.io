@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marcos Alvarez | Supply Chain</title>
+    <title>Marcos Alvarez | Projects</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
@@ -33,15 +36,22 @@
                 <li><a href="skills.html"><i class="fas fa-cogs"></i> Skills</a></li>
                 <li><a href="experience.html"><i class="fas fa-briefcase"></i> Experience</a></li>
                 <li><a href="education.html"><i class="fas fa-user-graduate"></i> Education</a></li>
-                <li><a href="laptops.html"><i class="fas fa-laptop"></i> Laptops</a></li>
-                <li><a href="supply_chain.html"><i class="fas fa-industry"></i> Supply Chain</a></li>
+                <li><a href="projects.html"><i class="fas fa-project-diagram"></i> Projects</a></li>
             </ul>
         </nav>
 
         <div class="content-wrapper">
             <main>
+                <div class="project-toggle">
+                    <button id="laptops-btn" class="active">Laptops</button>
+                    <button id="supply-chain-btn">Supply Chain</button>
+                </div>
 
-                <section id="supply-chain">
+                <section id="laptops">
+                    <div id="root"></div>
+                </section>
+
+                <section id="supply-chain" style="display: none;">
                     <h2 class="section-title">Supply Chain Analysis</h2>
                     <h3 class="section-title">HP EliteBook</h3>
                     <div id="elitebook-supply-chain-cards" class="card-grid"></div>
@@ -59,5 +69,28 @@
 
     </div>
     <script src="../js/main.js"></script>
+    <script src="../js/laptops.jsx" type="text/babel"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const laptopsBtn = document.getElementById('laptops-btn');
+            const supplyChainBtn = document.getElementById('supply-chain-btn');
+            const laptopsSection = document.getElementById('laptops');
+            const supplyChainSection = document.getElementById('supply-chain');
+
+            laptopsBtn.addEventListener('click', () => {
+                laptopsSection.style.display = 'block';
+                supplyChainSection.style.display = 'none';
+                laptopsBtn.classList.add('active');
+                supplyChainBtn.classList.remove('active');
+            });
+
+            supplyChainBtn.addEventListener('click', () => {
+                laptopsSection.style.display = 'none';
+                supplyChainSection.style.display = 'block';
+                supplyChainBtn.classList.add('active');
+                laptopsBtn.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
