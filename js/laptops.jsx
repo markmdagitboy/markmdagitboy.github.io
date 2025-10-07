@@ -55,7 +55,7 @@ const Laptops = () => {
     const [laptops, setLaptops] = React.useState([]);
 
     React.useEffect(() => {
-        fetch('../laptops.json')
+        fetch('/laptops.json')
             .then(response => response.json())
             .then(data => setLaptops(data));
     }, []);
