@@ -460,3 +460,27 @@ table.table tbody tr:hover {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #4a4a4a;
 }
+
+/* --- Copy Button for Accessories --- */
+/* Adjust flex behavior for part number spec line to keep button next to text */
+.laptop-card .spec:has(.copy-btn) .spec-value {
+    flex-grow: 0;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+}
+
+.copy-btn:hover {
+    color: #00aaff;
+}
+
+.copy-btn .fa-check {
+    color: #28a745; /* Green check for success */
+}
