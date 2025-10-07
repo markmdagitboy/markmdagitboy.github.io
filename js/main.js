@@ -116,37 +116,37 @@ function createSupplyChainCard(container, item) {
         });
     }
 
-    // Logos for Assembly Partners (ODMs)
+    // Text links for Assembly Partners (ODMs)
     if (Array.isArray(item["Primary Assembly Partners (ODMs)"]) && item["Primary Assembly Partners (ODMs)"].length > 0) {
         const specDiv = document.createElement('div');
-        specDiv.className = 'spec spec-partners';
+        specDiv.className = 'spec';
 
         const keySpan = document.createElement('span');
         keySpan.className = 'spec-key';
         keySpan.textContent = 'Assembly Partners (ODMs):';
         specDiv.appendChild(keySpan);
 
-        const logoContainer = document.createElement('div');
-        logoContainer.className = 'logo-container';
+        const valueSpan = document.createElement('span');
+        valueSpan.className = 'spec-value';
 
-        item["Primary Assembly Partners (ODMs)"].forEach(partner => {
-            if (partner.logo_url) {
-                const logoLink = document.createElement('a');
-                logoLink.href = partner.map_url;
-                logoLink.target = '_blank';
-                logoLink.title = `Visit website of ${partner.name}`;
+        item["Primary Assembly Partners (ODMs)"].forEach((partner, index) => {
+            if (partner.map_url && partner.name) {
+                const partnerLink = document.createElement('a');
+                partnerLink.href = partner.map_url;
+                partnerLink.target = '_blank';
+                partnerLink.textContent = partner.name;
 
-                const logoImg = document.createElement('img');
-                logoImg.src = partner.logo_url;
-                logoImg.alt = `${partner.name} logo`;
-                logoImg.className = 'partner-logo';
+                valueSpan.appendChild(partnerLink);
 
-                logoLink.appendChild(logoImg);
-                logoContainer.appendChild(logoLink);
+                // Add a separator if it's not the last item
+                if (index < item["Primary Assembly Partners (ODMs)"].length - 1) {
+                    const separator = document.createTextNode(', ');
+                    valueSpan.appendChild(separator);
+                }
             }
         });
 
-        specDiv.appendChild(logoContainer);
+        specDiv.appendChild(valueSpan);
         card.appendChild(specDiv);
     }
 
