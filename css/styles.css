@@ -333,22 +333,23 @@ table.table tbody tr:hover {
 
 .laptop-card .spec {
     display: flex;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
+    align-items: baseline;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .laptop-card .spec-key {
     font-weight: 600;
     color: #c0c0c0;
-    width: 400px;
+    flex-basis: 180px;
     flex-shrink: 0;
+    padding-right: 1rem;
 }
 
 .laptop-card .spec-value {
     color: #f0f0f0;
     flex-grow: 1;
-    margin-right: 0.5rem;
 }
 
 .copy-button {
