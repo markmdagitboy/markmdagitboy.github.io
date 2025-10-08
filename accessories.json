@@ -2,155 +2,91 @@
   "HP EliteBook Accessories (G5-G11)": {
     "Docking Stations": [
       {
-        "model": "HP Thunderbolt Dock G2 (120W/230W)",
-        "part_number": "2UK37AA / 3TR87AA",
-        "description": "Versatile Thunderbolt 3 dock with multiple ports, suitable for G5-G8 models."
-      },
-      {
         "model": "HP USB-C Dock G5",
         "part_number": "5TW10AA",
         "description": "Universal USB-C dock, widely compatible across all generations."
       },
-      {
-        "model": "HP Thunderbolt Dock G4 (120W/280W)",
-        "part_number": "4J0A2AA / 4J0A3AA",
-        "description": "Modern Thunderbolt 4 dock, best for G8 and newer models but backward compatible."
-      },
-      {
-        "model": "HP USB-C/A Universal Dock G2",
-        "part_number": "5TW13AA",
-        "description": "Flexible dock with both USB-C and USB-A connectivity."
-      }
     ],
     "Power Adapters": [
       {
         "model": "HP 65W USB-C Power Adapter",
-        "part_number": "1HE08AA",
-        "description": "Standard power adapter for most 13\" and 14\" EliteBook models."
-      },
-      {
-        "model": "HP 90W USB-C Power Adapter",
         "part_number": "1P3K6AA",
         "description": "Higher wattage adapter for 15\" models or faster charging."
       },
-      {
-        "model": "HP 65W USB-C Slim Travel Power Adapter",
-        "part_number": "3PN48AA",
-        "description": "Compact adapter for portability."
-      }
     ],
     "Input Devices": [
       {
-        "model": "HP Active Pen G3",
-        "part_number": "6SG43UT",
-        "description": "Rechargeable pen for touchscreen EliteBook models (x360)."
+        "model": "Logitech MX Keys S Combo",
+        "part_number": "920-011889 (Black, English), 920-011889 (Graphite, English)",
+        "description": "Logitech MX KeyS keyboard and MX Master 3S mouse combo for premium typing and navigation experience."
       },
-      {
-        "model": "HP 975 Dual-Mode Wireless Keyboard",
-        "part_number": "3Z726AA",
-        "description": "Premium, quiet keyboard with smart backlighting."
-      },
-      {
-        "model": "HP 635 Multi-Device Wireless Mouse",
-        "part_number": "1D0K2AA",
-        "description": "Compact mouse that can connect to multiple devices."
-      }
     ],
     "Security": [
       {
-        "model": "HP Sure Key Cable Lock",
-        "part_number": "6UW42UT",
+        "model": "Kensington Combination Cable T-Bar Standard Lock Slot",
+        "part_number": "K64673AM",
         "description": "Physical security lock compatible with standard slots."
       },
       {
-        "model": "HP Privacy Filter",
-        "part_number": "Varies by screen size",
+        "model": "3M Privacy Filter",
+        "part_number": "PF133W9B (13.3\"), PF140W9B (14.0\"), PF156W9B (15.6\")",
         "description": "Screen filter to prevent visual hacking, available for 13.3\", 14.0\", and 15.6\" models."
       }
     ],
     "Cases & Sleeves": [
       {
-        "model": "HP Renew Business 14.1-inch Laptop Sleeve",
-        "part_number": "3E2U5AA",
-        "description": "Eco-friendly sleeve made from recycled materials for 14\" models."
+        "model": "HP 15.6-inch Modular Laptop Bag / HP 15.6-inch Modular Laptop Backpack",
+        "part_number": "9J4C2AA",
+        "description": "Modular laptop bag for travel."
       },
       {
-        "model": "HP Renew Business 15.6-inch Laptop Bag",
-        "part_number": "3E2U7AA",
-        "description": "Professional laptop bag for larger 15.6\" EliteBooks."
+        "model": "HP 15.6-inch Modular Laptop Backpack",
+        "part_number": "9J4C1AA",
+        "description": "Modular laptop backpack for travel."
       }
     ]
   },
   "HP ZBook Studio Accessories (G5-G11)": {
     "Docking Stations": [
       {
-        "model": "HP Thunderbolt Dock G2 with Combo Cable",
+        "model": "HP Thunderbolt Dock 230W G2 with Combo Cable",
         "part_number": "3TR87UT",
         "description": "High-performance dock required for the power demands of ZBooks, especially G5-G7."
       },
       {
-        "model": "HP Thunderbolt Dock G4 (280W)",
-        "part_number": "4J0A3AA",
+        "model": "HP Thunderbolt 4 Ultra 280W G6 Dock",
+        "part_number": "AW5M5UT#ABA",
         "description": "The standard high-power Thunderbolt 4 dock for ZBook Studio G8 and newer."
       },
-      {
-        "model": "HP ZBook Universal Dock",
-        "part_number": "A7E32AA",
-        "description": "An older but still functional option for G5/G6 models."
-      }
     ],
     "Power Adapters": [
       {
         "model": "HP 150W Slim Smart AC Adapter",
-        "part_number": "4.5mm (L32816-001)",
+        "part_number": "4SC18AA",
         "description": "Standard power adapter for G5/G6 models using the 4.5mm barrel connector."
       },
       {
         "model": "HP 200W Slim Smart AC Adapter",
-        "part_number": "4.5mm (L00818-850)",
+        "part_number": "491C7AA",
         "description": "Higher wattage adapter for models with more powerful discrete GPUs (G5-G7)."
       },
-      {
-        "model": "HP 150W USB-C Power Adapter G2",
-        "part_number": "4J0A1AA",
-        "description": "USB-C based power adapter for G8 and newer models supporting Power Delivery."
-      }
     ],
     "Input Devices": [
       {
-        "model": "HP ZBook Pen",
-        "part_number": "Y1T28AA",
-        "description": "Wacom EMR pen for ZBook Studio x360 G5 models."
-      },
+        "model": "Dual HP Series 5 Pro 27 inch QHD Monitor - 527pq Bundle",
+        "part_number": "Dual_527pq_Mon_Kit",
+      }
       {
-        "model": "HP Pen G2",
-        "part_number": "6SP21AA",
-        "description": "Active pen for later generation ZBook Studio touchscreen models."
-      },
-      {
-        "model": "HP Wireless Premium Mouse",
-        "part_number": "1JR31AA",
-        "description": "Comfortable and precise mouse suitable for design work."
-      },
-      {
-        "model": "HP DreamColor Z27x G3 Display",
-        "part_number": "1J3Y8A8",
-        "description": "Professional 27-inch 4K monitor with extensive color accuracy for creative workflows."
+        "model": "Dual HP Series 7 Pro 27 inch QHD Thunderbolt 4 Monitor - 727pu Bundle",
+        "part_number": "Dual_727pu_Mon_Kit",
       }
     ],
     "Security": [
       {
-        "model": "HP Nano Keyed Cable Lock",
-        "part_number": "1AJ39UT",
+        "model": "Kensington NanoSaver Keyed Laptop Lock for Select HP Laptops",
+        "part_number": "K64444WW",
         "description": "Security lock for the nano security slot found on many ZBook models."
       }
     ],
-    "Other": [
-      {
-        "model": "HP ZBook Mobile Workstation Sleeve",
-        "part_number": "Varies by size",
-        "description": "Protective sleeve designed to fit the specific dimensions of 15.6\" ZBook Studio models."
-      }
-    ]
   }
 }
