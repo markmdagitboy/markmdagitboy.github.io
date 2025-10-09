@@ -5,14 +5,14 @@
         "model": "HP USB-C Dock G5",
         "part_number": "5TW10AA",
         "description": "Universal USB-C dock, widely compatible across all generations."
-      },
+      }
     ],
     "Power Adapters": [
       {
         "model": "HP 65W USB-C Power Adapter",
         "part_number": "1P3K6AA",
         "description": "Higher wattage adapter for 15\" models or faster charging."
-      },
+      }
     ],
     "Input Devices": [
       {
