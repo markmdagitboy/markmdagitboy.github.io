@@ -19,7 +19,7 @@
         "model": "Logitech MX Keys S Combo",
         "part_number": "920-011889 (Black, English), 920-011889 (Graphite, English)",
         "description": "Logitech MX KeyS keyboard and MX Master 3S mouse combo for premium typing and navigation experience."
-      },
+      }
     ],
     "Security": [
       {
@@ -57,7 +57,7 @@
         "model": "HP Thunderbolt 4 Ultra 280W G6 Dock",
         "part_number": "AW5M5UT#ABA",
         "description": "The standard high-power Thunderbolt 4 dock for ZBook Studio G8 and newer."
-      },
+      }
     ],
     "Power Adapters": [
       {
@@ -69,16 +69,16 @@
         "model": "HP 200W Slim Smart AC Adapter",
         "part_number": "491C7AA",
         "description": "Higher wattage adapter for models with more powerful discrete GPUs (G5-G7)."
-      },
+      }
     ],
     "Input Devices": [
       {
         "model": "Dual HP Series 5 Pro 27 inch QHD Monitor - 527pq Bundle",
-        "part_number": "Dual_527pq_Mon_Kit",
-      }
+        "part_number": "Dual_527pq_Mon_Kit"
+      },
       {
         "model": "Dual HP Series 7 Pro 27 inch QHD Thunderbolt 4 Monitor - 727pu Bundle",
-        "part_number": "Dual_727pu_Mon_Kit",
+        "part_number": "Dual_727pu_Mon_Kit"
       }
     ],
     "Security": [
