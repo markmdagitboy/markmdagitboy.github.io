@@ -45,6 +45,7 @@
                 <div class="project-toggle">
                     <button id="laptops-btn" class="active">Laptops</button>
                     <button id="supply-chain-btn">Supply Chain</button>
+                    <button id="w10-incompatible-btn">W10 Incompatible Solution</button>
                 </div>
 
                 <section id="laptops">
@@ -59,6 +60,10 @@
                     <div id="zbook-supply-chain-cards" class="card-grid"></div>
                 </section>
 
+                <section id="w10-incompatible" style="display: none;">
+                    <h2 class="section-title">W10 Incompatible Solution</h2>
+                    <p>This section will contain information about solutions for Windows 10 incompatibility.</p>
+                </section>
             </main>
 
             <footer>
@@ -74,21 +79,36 @@
         document.addEventListener('DOMContentLoaded', function() {
             const laptopsBtn = document.getElementById('laptops-btn');
             const supplyChainBtn = document.getElementById('supply-chain-btn');
+            const w10IncompatibleBtn = document.getElementById('w10-incompatible-btn');
             const laptopsSection = document.getElementById('laptops');
             const supplyChainSection = document.getElementById('supply-chain');
+            const w10IncompatibleSection = document.getElementById('w10-incompatible');
 
             laptopsBtn.addEventListener('click', () => {
                 laptopsSection.style.display = 'block';
                 supplyChainSection.style.display = 'none';
+                w10IncompatibleSection.style.display = 'none';
                 laptopsBtn.classList.add('active');
                 supplyChainBtn.classList.remove('active');
+                w10IncompatibleBtn.classList.remove('active');
             });
 
             supplyChainBtn.addEventListener('click', () => {
                 laptopsSection.style.display = 'none';
                 supplyChainSection.style.display = 'block';
+                w10IncompatibleSection.style.display = 'none';
                 supplyChainBtn.classList.add('active');
                 laptopsBtn.classList.remove('active');
+                w10IncompatibleBtn.classList.remove('active');
+            });
+
+            w10IncompatibleBtn.addEventListener('click', () => {
+                laptopsSection.style.display = 'none';
+                supplyChainSection.style.display = 'none';
+                w10IncompatibleSection.style.display = 'block';
+                w10IncompatibleBtn.classList.add('active');
+                laptopsBtn.classList.remove('active');
+                supplyChainBtn.classList.remove('active');
             });
         });
     </script>
