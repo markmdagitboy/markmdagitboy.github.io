@@ -51,6 +51,47 @@ const LaptopCard = ({ laptop }) => {
     );
 };
 
+const AccessoryCard = ({ accessory }) => {
+    return (
+        <div className="accessory-card">
+            <h4>{accessory.model}</h4>
+            {accessory.part_number && <p><strong>Part Number:</strong> {accessory.part_number}</p>}
+            {accessory.description && <p>{accessory.description}</p>}
+        </div>
+    );
+};
+
+const Accessories = () => {
+    const [accessories, setAccessories] = React.useState({});
+
+    React.useEffect(() => {
+        fetch('/accessories.json')
+            .then(response => response.json())
+            .then(data => setAccessories(data));
+    }, []);
+
+    return (
+        <React.Fragment>
+            <h2 className="section-title">Laptop Accessories</h2>
+            {Object.entries(accessories).map(([category, items]) => (
+                <div key={category}>
+                    <h3 className="section-title">{category}</h3>
+                    <div className="card-grid">
+                        {Object.entries(items).map(([subCategory, subItems]) => (
+                            <div key={subCategory} className="accessory-category">
+                                <h4>{subCategory}</h4>
+                                <div className="card-grid">
+                                    {subItems.map(item => <AccessoryCard key={item.model} accessory={item} />)}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </React.Fragment>
+    );
+};
+
 const Laptops = () => {
     const [laptops, setLaptops] = React.useState([]);
 
@@ -74,6 +115,7 @@ const Laptops = () => {
             <div id="zbook-cards" className="card-grid">
                 {zbooks.map(laptop => <LaptopCard key={laptop.Model} laptop={laptop} />)}
             </div>
+            <Accessories />
         </React.Fragment>
     );
 };
