@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const elitebookSupplyChainContainer = document.getElementById("elitebook-supply-chain-cards");
     const zbookSupplyChainContainer = document.getElementById("zbook-supply-chain-cards");
     if (elitebookSupplyChainContainer && zbookSupplyChainContainer) {
-        fetchData("/supply_chain.json")
+        fetchData("/data/supply_chain.json")
             .then(data => {
                 const elitebookSupplyData = data.filter(item => item["Model Series"] === "Elitebook");
                 const zbookSupplyData = data.filter(item => item["Model Series"] === "Zbook Studio");
@@ -229,7 +229,7 @@ function loadAccessories() {
     const accessoriesContainer = document.getElementById("accessories");
     if (!accessoriesContainer) return;
 
-    fetchData("/accessories.json")
+    fetchData("/data/accessories.json")
         .then(data => {
             // Clear container in case of re-population
             accessoriesContainer.innerHTML = '';
@@ -276,13 +276,7 @@ function createW10Card(item) {
 }
 
 function loadW10Incompatible() {
-    fetch('../w10_incompatible.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
+    fetchData('/data/w10_incompatible.json')
         .then(data => {
             const container = document.getElementById('w10-incompatible-cards');
             if (container) {
