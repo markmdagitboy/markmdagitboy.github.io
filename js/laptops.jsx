@@ -53,10 +53,21 @@ const LaptopCard = ({ laptop }) => {
 
 const AccessoryCard = ({ accessory }) => {
     return (
-        <div className="accessory-card">
-            <h4>{accessory.model}</h4>
-            {accessory.part_number && <p><strong>Part Number:</strong> {accessory.part_number}</p>}
-            {accessory.description && <p>{accessory.description}</p>}
+        <div className="laptop-card">
+            <h3>{accessory.model}</h3>
+            {accessory.part_number && (
+                <div className="spec">
+                    <span className="spec-key">Part Number:</span>
+                    <span className="spec-value">{accessory.part_number}</span>
+                    <CopyToClipboard text={accessory.part_number} />
+                </div>
+            )}
+            {accessory.description && (
+                <div className="spec">
+                    <span className="spec-key">Description:</span>
+                    <span className="spec-value">{accessory.description}</span>
+                </div>
+            )}
         </div>
     );
 };
@@ -74,19 +85,17 @@ const Accessories = () => {
         <React.Fragment>
             <h2 className="section-title">Laptop Accessories</h2>
             {Object.entries(accessories).map(([category, items]) => (
-                <div key={category}>
+                <React.Fragment key={category}>
                     <h3 className="section-title">{category}</h3>
-                    <div className="card-grid">
-                        {Object.entries(items).map(([subCategory, subItems]) => (
-                            <div key={subCategory} className="accessory-category">
-                                <h4>{subCategory}</h4>
-                                <div className="card-grid">
-                                    {subItems.map(item => <AccessoryCard key={item.model} accessory={item} />)}
-                                </div>
+                    {Object.entries(items).map(([subCategory, subItems]) => (
+                        <React.Fragment key={subCategory}>
+                            <h4 className="category-title">{subCategory}</h4>
+                            <div className="card-grid">
+                                {subItems.map(item => <AccessoryCard key={item.model} accessory={item} />)}
                             </div>
-                        ))}
-                    </div>
-                </div>
+                        </React.Fragment>
+                    ))}
+                </React.Fragment>
             ))}
         </React.Fragment>
     );
