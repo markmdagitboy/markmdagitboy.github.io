@@ -48,5 +48,10 @@
         "name": "Arch Linux",
         "url": "https://archlinux.org/",
         "description": "A lightweight and flexible Linux distribution for proficient users who value simplicity and a do-it-yourself approach."
+    },
+    {
+        "name": "MacBook Pro (Refurbished)",
+        "url": "https://www.backmarket.com/en-us/p/macbook-pro-retina-16-inch-2019-core-i9-16gb-ssd-1000-gb/aefda162-f641-4448-ae6c-e97f56ccc388?l=12#",
+        "description": "A refurbished Apple MacBook Pro, offering high performance and a premium design as an alternative to Windows-based laptops."
     }
 ]
