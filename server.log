@@ -1,8 +1,0 @@
-127.0.0.1 - - [08/Oct/2025 02:53:45] "GET /pages/projects.html HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:45] "GET /images/headshot.png HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:45] "GET /css/styles.css HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:45] "GET /js/main.js HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:46] "GET /accessories.json HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:46] "GET /supply_chain.json HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:46] "GET /js/laptops.jsx HTTP/1.1" 200 -
-127.0.0.1 - - [08/Oct/2025 02:53:47] "GET /laptops.json HTTP/1.1" 200 -
