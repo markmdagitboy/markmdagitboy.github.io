@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Load accessories data
     loadAccessories();
+    loadW10Incompatible();
 });
 
 function createSupplyChainCard(container, item) {
@@ -263,4 +264,30 @@ function loadAccessories() {
             }
         })
         .catch(error => console.error("Error fetching or creating accessory cards:", error));
+}
+
+function createW10Card(item) {
+    return `
+        <a href="${item.url}" target="_blank" class="project-card">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+        </a>
+    `;
+}
+
+function loadW10Incompatible() {
+    fetch('../w10_incompatible.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const container = document.getElementById('w10-incompatible-cards');
+            if (container) {
+                container.innerHTML = data.map(createW10Card).join('');
+            }
+        })
+        .catch(error => console.error('Error loading W10 incompatible solutions data:', error));
 }
