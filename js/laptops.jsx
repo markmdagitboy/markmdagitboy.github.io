@@ -89,7 +89,7 @@ const Accessories = () => {
                     <h3 className="section-title">{category}</h3>
                     {Object.entries(items).map(([subCategory, subItems]) => (
                         <React.Fragment key={subCategory}>
-                            <h4 className="category-title">{subCategory}</h4>
+                            <h4 className="section-title">{subCategory}</h4>
                             <div className="card-grid">
                                 {subItems.map(item => <AccessoryCard key={item.model} accessory={item} />)}
                             </div>
