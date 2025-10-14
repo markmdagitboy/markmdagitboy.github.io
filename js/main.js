@@ -282,15 +282,19 @@ function loadW10Incompatible() {
             if (container) {
                 container.innerHTML = ''; // Clear existing content
                 for (const category in data) {
+                    const categoryContainer = document.createElement('div');
+
                     const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'section-title';
+                    categoryTitle.className = 'category-title';
                     categoryTitle.textContent = category;
-                    container.appendChild(categoryTitle);
+                    categoryContainer.appendChild(categoryTitle);
 
                     const cardGrid = document.createElement('div');
                     cardGrid.className = 'card-grid';
                     cardGrid.innerHTML = data[category].map(createW10Card).join('');
-                    container.appendChild(cardGrid);
+                    categoryContainer.appendChild(cardGrid);
+
+                    container.appendChild(categoryContainer);
                 }
             }
         })
