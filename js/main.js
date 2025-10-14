@@ -280,7 +280,18 @@ function loadW10Incompatible() {
         .then(data => {
             const container = document.getElementById('w10-incompatible-cards');
             if (container) {
-                container.innerHTML = data.map(createW10Card).join('');
+                container.innerHTML = ''; // Clear existing content
+                for (const category in data) {
+                    const categoryTitle = document.createElement('h3');
+                    categoryTitle.className = 'section-title';
+                    categoryTitle.textContent = category;
+                    container.appendChild(categoryTitle);
+
+                    const cardGrid = document.createElement('div');
+                    cardGrid.className = 'card-grid';
+                    cardGrid.innerHTML = data[category].map(createW10Card).join('');
+                    container.appendChild(cardGrid);
+                }
             }
         })
         .catch(error => console.error('Error loading W10 incompatible solutions data:', error));
