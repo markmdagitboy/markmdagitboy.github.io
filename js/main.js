@@ -285,7 +285,7 @@ function loadW10Incompatible() {
                     const categoryContainer = document.createElement('div');
 
                     const categoryTitle = document.createElement('h3');
-                    categoryTitle.className = 'category-title';
+                    categoryTitle.className = 'section-title';
                     categoryTitle.textContent = category;
                     categoryContainer.appendChild(categoryTitle);
 
