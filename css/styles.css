@@ -273,6 +273,44 @@ footer {
 }
 
 
+/* --- Search Bar --- */
+.search-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#search-input {
+    width: 300px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #4a4a4a;
+    background-color: #343a40;
+    color: #f0f0f0;
+    font-size: 1rem;
+}
+
+#search-button {
+    background-color: #00aaff;
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0088cc;
+}
+
+#search-results {
+    margin-bottom: 2rem;
+}
+
 /* --- Project Toggle Buttons --- */
 .project-toggle {
     margin-bottom: 2rem;
