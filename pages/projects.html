@@ -15,7 +15,6 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.2/sql-wasm.js"></script>
 </head>
 <body>
 
@@ -43,12 +42,6 @@
 
         <div class="content-wrapper">
             <main>
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search for laptops...">
-                    <button id="search-button">Search</button>
-                </div>
-                <div id="search-results"></div>
-
                 <div class="project-toggle">
                     <button id="laptops-btn" class="active">Laptops</button>
                     <button id="supply-chain-btn">Supply Chain</button>
@@ -81,7 +74,6 @@
 
     </div>
     <script src="../js/main.js"></script>
-    <script src="../js/search.js"></script>
     <script src="../js/laptops.jsx" type="text/babel"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
